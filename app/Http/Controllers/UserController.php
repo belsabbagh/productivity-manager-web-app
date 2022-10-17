@@ -17,9 +17,9 @@ class UserController extends Controller
      */
     public function index(): JsonResponse
     {
-        $users = User::where('user_type_id',2)->get();
+        $users = User::select('*')->filter()->get();
         $res = UserResource::collection($users);
-        return response()->json($res);
+        return response()->json(['body' => $res]);
     }
 
     /**
@@ -48,11 +48,13 @@ class UserController extends Controller
      *
      * @param User $user
      *
-     * @return Response
+     * @return JsonResponse
      */
     public function show(User $user)
     {
-        //
+        $users = User::find($user);
+        $res = UserResource::collection($users);
+        return response()->json($res);
     }
 
     /**

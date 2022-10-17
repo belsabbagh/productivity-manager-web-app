@@ -17,6 +17,8 @@ use Inertia\Inertia;
 |
 */
 
+Route::resource('users', UserController::class);
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),

@@ -22,36 +22,15 @@ return new class extends Migration
             $table->integer('access_level');
             $table->timestamps();
         });
-        DB::table('user_types')->insert(
-            array(
-                self::$user_type_name => 'guest',
-                'access_level' => 1
-            )
-        );
-        DB::table('user_types')->insert(
-            array(
-                self::$user_type_name => 'employee',
-                'access_level' => 2
-            )
-        );
-        DB::table('user_types')->insert(
-            array(
-                self::$user_type_name => 'lead',
-                'access_level' => 3
-            )
-        );
-        DB::table('user_types')->insert(
-            array(
-                self::$user_type_name => 'manager',
-                'access_level' => 4
-            )
-        );
-        DB::table('user_types')->insert(
-            array(
-                self::$user_type_name => 'admin',
-                'access_level' => 5
-            )
-        );
+        $types = array('guest', 'leader', 'admin');
+        $count = 1;
+        foreach ($types as $i)
+        {
+            DB::table('user_types')->insert(
+                array(self::$user_type_name => $i, 'access_level' => $count)
+            );
+            $count++;
+        }
     }
 
     /**

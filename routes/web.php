@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserTypeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,6 +17,8 @@ use Inertia\Inertia;
 |
 */
 
+Route::resource('users', UserController::class);
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -27,5 +31,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/users', [UserController::class, 'index'])->name('user');
+Route::get('/user-types', [UserTypeController::class, 'index'])->name('user-type');
 
 require __DIR__.'/auth.php';

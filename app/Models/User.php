@@ -4,13 +4,16 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Mehradsadeghi\FilterQueryString\FilterQueryString;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, FilterQueryString;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+
     ];
 
     /**
@@ -41,4 +45,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $filters = ['sort'];
+
+    public function user_type(): BelongsTo
+    {
+        return $this->belongsTo(UserType::class);
+    }
 }

@@ -18,6 +18,8 @@ use Inertia\Inertia;
 */
 
 Route::resource('users', UserController::class);
+Route::resource('employees', UserController::class);
+Route::resource('projects', UserController::class);
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

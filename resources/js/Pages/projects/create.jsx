@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, Head } from '@inertiajs/inertia-react';
+import {Link, Head, useForm} from '@inertiajs/inertia-react';
 
-export default function create(props) {
+export default function create() {
     const resource = 'project'
-    const {project} = props
+    const { data, setData, errors, post } = useForm({});
     function handleSubmit(e) {
         e.preventDefault();
         post(route(`${resource}s.store`));

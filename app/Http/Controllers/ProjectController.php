@@ -27,7 +27,7 @@ class ProjectController extends Controller
      *
      * @return \Inertia\Response
      */
-    public function create()
+    public function create(): \Inertia\Response
     {
         return Inertia::render("$this->resource_route/create");
     }

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, Head } from '@inertiajs/inertia-react';
+import {Link, Head, useForm} from '@inertiajs/inertia-react';
 import {Inertia} from "@inertiajs/inertia";
 
 export default function edit(props) {
     const resource = 'user'
     const {user} = props
+    const { data, setData, errors, put } = useForm({});
     function handleSubmit(e) {
         e.preventDefault();
         put(route(`${resource}s.update`, user.id));

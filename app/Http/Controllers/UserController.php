@@ -7,29 +7,30 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Inertia\Inertia;
 
 class UserController extends Controller
 {
+    private string $resource_route = 'users';
     /**
      * Display a listing of the resource.
      *
-     * @return JsonResponse
+     * @return \Inertia\Response
      */
-    public function index(): JsonResponse
+    public function index(): \Inertia\Response
     {
-        $users = User::select('*')->filter()->get();
-        $res = UserResource::collection($users);
-        return response()->json(['body' => $res]);
+        $users = User::all();
+        return Inertia::render("$this->resource_route/index", ['users' => $users]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Inertia\Response
      */
     public function create()
     {
-        //
+        return Inertia::render("$this->resource_route/create");
     }
 
     /**
@@ -48,13 +49,11 @@ class UserController extends Controller
      *
      * @param User $user
      *
-     * @return JsonResponse
+     * @return \Inertia\Response
      */
     public function show(User $user)
     {
-        $users = User::find($user);
-        $res = UserResource::collection($users);
-        return response()->json($res);
+        return Inertia::render("$this->resource_route/show", ['user' => $user->toArray()]);
     }
 
     /**
@@ -62,11 +61,11 @@ class UserController extends Controller
      *
      * @param User $user
      *
-     * @return Response
+     * @return \Inertia\Response
      */
     public function edit(User $user)
     {
-        //
+        return Inertia::render("$this->resource_route/edit", ['user' => $user->toArray()]);
     }
 
     /**

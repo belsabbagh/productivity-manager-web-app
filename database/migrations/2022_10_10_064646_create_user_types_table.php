@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
 
-    private static string $user_type_name = 'user_type_name';
+    private static string $user_type_name = 'name';
     /**
      * Run the migrations.
      *

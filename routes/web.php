@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTypeController;
 use Illuminate\Foundation\Application;
@@ -18,8 +20,8 @@ use Inertia\Inertia;
 */
 
 Route::resource('users', UserController::class);
-Route::resource('employees', UserController::class);
-Route::resource('projects', UserController::class);
+Route::resource('employees', EmployeeController::class);
+Route::resource('projects', ProjectController::class);
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -33,8 +35,5 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/users', [UserController::class, 'index'])->name('user');
-Route::get('/user-types', [UserTypeController::class, 'index'])->name('user-type');
 
 require __DIR__.'/auth.php';

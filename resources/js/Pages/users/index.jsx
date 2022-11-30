@@ -9,6 +9,7 @@ export default function index(props) {
                 <title>users index</title>
             </Head>
             <h1>users index page goes here</h1>
+            {JSON.stringify(users, null, 2)}
         </>
     );
 }

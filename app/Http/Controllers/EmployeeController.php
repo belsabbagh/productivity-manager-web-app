@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
@@ -18,7 +19,7 @@ class EmployeeController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $employees = Employee::all();
+        $employees = EmployeeResource::collection(Employee::all());
         return Inertia::render("$this->resource_route/index", ['employees' => $employees]);
     }
 

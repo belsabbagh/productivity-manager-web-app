@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
-class UserResource extends JsonResource
+class ProjectResource extends JsonResource
 {
     /**
-     * Transform the resource collection into an array.
+     * Transform the resource into an array.
      *
      * @param  Request  $request
      *
@@ -21,10 +21,8 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'email' => $this->email,
-            'user_type' => new UserTypeResource($this->user_type),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'region' => $this->region,
+            'team' => $this->employees,
         ];
     }
 }

@@ -53,7 +53,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee): \Inertia\Response
     {
-        return Inertia::render("$this->resource_route/show", ['employee' => $employee->toArray()]);
+        return Inertia::render("$this->resource_route/show", ['employee' => new EmployeeResource($employee)]);
 
     }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import {Link} from '@inertiajs/inertia-react';
 import '../../css/app.css'
-import {Typography} from "@mui/material";
+import {Typography, Divider} from "@mui/material";
 
 export default function Guest({children, title}) {
     return (
@@ -11,7 +11,7 @@ export default function Guest({children, title}) {
                 <Link href="/">
                     <ApplicationLogo className="w-24 h-24"/>
                 </Link>
-                <div className="mx-auto mt-auto">
+                <div className="mx-auto mt-auto px-12 border-b-2 border-black">
                     <Typography variant='h4'>
                         {title}
                     </Typography>

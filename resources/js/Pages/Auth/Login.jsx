@@ -33,7 +33,7 @@ export default function Login({status, canResetPassword}) {
     };
 
     return (
-        <GuestLayout>
+        <GuestLayout title='Login'>
             <Head><title>Log in</title></Head>
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
             <div style={{display: "flex"}}>

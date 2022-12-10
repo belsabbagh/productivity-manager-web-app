@@ -22,6 +22,8 @@ class Employee extends Model
         'projects'
     ];
 
+    protected $appends = ['total_utilization'];
+
     public function skills()
     {
         return $this->belongsToMany(Skill::class, 'employee_skill', 'employee_id', 'skill_id');
@@ -29,6 +31,14 @@ class Employee extends Model
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class, 'employee_project', 'employee_id', 'project_id');
+        return $this->belongsToMany(Project::class, 'employee_project', 'employee_id', 'project_id')->withPivot('utilization');
+    }
+
+    public function getTotalUtilizationAttribute()
+    {
+        $total = 0;
+        foreach ($this->projects as $project)
+            $total += $project->pivot->utilization;
+        return $total;
     }
 }

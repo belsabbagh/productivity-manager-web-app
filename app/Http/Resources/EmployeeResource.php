@@ -23,7 +23,7 @@ class EmployeeResource extends JsonResource
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'skills' => SkillResource::collection($this->skills),
-            'projects' => ProjectResource::collection($this->projects),
+            'projects' => $this->projects,
             'total_utilization' => $this->total_utilization,
         ];
     }

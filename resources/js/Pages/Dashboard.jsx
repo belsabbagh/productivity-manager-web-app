@@ -49,7 +49,7 @@ export default function Dashboard({employees, projects, charts}) {
         <div className={"min-h-full"}>
             <Head><title>Dashboard</title></Head>
             <div className="min-h-full pt-12 flex sm:justify-center bg-background items-center">
-                <ChartsView className={`min-h-full ${contentStyle}`} charts={getChartsData(charts)}/>
+                <ChartsView className={`${contentStyle}`} charts={getChartsData(charts)}/>
                 <div className={"flex-col mx-3"}>
                     <EmployeesList
                         className={`w-full ${contentStyle}`}

@@ -4,53 +4,60 @@ import '../../css/app.css'
 import Carousel from 'react-material-ui-carousel'
 import EmployeesList from "@/Components/Dashboard/EmployeesList";
 import ProjectsList from "@/Components/Dashboard/ProjectsList";
+import {Doughnut} from 'react-chartjs-2';
+import {Chart, ArcElement} from 'chart.js'
+import ChartsView from "@/Components/Dashboard/ChartsView";
+Chart.register(ArcElement);
 
-function createEmployee(id, name, utilization) {
-    return {id, name, utilization};
+function getProjectRegionDistributionChartData(charts) {
+    return {
+        labels: charts.projectRegionDistribution.map(i => i.region),
+        datasets: [
+            {
+                id: 1,
+                label: "project count",
+                data: charts.projectRegionDistribution.map(i => i.total),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 1,
+            }
+        ],
+    };
 }
 
-function sortEmployeesByUtilization(data) {
-    const utilizationKey = 'utilization'
-    return data.sort((a, b) => (a[utilizationKey] < b[utilizationKey]) ? 1 : -1)
-}
-
-export default function Dashboard(props) {
-    const [projects, setProjects] = useState([])
-    const [employees, setEmployees] = useState([
-        createEmployee(3, 'Jean', 1.4),
-        createEmployee(5, 'Kokomi', 1.2),
-        createEmployee(2, 'Diluc', 1),
-        createEmployee(7, 'Shinobu', 0.9),
-        createEmployee(1, 'Kaeya', 0.6),
-        createEmployee(4, 'Sayu', 0.2),
-        createEmployee(6, 'Itto', 0.1),
-    ])
-    fetch('api/projects').then((res) => {
-        res.json().then((res) => {
-            setProjects(res)
-        })
-    })
+export default function Dashboard({employees, projects, charts}) {
+    const contentStyle = "bg-content p-6 my-3 mx-3 rounded-lg"
     return (
-        <>
+        <div className={"min-h-full"}>
             <Head><title>Dashboard</title></Head>
-            <div className="min-h-12 pt-12 flex sm:justify-center bg-background items-center">
-                <div className={"mx-3"}>
-                    <Carousel className={"w-max"}>
-
-                    </Carousel>
-                </div>
+            <div className="min-h-full pt-12 flex sm:justify-center bg-background items-center">
+                <ChartsView className={`min-h-full ${contentStyle}`} data={getProjectRegionDistributionChartData(charts)}/>
                 <div className={"flex-col mx-3"}>
                     <EmployeesList
-                        className={"w-full bg-content p-6 my-3 rounded-lg"}
+                        className={`w-full ${contentStyle}`}
                         employees={employees}
                     />
                     <ProjectsList
-                        className={"w-full bg-content p-6 my-3 rounded-lg"}
+                        className={`w-full ${contentStyle}`}
                         projects={projects}
                     />
                 </div>
             </div>
-        </>
+        </div>
 
     );
 }

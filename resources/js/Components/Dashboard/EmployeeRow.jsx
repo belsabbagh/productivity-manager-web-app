@@ -22,11 +22,11 @@ export default function EmployeeRow({data}) {
     return (
         <TableRow
             className='rounded-lg p-4'
-            style={{backgroundColor: getUtilizationColor(data.utilization)}}
+            style={{backgroundColor: getUtilizationColor(data.total_utilization)}}
             key={data.id}
         >
-            <TableCell component="th" scope="row">{data.name}</TableCell>
-            <TableCell align="right">{data.utilization}</TableCell>
+            <TableCell component="th" scope="row">{`${data.first_name} ${data.last_name}`}</TableCell>
+            <TableCell align="right">{data.total_utilization}</TableCell>
             <TableCell align="right">
                 <Link href={`/${resource}/${data.id}`}>
                     <ArrowForwardIos color="action" className="shadow-md rounded-full"/>

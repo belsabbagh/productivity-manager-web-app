@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employee;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::get('/projects', function(){
+    return response()->json(Project::all());
+});
 
+Route::get('/employees', function(){
+    return response()->json(Employee::all());
+});

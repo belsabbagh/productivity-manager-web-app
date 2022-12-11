@@ -4,6 +4,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTypeController;
+use App\Models\Employee;
 use App\Models\Project;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,9 +34,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('api/projects', function(){
-    return response()->json(Project::all());
-});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

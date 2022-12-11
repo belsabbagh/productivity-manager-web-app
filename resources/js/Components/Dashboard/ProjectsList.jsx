@@ -1,15 +1,15 @@
-import DashboardList from "@/Components/Dashboard/DashboardList";
-import DashboardProjectsRow from "@/Components/Dashboard/DashboardProjectsRow";
+import ResourceList from "@/Components/Dashboard/ResourceList";
+import ProjectRow from "@/Components/Dashboard/ProjectRow";
 import React from "react";
 
 export default function ProjectsList({projects, className}) {
     return (
-        <DashboardList className={className} resource={"projects"}>
+        <ResourceList className={className} resource={"projects"}>
             {
                 projects.map((i) => {
-                    return (<DashboardProjectsRow data={i} key={i.id}/>)
+                    return (<ProjectRow data={i} key={i.id}/>)
                 })
             }
-        </DashboardList>
+        </ResourceList>
     )
 }

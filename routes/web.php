@@ -24,7 +24,8 @@ use Inertia\Inertia;
 */
 
 
-Route::get('/', function () {
+Route::get('/', function ()
+{
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -34,11 +35,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function ()
+{
     return Inertia::render('Dashboard');
 });
 
-Route::get('/charts', function () {
+Route::get('/charts', function ()
+{
     return Inertia::render('charts');
 });
 
@@ -46,15 +49,17 @@ Route::resource('users', UserController::class);
 Route::resource('employees', EmployeeController::class);
 Route::resource('projects', ProjectController::class);
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function ()
+{
     return Inertia::render('Dashboard', [
-        'employees' => Employee::all()->sortBy('total_utilization', SORT_NATURAL, true)->take(4),
+        'employees' => EmployeeResource::collection(Employee::all()->sortBy('total_utilization', SORT_NATURAL, true)->take(4)),
         'projects' => Project::all()->take(4),
         'charts' => [
-            'projectRegionDistribution' => DB::table('projects')->select('region', DB::raw('count(*) as total'))->groupBy('region')->get()
+            'projectRegionDistribution' => DB::table('projects')->select('region', DB::raw('count(*) as total'))->groupBy('region')->get(),
+            'employeeSkillDistribution' => Employee::with('skills')->get()
         ]
     ]);
 });//    ->middleware(['auth', 'verified'])->name('dashboard');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

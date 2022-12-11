@@ -25,6 +25,9 @@
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
         "@mui/icons-material": "^5.10.16",
-        "@mui/material": "^5.10.15"
+        "@mui/material": "^5.10.15",
+        "chart.js": "^4.0.1",
+        "react-chartjs-2": "^5.0.1",
+        "react-material-ui-carousel": "^3.4.2"
     }
 }

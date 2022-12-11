@@ -16,7 +16,7 @@ function sortEmployeesByUtilization(data) {
 
 export default function Dashboard(props) {
     const [projects, setProjects] = useState([])
-    const [employees, setEmployees] = useState( [
+    const [employees, setEmployees] = useState([
         createEmployee(3, 'Jean', 1.4),
         createEmployee(5, 'Kokomi', 1.2),
         createEmployee(2, 'Diluc', 1),
@@ -26,19 +26,29 @@ export default function Dashboard(props) {
         createEmployee(6, 'Itto', 0.1),
     ])
     fetch('api/projects').then((res) => {
-        res.json().then((res)=> {
+        res.json().then((res) => {
             setProjects(res)
         })
     })
     return (
         <>
             <Head><title>Dashboard</title></Head>
-            <div className="min-h-12 pt-12 flex flex-col sm:justify-center items-center">
-                <EmployeesList className={"flex-col min-w-fit bg-content p-6 rounded-lg"} employees={employees}/>
-                <ProjectsList className={"flex-col min-w-fit bg-content p-6 rounded-lg"} projects={projects}/>
-                <Carousel>
+            <div className="min-h-12 pt-12 flex sm:justify-center bg-background items-center">
+                <div className={"mx-3"}>
+                    <Carousel className={"w-max"}>
 
-                </Carousel>
+                    </Carousel>
+                </div>
+                <div className={"flex-col mx-3"}>
+                    <EmployeesList
+                        className={"w-full bg-content p-6 my-3 rounded-lg"}
+                        employees={employees}
+                    />
+                    <ProjectsList
+                        className={"w-full bg-content p-6 my-3 rounded-lg"}
+                        projects={projects}
+                    />
+                </div>
             </div>
         </>
 

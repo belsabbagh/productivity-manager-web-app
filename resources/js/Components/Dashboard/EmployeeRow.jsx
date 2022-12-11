@@ -1,14 +1,28 @@
 import {TableCell, TableRow} from "@mui/material";
-import {Link} from "@inertiajs/inertia-react";
 import {ArrowForwardIos} from "@mui/icons-material";
 import React from "react";
+import {Link} from "@inertiajs/inertia-react";
+import '../../../css/app.css'
 
-export default function DashboardProjectsRow({data}) {
-    const resource = "projects"
+
+export default function EmployeeRow({data}) {
+    const resource = 'employees'
+
+    function formatColor(r, g, b) {
+        return `rgb(${r},${g},${b})`
+    }
+
+    function getUtilizationColor(val) {
+        const r = (val <= 1) ? 255 * val : 255,
+            g = (val <= 1) ? 255 : 100,
+            b = 100
+        return formatColor(r, g, b)
+    }
+
     return (
         <TableRow
             className='rounded-lg p-4'
-            style={{backgroundColor: 'rgb(233,231,253)'}}
+            style={{backgroundColor: getUtilizationColor(data.utilization)}}
             key={data.id}
         >
             <TableCell component="th" scope="row">{data.name}</TableCell>

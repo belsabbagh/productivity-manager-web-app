@@ -1,6 +1,9 @@
 import ResourceView from "@/Components/Dashboard/ResourceView";
 import DoughnutChart from "@/Components/Chart/DoughnutChart";
 import Carousel from 'react-material-ui-carousel';
+import {Chart, ArcElement, Tooltip} from 'chart.js'
+
+Chart.register(ArcElement, Tooltip);
 
 export default function ChartsView({className, charts}) {
     return (

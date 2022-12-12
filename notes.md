@@ -8,8 +8,9 @@
 - employee/user (edit, create)             rana
 - login, home, statistics, backend         belal
 
-## Controller
+## commands
+- php artisan serve => run the larravel app
+- npm run dev => react
 
-this is how the controller is routed
 
 

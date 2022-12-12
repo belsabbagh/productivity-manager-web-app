@@ -3,14 +3,12 @@ import Checkbox from '@/Components/Checkbox';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import {Head, Link, useForm} from '@inertiajs/inertia-react';
 import {EmailOutlined, AccountBoxOutlined, VpnKeyOutlined} from "@mui/icons-material";
 import '../../../css/login.css'
 import '../../../css/app.css'
 import {Button} from "@mui/material";
-import CrossUtilizedIcon from "@/Components/CrossUtilizedIcon";
 
 export default function Login({status, canResetPassword}) {
     const {data, setData, post, processing, errors, reset} = useForm({
@@ -99,7 +97,6 @@ export default function Login({status, canResetPassword}) {
                         </Button>
                     </div>
                 </form>
-                <CrossUtilizedIcon/>
             </div>
 
         </GuestLayout>

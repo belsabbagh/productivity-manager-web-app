@@ -10,6 +10,7 @@ import {EmailOutlined, AccountBoxOutlined, VpnKeyOutlined} from "@mui/icons-mate
 import '../../../css/login.css'
 import '../../../css/app.css'
 import {Button} from "@mui/material";
+import CrossUtilizedIcon from "@/Components/CrossUtilizedIcon";
 
 export default function Login({status, canResetPassword}) {
     const {data, setData, post, processing, errors, reset} = useForm({
@@ -98,6 +99,7 @@ export default function Login({status, canResetPassword}) {
                         </Button>
                     </div>
                 </form>
+                <CrossUtilizedIcon/>
             </div>
 
         </GuestLayout>

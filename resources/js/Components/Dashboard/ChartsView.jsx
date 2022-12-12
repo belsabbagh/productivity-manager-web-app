@@ -9,12 +9,22 @@ export default function ChartsView({className, charts}) {
                 <DoughnutChart
                     className={'h-max'}
                     name={'Project Region Distribution'}
-                    data={charts.projectRegionDistribution}
+                    chartData={{
+                        data: charts.projectRegionDistribution,
+                        label: 'project count',
+                        labelKey: 'region',
+                        countKey: 'total'
+                    }}
                 />
                 <DoughnutChart
                     className={'h-max'}
                     name={'Employee Skill Distribution'}
-                    data={charts.employeeSkillDistribution}
+                    chartData={{
+                        data: charts.employeeSkillDistribution,
+                        label: 'employee count',
+                        labelKey: 'name',
+                        countKey: 'employee_count'
+                }}
                 />
             </Carousel>
         </ResourceView>

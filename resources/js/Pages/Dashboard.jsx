@@ -10,36 +10,6 @@ import ChartsView from "@/Components/Dashboard/ChartsView";
 
 Chart.register(ArcElement, Tooltip);
 
-function getPieChart(data, label, labelKey, countKey) {
-    return {
-        labels: data.map(i => i[labelKey]),
-        datasets: [
-            {
-                id: 1,
-                label: label,
-                data: data.map(i => i[countKey]),
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                ],
-                borderWidth: 1,
-            }
-        ],
-    };
-}
-
 function getChartsData(charts) {
     return {
         projectRegionDistribution: getPieChart(
@@ -59,12 +29,11 @@ function getChartsData(charts) {
 
 export default function Dashboard({employees, projects, charts}) {
     const contentStyle = "bg-content p-6 my-3 mx-3 rounded-lg"
-    console.log({charts})
     return (
         <div className={"min-h-full"}>
             <Head><title>Dashboard</title></Head>
             <div className="min-h-full pt-12 flex sm:justify-center bg-background items-center">
-                <ChartsView className={`${contentStyle}`} charts={getChartsData(charts)}/>
+                <ChartsView className={`${contentStyle}`} charts={charts}/>
                 <div className={"flex-col mx-3"}>
                     <EmployeesList
                         className={`w-full ${contentStyle}`}

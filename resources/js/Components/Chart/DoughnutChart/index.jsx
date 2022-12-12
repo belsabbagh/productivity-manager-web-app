@@ -1,7 +1,8 @@
 import {Doughnut} from "react-chartjs-2";
 import React from "react";
+import makeDoughnutChart from "@/Components/Chart/DoughnutChart/doughnut.config";
 
-export default function DoughnutChart({className, name, data, options}) {
+export default function DoughnutChart({className, name, chartData:{data, label, labelKey, countKey}, options}) {
     return (
         <div className={'flex-col justify-center p-3' + className}>
             <div className={'flex-row justify-center'}>
@@ -9,7 +10,7 @@ export default function DoughnutChart({className, name, data, options}) {
             </div>
             <Doughnut
                 className={'w-max h-max'}
-                data={data}
+                data={makeDoughnutChart(data, label, labelKey, countKey)}
                 options={options}
             />
         </div>

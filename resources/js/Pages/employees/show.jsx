@@ -7,6 +7,7 @@ import ListDisplay from "@/Components/ListDisplay";
 import EmployeeUtilization from "@/Components/EmployeeUtilization";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import {KeyboardOptionKey, Person} from "@mui/icons-material";
+import ItemHeader from "@/Components/ItemHeader";
 
 const skills = [
     {
@@ -50,14 +51,9 @@ export default function show(props) {
                 <title>employees show</title>
             </Head>
             <div className="bg-white p-6 flex flex-col">
-                <div className="flex flex-row justify-between items-center pb-6 pt-3">
-                    <div>
-                        <h1>{employee.first_name} Details</h1>
-                    </div>
-                    <div>
-                        <KeyboardOptionKey className="w-24 h-24"/>
-                    </div>
-                </div>
+                <ItemHeader
+                    title={employee.first_name+" Details"}
+                />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
                     <div className="flex flex-row justify-center mb-5">
                         <Person className="w-64 h-64"/>

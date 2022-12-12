@@ -9,42 +9,10 @@ import ApplicationLogo from "@/Components/ApplicationLogo";
 import {KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
 
-const skills = [
-    {
-        id: 1, name: "C++"
-    },
-    {
-        id: 2, name: "Java"
-    },
-    {
-        id: 3, name: "PHP"
-    },
-    {
-        id: 4, name: "PHP"
-    },
-    {
-        id: 5, name: "PHP"
-    },
-    {
-        id: 6, name: "PHP"
-    },
-    {
-        id: 7, name: "PHP"
-    },
-    {
-        id: 8, name: "PHP"
-    },
-    {
-        id: 9, name: "PHP"
-    },
-    {
-        id: 10, name: "PHP"
-    }
-];
-
 export default function show(props) {
-    const {employee} = props
-    console.log(skills)
+    let {employee} = props
+    employee=employee.data
+    console.log(employee)
     return (
         <>
             <Head>
@@ -70,13 +38,13 @@ export default function show(props) {
                     />
                     <ListDisplay
                         label={"Skills"}
-                        data={skills}
+                        data={employee.skills}
                         itemValueKey={'name'}
                         className=" w-full mb-5"
                     />
                     <ListDisplay
                         label={"Project"}
-                        data={skills}
+                        data={employee.projects}
                         itemValueKey={'name'}
                         className="w-full mb-5 rounded-lg"
                     />
@@ -85,8 +53,8 @@ export default function show(props) {
                         className="mb-5"
                     >
                         <EmployeeUtilization
-                            value={1.2}
-                            projectCount={2}
+                            value={employee.total_utilization}
+                            projectCount={employee.projects.length}
                         />
                     </AttributeDisplay>
                 </div>

@@ -1,25 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.container{
-    display: inline-grid;
-    gap: 1rem;
-    grid-template-columns: 3fr;
-    width: 600px;
-    background-color: #faf4fd;
-    margin: 100px 100px 60px 50px;
-    justify-content: center;
-    justify-self: center;
-    left: 45%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-}
-
-.content {
-    margin-left: 10px;
-    margin-top: 10px;
-    top: 20%;
-    color: #000000;
-}

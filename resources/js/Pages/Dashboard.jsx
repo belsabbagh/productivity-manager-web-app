@@ -45,7 +45,7 @@ function getChartsData(charts) {
         projectRegionDistribution: getPieChart(
             charts.projectRegionDistribution,
             'project count',
-            'name',
+            'region',
             'total'
         ),
         employeeSkillDistribution: getPieChart(

@@ -1,21 +1,11 @@
 import React from 'react';
 import '../../../css/app.css'
-import {
-    Paper,
-    Table,
-    TableBody,
-    TableContainer,
-    Typography
-} from "@mui/material";
-import {ListAlt} from "@mui/icons-material";
-import {Link} from "@inertiajs/inertia-react";
-import ContentHeader from "@/Components/Dashboard/ContentHeader";
+import ContentView from "@/Components/ContentView";
 
-export default function ResourceView({className, children, resource}) {
+export default function ResourceView({children, resource}) {
     return (
-        <div className={className}>
-            <ContentHeader className={"flex justify-between"} resource={resource}/>
+        <ContentView title={resource}>
             {children}
-        </div>
+        </ContentView>
     );
 }

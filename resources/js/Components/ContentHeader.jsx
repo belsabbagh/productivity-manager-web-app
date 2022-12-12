@@ -3,13 +3,13 @@ import {Link} from "@inertiajs/inertia-react";
 import {ListAltOutlined} from "@mui/icons-material";
 import React from "react";
 
-export default function ContentHeader({resource, className}) {
+export default function ContentHeader({title, href}) {
     return (
-        <div className={className}>
+        <div className={"flex flex-row justify-between"}>
             <Typography className='px-auto' variant='h6'>
-                {resource}
+                {title}
             </Typography>
-            <Link href={`/${resource}`}>
+            <Link href={href}>
                 <ListAltOutlined  sx={{color: 'black'}}/>
             </Link>
         </div>

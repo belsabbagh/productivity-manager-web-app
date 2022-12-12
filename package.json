@@ -24,7 +24,10 @@
     "dependencies": {
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
+        "@fontsource/roboto": "^4.5.8",
         "@mui/icons-material": "^5.10.16",
-        "@mui/material": "^5.10.15"
+        "@mui/material": "^5.10.17",
+        "@mui/styled-engine-sc": "^5.10.16",
+        "styled-components": "^5.3.6"
     }
 }

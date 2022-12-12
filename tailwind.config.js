@@ -7,14 +7,26 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.jsx',
+        // './resources/css/app.css',
     ],
 
     theme: {
+        colors: {
+            background: '#eaf0ff',
+            content: '#faf4fd',
+            white: '#FFFFFF',
+            red: '#FF0000',
+            textbox: '#4b00820d',
+        },
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            borderRadius: {
+                'tiny': '0.5rem',
+            }
         },
+
     },
 
     plugins: [require('@tailwindcss/forms')],

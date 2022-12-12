@@ -2,11 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.background{
-    background-color: #eaf0ff;
-}
-
-.content{
-    background-color: #faf4fd;
-    border-radius: 45px;
-}

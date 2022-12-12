@@ -8,6 +8,8 @@ import TextInput from '@/Components/TextInput';
 import {Head, Link, useForm} from '@inertiajs/inertia-react';
 import {EmailOutlined, AccountBoxOutlined, VpnKeyOutlined} from "@mui/icons-material";
 import '../../../css/login.css'
+import '../../../css/app.css'
+import {Button} from "@mui/material";
 
 export default function Login({status, canResetPassword}) {
     const {data, setData, post, processing, errors, reset} = useForm({
@@ -28,7 +30,6 @@ export default function Login({status, canResetPassword}) {
 
     const submit = (e) => {
         e.preventDefault();
-
         post(route('login'));
     };
 
@@ -86,15 +87,15 @@ export default function Login({status, canResetPassword}) {
                         {canResetPassword && (
                             <Link
                                 href={route('password.request')}
-                                className="underline text-sm text-gray-600 hover:text-gray-900"
+                                className="underline text-sm pr-4 text-gray-600 hover:text-gray-900"
                             >
                                 Forgot your password?
                             </Link>
                         )}
 
-                        <PrimaryButton className="ml-4" processing={processing}>
+                        <Button style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}} className="ml-8" onClick={submit}>
                             Log in
-                        </PrimaryButton>
+                        </Button>
                     </div>
                 </form>
             </div>

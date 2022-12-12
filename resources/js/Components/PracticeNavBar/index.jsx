@@ -1,4 +1,4 @@
-import NavItem from "@/Components/NavBar/NavItem";
+import NavItem from "@/Components/PracticeNavBar/NavItem";
 import {Home, Person, PieChart} from "@mui/icons-material";
 
 export default function NavBar({active}) {

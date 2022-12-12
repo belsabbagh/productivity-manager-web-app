@@ -3,8 +3,6 @@ import '../../css/app.css'
 import EmployeesList from "@/Components/Dashboard/EmployeesList";
 import ProjectsList from "@/Components/Dashboard/ProjectsList";
 import ChartsView from "@/Components/Dashboard/ChartsView";
-import NavBar from "@/Components/NavBar";
-
 
 export default function Dashboard({employees, projects, charts}) {
     const contentStyle = "bg-content p-6 my-3 mx-3 rounded-lg"

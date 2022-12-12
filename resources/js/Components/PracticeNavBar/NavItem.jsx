@@ -1,4 +1,4 @@
-import NavLink from "@/Components/NavBar/NavLink";
+import NavLink from "@/Components/PracticeNavBar/NavLink";
 
 export default function NavItem({href, children}) {
     return (

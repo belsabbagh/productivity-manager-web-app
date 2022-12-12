@@ -14,9 +14,7 @@ export default function Header({title, user= null}){
                     {title}
                 </Typography>
             </div>
-            <Link href="/">
-                <ApplicationLogo className="opacity-0 w-24 h-24"/>
-            </Link>
+            <ApplicationLogo className="opacity-0 w-24 h-24"/>
         </div>
     )
 }

@@ -3,11 +3,14 @@ import '../../css/app.css'
 import EmployeesList from "@/Components/Dashboard/EmployeesList";
 import ProjectsList from "@/Components/Dashboard/ProjectsList";
 import ChartsView from "@/Components/Dashboard/ChartsView";
+import Header from "@/Components/Header";
+import React from "react";
 
 export default function Dashboard({employees, projects, charts}) {
     const contentStyle = "bg-content p-6 my-3 mx-3 rounded-lg"
     return (
-        <div className={"min-h-full"}>
+        <div className={"min-h-screen"}>
+            <Header title={"Dashboard"}/>
             <Head><title>Dashboard</title></Head>
             <div className="min-h-full pt-12 flex sm:justify-center bg-background items-center">
                 <ChartsView className={`${contentStyle}`} charts={charts}/>

@@ -7,10 +7,12 @@ import '../../../css/app.css'
 
 export default function EmployeeRow({data}) {
     const resource = 'employees'
-
     function formatColor(r, g, b) {
         return `rgb(${r},${g},${b})`
     }
+
+    const textColor = data.total_utilization > 1 ? formatColor(255,255,255) : formatColor(0,0,0)
+
 
     function getUtilizationColor(val) {
         const r = (val <= 1) ? 255 * val : 255,
@@ -22,7 +24,7 @@ export default function EmployeeRow({data}) {
     return (
         <TableRow
             className='rounded-lg p-4'
-            style={{backgroundColor: getUtilizationColor(data.total_utilization)}}
+            style={{backgroundColor: getUtilizationColor(data.total_utilization), color: textColor}}
             key={data.id}
         >
             <TableCell component="th" scope="row">{`${data.first_name} ${data.last_name}`}</TableCell>

@@ -1,9 +1,10 @@
 import ResourceView from "@/Components/Dashboard/ResourceView";
 import DoughnutChart from "@/Components/Chart/DoughnutChart";
 import Carousel from 'react-material-ui-carousel';
-import {Chart, ArcElement, Tooltip} from 'chart.js'
+import {Chart, ArcElement, Tooltip, CategoryScale, LinearScale, PointElement, LineElement} from 'chart.js'
+import LineChart from "@/Components/Chart/LineChart";
 
-Chart.register(ArcElement, Tooltip);
+Chart.register(ArcElement, CategoryScale, LinearScale, LineElement, PointElement, Tooltip);
 
 export default function ChartsView({className, charts}) {
     return (
@@ -27,7 +28,27 @@ export default function ChartsView({className, charts}) {
                         label: 'employee count',
                         labelKey: 'name',
                         countKey: 'employee_count'
-                }}
+                    }}
+                />
+                <DoughnutChart
+                    className={'w-max h-max'}
+                    name={'Average Utilization Per Skill'}
+                    chartData={{
+                        data: charts.averageUtilizationPerSkill,
+                        label: 'average utilization',
+                        labelKey: 'skill',
+                        countKey: 'averageUtilization'
+                    }}
+                />
+                <DoughnutChart
+                    className={'w-max h-max'}
+                    name={'Employee Utilization Distribution'}
+                    chartData={{
+                        data: charts.employeeUtilizationDistribution,
+                        label: 'category',
+                        labelKey: 'category',
+                        countKey: 'count'
+                    }}
                 />
             </Carousel>
         </ResourceView>

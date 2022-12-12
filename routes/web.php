@@ -7,6 +7,7 @@ use App\Http\Controllers\UserTypeController;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use App\Models\Project;
+use App\Models\Skill;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,9 @@ Route::get('/dashboard', function ()
 
 Route::get('/charts', function ()
 {
-    return Inertia::render('charts');
+    return Inertia::render('charts', [
+        'data' => DB::table('projects')->select('region', DB::raw('count(*) as total'))->groupBy('region')->get(),
+    ]);
 });
 
 Route::resource('users', UserController::class);
@@ -56,7 +59,7 @@ Route::get('/dashboard', function ()
         'projects' => Project::all()->take(4),
         'charts' => [
             'projectRegionDistribution' => DB::table('projects')->select('region', DB::raw('count(*) as total'))->groupBy('region')->get(),
-            'employeeSkillDistribution' => Employee::with('skills')->get()
+            'employeeSkillDistribution' => Skill::all()
         ]
     ]);
 });//    ->middleware(['auth', 'verified'])->name('dashboard');

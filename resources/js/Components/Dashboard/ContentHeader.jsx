@@ -1,6 +1,6 @@
 import {Typography} from "@mui/material";
 import {Link} from "@inertiajs/inertia-react";
-import {ListAlt} from "@mui/icons-material";
+import {ListAltOutlined} from "@mui/icons-material";
 import React from "react";
 
 export default function ContentHeader({resource, className}) {
@@ -10,7 +10,7 @@ export default function ContentHeader({resource, className}) {
                 {resource}
             </Typography>
             <Link href={`/${resource}`}>
-                <ListAlt/>
+                <ListAltOutlined  sx={{color: 'black'}}/>
             </Link>
         </div>
     );

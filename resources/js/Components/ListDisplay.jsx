@@ -8,7 +8,7 @@ export default function ListDisplay({data, label, itemValueKey, itemId = 'id', c
             label={label}
             className={className}
         >
-            <List>
+            <List className=" w-full max-h-32 overflow-y-scroll">
                 {
                     data.map((i) => {
                             return (<ListItem className="bg-textbox p-0.5" key={i[itemId]}>{i[itemValueKey]}</ListItem>)

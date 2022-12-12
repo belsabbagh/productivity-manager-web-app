@@ -24,7 +24,11 @@ module.exports = {
             },
             borderRadius: {
                 'tiny': '0.5rem',
+            },
+            widths: {
+                '75': '18.75rem'
             }
+
         },
 
     },

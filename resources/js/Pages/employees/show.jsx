@@ -1,25 +1,43 @@
 import React, {useState} from 'react';
 import '../../../css/app.css';
 import {Head} from "@inertiajs/inertia-react";
-import Table from '@mui/material/Table';
-import Box from '@mui/material/Box';
-import {List, ListItem, ListItemButton, ListItemText, TableBody, TableCell, TableRow} from "@mui/material";
-import {FixedSizeList} from 'react-window';
 import AttributeDisplay from "@/Components/AttributeDisplay";
 import TextDisplay from "@/Components/TextDisplay";
 import ListDisplay from "@/Components/ListDisplay";
 import EmployeeUtilization from "@/Components/EmployeeUtilization";
 import ApplicationLogo from "@/Components/ApplicationLogo";
+import {KeyboardOptionKey, Person} from "@mui/icons-material";
 
 const skills = [
     {
-        id: 1, name: "hamada"
+        id: 1, name: "C++"
     },
     {
-        id: 2, name: "hamada2"
+        id: 2, name: "Java"
     },
     {
-        id: 3, name: "hamada3"
+        id: 3, name: "PHP"
+    },
+    {
+        id: 4, name: "PHP"
+    },
+    {
+        id: 5, name: "PHP"
+    },
+    {
+        id: 6, name: "PHP"
+    },
+    {
+        id: 7, name: "PHP"
+    },
+    {
+        id: 8, name: "PHP"
+    },
+    {
+        id: 9, name: "PHP"
+    },
+    {
+        id: 10, name: "PHP"
     }
 ];
 
@@ -31,31 +49,44 @@ export default function show(props) {
             <Head>
                 <title>employees show</title>
             </Head>
-            <div className="min-h-screen bg-background">
-                <div className="font-bold mb-5 justify-center ">
-                    <h1>Employee details</h1>
+            <div className="bg-white p-6 flex flex-col">
+                <div className="flex flex-row justify-between items-center pb-6 pt-3">
+                    <div>
+                        <h1>{employee.first_name} Details</h1>
+                    </div>
+                    <div>
+                        <KeyboardOptionKey className="w-24 h-24"/>
+                    </div>
                 </div>
-                <div className="flex-col bg-content rounded-lg">
+                <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
+                    <div className="flex flex-row justify-center mb-5">
+                        <Person className="w-64 h-64"/>
+                    </div>
                     <TextDisplay
                         label={"Name"}
                         value={employee.first_name + " " + employee.last_name}
+                        className="mb-5"
                     />
                     <TextDisplay
                         label={"Email"}
                         value={employee.email}
+                        className=" mb-5"
                     />
                     <ListDisplay
                         label={"Skills"}
                         data={skills}
                         itemValueKey={'name'}
+                        className=" w-full mb-5"
                     />
                     <ListDisplay
-                        label={"Projects"}
+                        label={"Project"}
                         data={skills}
                         itemValueKey={'name'}
+                        className="w-full mb-5 rounded-lg"
                     />
                     <AttributeDisplay
                         label={"Utilization"}
+                        className="mb-5"
                     >
                         <EmployeeUtilization
                             value={1.2}

@@ -1,5 +1,5 @@
 import ResourceView from "@/Components/Dashboard/ResourceView";
-import DoughnutChart from "@/Components/Chart/DoughnutChart";
+import DoughnutChart from "@/Components/Charts/DoughnutChart";
 import Carousel from 'react-material-ui-carousel';
 import {Chart, ArcElement, Tooltip, CategoryScale, LinearScale, PointElement, LineElement} from 'chart.js'
 import getCharts from "@/Components/Dashboard/ChartsCarousel/config";
@@ -17,6 +17,7 @@ export default function ChartsCarousel({className, charts}) {
                             <DoughnutChart
                                 className={'h-max'}
                                 name={chart.title}
+                                key={chart.title}
                                 chartData={{
                                     data: chart.data,
                                     label: chart.label,

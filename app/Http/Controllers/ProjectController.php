@@ -10,6 +10,11 @@ use Inertia\Inertia;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Project::class);
+    }
+
     private string $resource_route = 'projects';
     /**
      * Display a listing of the resource.

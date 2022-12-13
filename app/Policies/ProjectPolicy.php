@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Policies;
+include_once 'authorization.php';
 
 use App\Models\Project;
 use App\Models\User;
@@ -18,7 +19,7 @@ class ProjectPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -30,7 +31,7 @@ class ProjectPolicy
      */
     public function view(User $user, Project $project)
     {
-        //
+        return isProjectLeader($user, $project) || isAdmin($user);
     }
 
     /**
@@ -41,7 +42,7 @@ class ProjectPolicy
      */
     public function create(User $user)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -53,7 +54,7 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project)
     {
-        //
+        return isProjectLeader($user, $project) || isAdmin($user);
     }
 
     /**
@@ -65,7 +66,7 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $project)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -77,7 +78,7 @@ class ProjectPolicy
      */
     public function restore(User $user, Project $project)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -89,6 +90,6 @@ class ProjectPolicy
      */
     public function forceDelete(User $user, Project $project)
     {
-        //
+        return isAdmin($user);
     }
 }

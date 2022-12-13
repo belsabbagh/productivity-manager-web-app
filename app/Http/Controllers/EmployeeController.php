@@ -12,6 +12,10 @@ use Inertia\Inertia;
 
 class EmployeeController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Employee::class);
+    }
     private string $resource_route = 'employees';
     /**
      * Display a listing of the resource.

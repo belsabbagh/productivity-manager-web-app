@@ -8,9 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use App\Models\Project;
-use App\Models\Skill;
 use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -49,9 +47,9 @@ Route::get('/charts', function ()
     ]);
 });
 
-Route::resource('users', UserController::class);
-Route::resource('employees', EmployeeController::class);
-Route::resource('projects', ProjectController::class);
+Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
+Route::resource('employees', EmployeeController::class)->middleware(['auth', 'verified']);
+Route::resource('projects', ProjectController::class)->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function ()
 {
@@ -60,7 +58,7 @@ Route::get('/dashboard', function ()
         'projects' => Project::all()->take(4),
         'charts' => getStatistics()
     ]);
-});//    ->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 require __DIR__ . '/auth.php';

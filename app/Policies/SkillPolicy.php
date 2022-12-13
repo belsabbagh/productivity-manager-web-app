@@ -18,7 +18,7 @@ class SkillPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -30,7 +30,7 @@ class SkillPolicy
      */
     public function view(User $user, Skill $skill)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -41,7 +41,7 @@ class SkillPolicy
      */
     public function create(User $user)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -53,7 +53,7 @@ class SkillPolicy
      */
     public function update(User $user, Skill $skill)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -65,7 +65,7 @@ class SkillPolicy
      */
     public function delete(User $user, Skill $skill)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -77,7 +77,7 @@ class SkillPolicy
      */
     public function restore(User $user, Skill $skill)
     {
-        //
+        return isAdmin($user);
     }
 
     /**
@@ -89,6 +89,6 @@ class SkillPolicy
      */
     public function forceDelete(User $user, Skill $skill)
     {
-        //
+        return isAdmin($user);
     }
 }

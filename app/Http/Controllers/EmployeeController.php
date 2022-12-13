@@ -6,6 +6,7 @@ use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Models\Skill;
 use Illuminate\Http\Response;
 use Inertia\Inertia;
 
@@ -30,7 +31,7 @@ class EmployeeController extends Controller
      */
     public function create(): \Inertia\Response
     {
-        return Inertia::render("$this->resource_route/create");
+        return Inertia::render("$this->resource_route/create", ['skills' => Skill::all()]);
     }
 
     /**

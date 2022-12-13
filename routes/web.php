@@ -1,9 +1,10 @@
 <?php
 
+include_once '../services/statistics.php';
+
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserTypeController;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use App\Models\Project;
@@ -44,7 +45,7 @@ Route::get('/dashboard', function ()
 Route::get('/charts', function ()
 {
     return Inertia::render('charts', [
-        'data' => DB::table('projects')->select('region', DB::raw('count(*) as total'))->groupBy('region')->get(),
+        'charts' => getStatistics()
     ]);
 });
 
@@ -57,10 +58,7 @@ Route::get('/dashboard', function ()
     return Inertia::render('Dashboard', [
         'employees' => EmployeeResource::collection(Employee::all()->sortBy('total_utilization', SORT_NATURAL, true)->take(4)),
         'projects' => Project::all()->take(4),
-        'charts' => [
-            'projectRegionDistribution' => DB::table('projects')->select('region', DB::raw('count(*) as total'))->groupBy('region')->get(),
-            'employeeSkillDistribution' => Skill::all()
-        ]
+        'charts' => getStatistics()
     ]);
 });//    ->middleware(['auth', 'verified'])->name('dashboard');
 

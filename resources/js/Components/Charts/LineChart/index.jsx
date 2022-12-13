@@ -1,16 +1,27 @@
 import {Line} from "react-chartjs-2";
-import makeDoughnutChart from "@/Components/Charts/DoughnutChart/config";
+import makeChart from "@/Components/Charts/config";
 import React from "react";
 
-export default function LineChart({className, name, chartData:{data, label, labelKey, countKey}, options}) {
+export default function LineChart({
+                                      className,
+                                      name,
+                                      header = false,
+                                      chartData: {data, label, labelKey, countKey},
+                                      options
+                                  }) {
     return (
         <div className={'flex-col justify-center p-3' + className}>
-            <div className={'flex-row justify-center'}>
-                <div className={"w-fit mx-auto"}>{name}</div>
-            </div>
+            {header ?
+                (
+                    <div className={'flex-row justify-center'}>
+                        <div className={"w-fit mx-auto"}>{name}</div>
+                    </div>)
+                : <div></div>
+            }
+
             <Line
-                className={'w-max h-max'}
-                data={makeDoughnutChart(data, label, labelKey, countKey)}
+                className={'w-fit h-fit'}
+                data={makeChart(data, label, labelKey, countKey)}
                 options={options}
             />
         </div>

@@ -22,7 +22,7 @@ class Employee extends Model
         'projects'
     ];
 
-    protected $appends = ['total_utilization'];
+    protected $appends = ['total_utilization', 'projects_count'];
 
     public function skills()
     {
@@ -40,5 +40,9 @@ class Employee extends Model
         foreach ($this->projects as $project)
             $total += $project->pivot->utilization;
         return $total;
+    }
+
+    public function getProjectsCountAttribute(){
+        return count($this->projects);
     }
 }

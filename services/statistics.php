@@ -67,12 +67,33 @@ function getEmployeeUtilizationDistribution()
     ];
 }
 
+function getCrossUtilizationDistribution()
+{
+    $employees = Employee::all();
+    $cross = count(array_filter($employees->toArray(), function ($var)
+    {
+        return ($var['total_utilization'] > 1);
+    }));
+    $total = count($employees);
+    return [
+        [
+            'category' => 'cross utilized',
+            'count' => $cross
+        ],
+        [
+            'category' => 'cross utilized',
+            'count' => $total - $cross
+        ]
+    ];
+}
+
 function getStatistics(): array
 {
     return [
         'projectRegionDistribution' => getProjectRegionDistribution(),
         'employeeSkillDistribution' => getEmployeeSkillDistribution(),
         'averageUtilizationPerSkill' => getAverageUtilizationPerSkill(),
-        'employeeUtilizationDistribution' => getEmployeeUtilizationDistribution()
+        'employeeUtilizationDistribution' => getEmployeeUtilizationDistribution(),
+        'crossUtilizationDistribution' => getCrossUtilizationDistribution(),
     ];
 }

@@ -16,7 +16,7 @@ const borderColors = [
     'rgba(255, 159, 64, 1)',
 ]
 
-export default function makeDoughnutChart(data, label, labelKey, countKey) {
+export default function makeChart(data, label, labelKey, countKey) {
     return {
         labels: data.map(i => i[labelKey]),
         datasets: [

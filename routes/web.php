@@ -45,7 +45,7 @@ Route::get('/dashboard', function ()
 Route::get('/charts', function ()
 {
     return Inertia::render('charts', [
-        'data' => DB::table('projects')->select('region', DB::raw('count(*) as total'))->groupBy('region')->get(),
+        'charts' => getStatistics()
     ]);
 });
 

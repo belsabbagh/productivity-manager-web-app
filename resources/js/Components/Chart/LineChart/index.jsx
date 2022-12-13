@@ -1,5 +1,5 @@
 import {Line} from "react-chartjs-2";
-import makeDoughnutChart from "@/Components/Chart/DoughnutChart/doughnut.config";
+import makeDoughnutChart from "@/Components/Chart/DoughnutChart/config";
 import React from "react";
 
 export default function LineChart({className, name, chartData:{data, label, labelKey, countKey}, options}) {

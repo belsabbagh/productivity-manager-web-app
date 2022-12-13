@@ -1,6 +1,6 @@
 import {Doughnut} from "react-chartjs-2";
 import React from "react";
-import makeDoughnutChart from "@/Components/Chart/DoughnutChart/doughnut.config";
+import makeDoughnutChart from "@/Components/Chart/DoughnutChart/config";
 
 export default function DoughnutChart({className, name, chartData:{data, label, labelKey, countKey}, options}) {
     return (

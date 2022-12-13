@@ -39,5 +39,5 @@ export default function getCharts(charts) {
 }
 
 export const getChartsAsArray = function getChartsAsArray(charts){
-    return Object.values(charts)
+    return Object.values(getCharts(charts))
 }

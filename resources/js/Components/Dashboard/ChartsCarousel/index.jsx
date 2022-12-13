@@ -8,6 +8,7 @@ Chart.register(ArcElement, CategoryScale, LinearScale, LineElement, PointElement
 
 export default function ChartsCarousel({className, charts}) {
     const chartsData = getChartsAsArray(charts)
+    console.log(chartsData)
     return (
         <ResourceView className={className} resource={"charts"}>
             <Carousel height={250} sx={{width: 350, paddingX: 8, paddingTop: 4, paddingBottom: 0}}>

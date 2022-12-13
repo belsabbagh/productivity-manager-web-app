@@ -81,7 +81,7 @@ function getCrossUtilizationDistribution()
             'count' => $cross
         ],
         [
-            'category' => 'cross utilized',
+            'category' => 'single assignment',
             'count' => $total - $cross
         ]
     ];

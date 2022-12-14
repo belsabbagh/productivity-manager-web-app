@@ -1,6 +1,6 @@
 <?php
 
-include_once '../services/statistics.php';
+include_once base_path() . '/services/statistics.php';
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectController;
@@ -8,11 +8,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use App\Models\Project;
-use App\Models\Skill;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use function Statistics\getStatistics;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +27,7 @@ use Inertia\Inertia;
 
 Route::get('/', function ()
 {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Redirect::route('login');
 });
 
 

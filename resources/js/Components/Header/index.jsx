@@ -12,8 +12,8 @@ export default function Header({title, user = null, backHref}) {
             <Link href="/">
                 <ApplicationLogo className="w-24 h-24"/>
             </Link>
-            <div className="px-8 border-b-2 border-black flex flex-row items-end justify-between">
-                <Typography variant='h4'>
+            <div className="px-6 border-b-2 border-black flex flex-row items-end justify-between">
+                <Typography className={'pr-4'} variant='h4'>
                     {title}
                 </Typography>
                 {(user !== null) ? <ProfileLink user={user}/> : ""}

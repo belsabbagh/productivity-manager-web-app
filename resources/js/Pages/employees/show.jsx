@@ -5,7 +5,7 @@ import AttributeDisplay from "@/Components/AttributeDisplay";
 import TextDisplay from "@/Components/TextDisplay";
 import ListDisplay from "@/Components/ListDisplay";
 import EmployeeUtilization from "@/Components/EmployeeUtilization";
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import ApplicationLogo from "@/Components/Icons/ApplicationLogo";
 import {KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
 import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";

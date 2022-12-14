@@ -1,53 +1,116 @@
 import React from 'react';
 import './../../../css/App.css';
 import {Link, Head, useForm} from '@inertiajs/inertia-react';
-import {Autocomplete, TextField} from "@mui/material";
+import MultipleSelectCheckmarks from '@/Components/MultipleSelectCheckmarks';
+import {
+    Autocomplete,
+    Button,
+    Checkbox,
+    FormControl,
+    InputLabel,
+    ListItemText,
+    MenuItem, OutlinedInput,
+    Select,
+    TextField, Typography
+} from "@mui/material";
+
+
+
 
 export default function create() {
     const resource = 'project'
-    const { data, setData, errors, post } = useForm({});
+    const {data, setData, errors, post} = useForm({});
+
     function handleSubmit(e) {
         e.preventDefault();
-        post(route(`${resource}s.store`));}
-
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <dive className="upper_container">
-                    </dive>
-                    <div className= "side_navbar_container">
-
-                    </div>
-
-                    <div className="container">
-
-                        <h3 className="container_title"> add new project</h3>
+        post(route(`${resource}s.store`));
+    }
 
 
-                         <div className= "form_container">
-                             <form action="/action_page.php">
-                                 <label className="form_inputs" htmlFor="project_name">Project Name</label>
-                                 <input className="form_inputs" type="text" id="P_name" name="project_name" placeholder="Project name.."/>
+    const [personName, setPersonName] = React.useState([]);
 
-                                 <Autocomplete
-                                     disablePortal
-                                     id="combo-box-demo"
-                                     //options={}
-                                     sx={{ width: 300 }}
-                                     renderInput={(params) => <TextField {...params} label="Movie" />}
-                                 />
+    const handleChange = (event) => {
+        const {
+            target: {value},
+        } = event;
+        setPersonName(
+            // On autofill we get a stringified value.
+            typeof value === 'string' ? value.split(',') : value,
+        );
+    };
+    const teamleader_names = [
+        {
+            id: 1, name: 'Jeff'
+        },
+        {
+            id: 2, name: 'Steve'
+        },
+        {
+            id: 3, name: 'Karen'
+        }
+    ];
+
+    const regions = [
+        {
+            id: 1, name: 'Egypt'
+        },
+        {
+            id: 2, name: 'SA'
+        },
+        {
+            id: 3, name: 'UAE'
+        }
+    ];
+
+    return (
 
 
-                                         <input type="submit" value="Submit"/>
-                             </form>
+        <div id="background" className=" min-h-screen bg-background">
+            <Head>
+                <title>create a project</title>
+            </Head>
+            <div id="white container" className=" rounded-lg  bg-white h-[550px]  w-[750px] ">
 
-                        </div>
-                   </div>
+
+                <div id="form container" className="px-48 pt-16">
+                    <Typography  sx={{mb:2}} variant='h5'> Create a project</Typography>
+                    <form>
+                        <TextField  id="text_inputs" sx={{mb:2, minWidth:1}} className="bg-content " label="Project name" variant="outlined"/>
+
+                        <Autocomplete sx={{mb:2}} className="bg-content "
+                                      disablePortal
+                                      id="combo-box-team_leaders"
+                                      options={teamleader_names}
+                                      getOptionLabel={(i)=>i.name}
+
+                                      renderInput={(params) => <TextField {...params} label="team leader"/>}/>
+
+                        <Autocomplete sx={{mb:2}} className="bg-content "
+                                      disablePortal
+                                      id="combo-box-regions"
+                                      options={regions}
+                                      getOptionLabel={(i)=>i.name}
+
+                                      renderInput={(params) => <TextField {...params} label="regions"/>}/>
 
 
-                </header>
+
+                        <Button style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}}
+                                onClick={handleSubmit}>
+                            Add project
+                        </Button>
+
+
+                    </form>
+
+
+                </div>
 
             </div>
-        );
+
+        </div>
+
+
+    );
 
 }

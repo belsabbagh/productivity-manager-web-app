@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTypeController;
 use Illuminate\Foundation\Application;
@@ -22,6 +23,7 @@ use Inertia\Inertia;
 Route::resource('users', UserController::class);
 Route::resource('employees', EmployeeController::class);
 Route::resource('projects', ProjectController::class);
+Route::resource('teams', TeamController::class);
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

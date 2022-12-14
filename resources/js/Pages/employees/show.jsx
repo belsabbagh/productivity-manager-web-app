@@ -8,6 +8,7 @@ import EmployeeUtilization from "@/Components/EmployeeUtilization";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import {KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
+import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
 
 export default function show(props) {
     let {employee} = props
@@ -42,11 +43,12 @@ export default function show(props) {
                         itemValueKey={'name'}
                         className=" w-full mb-5"
                     />
-                    <ListDisplay
+                    <ProjectDisplay
                         label={"Project"}
+                        resource={"projects"}
                         data={employee.projects}
                         itemValueKey={'name'}
-                        className="w-full mb-5 rounded-lg"
+                        className="w-full"
                     />
                     <AttributeDisplay
                         label={"Utilization"}

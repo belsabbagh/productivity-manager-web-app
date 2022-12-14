@@ -27,7 +27,7 @@
         "@fontsource/roboto": "^4.5.8",
         "@mui/icons-material": "^5.10.16",
         "@mui/styled-engine-sc": "^5.10.16",
-        "styled-components": "^5.3.6"
+        "styled-components": "^5.3.6",
         "@mui/material": "^5.10.15",
         "bootstrap": "^5.2.3",
         "chart.js": "^4.0.1",

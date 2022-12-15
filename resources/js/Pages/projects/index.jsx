@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link, Head} from '@inertiajs/inertia-react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import ProjectsTable from "@/Components/ProjectsTable";
 
 export default function index(props) {
-    const {projects} = props
+    const projects = props.projects.data
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -11,11 +12,8 @@ export default function index(props) {
             title={"Projects"}
             backHref={'/dashboard'}
         >
-            <Head>
-                <title>projects index</title>
-            </Head>
             {/* Body Start*/}
-            <div className="rectangle bg-white items-center ml-20 mr-5 w-[100%] h-[390px] rounded-[10px] p-5">
+            <div className="rectangle bg-white items-center ml-20 mr-5 rounded-[10px] p-5">
                 <div className=' w-[100%] flex justify-between items-center'>
                     <div className="search w-[40%]">
                         <label htmlFor="simple-search" className="sr-only">Search</label>
@@ -35,56 +33,12 @@ export default function index(props) {
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" className="text-white mr-4 pl-2 pr-2 rounded-lg bg-[#AFACD3] md:hover:text-purple-100 font-medium flex items-center justify-between w-full md:w-auto">+ Add Filter</button>
                     </div>
                 </div>
-                {/* Table */}
-                <div className="w-full items-end pt-3 overflow-x-auto shadow-md sm:rounded-lg border-2 border-purple-300 h-[300px] ">
-                    <table className="w-full text-sm text-left">
-                        <thead className="text-xs text-gray-400 uppercase bg-gray-200 ">
-                        <tr>
-                            <th scope="col" className="py-3 px-6">
-                                Name
-                            </th>
-                            <th scope="col" className="py-3 px-6">
-                                Team Members
-                            </th>
-                            <th scope="col" className="py-3 px-6">
-                                Due Date
-                            </th>
-                            <th scope="col" className="py-3 px-6">
-                                <span className="sr-only">Details</span>
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr className="bg-white border-b ">
-                            <th scope="row" className="py-4 px-6 font-medium text-black">
-                                Mariam Maged
-                            </th>
-                            <td className="py-4 px-6 underline text-blue-500">
-                                1
-                            </td>
-                            <td className="py-4 px-6 text-black">
-                                Sep 23, 2022
-                            </td>
-                            <td className="py-4 px-6 text-right ">
-                                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Details</a>
-                            </td>
-                        </tr>
-                        <tr className="bg-white border-b ">
-                            <th scope="row" className="py-4 px-6 font-medium text-black">
-                                Mariam Maged
-                            </th>
-                            <td className="py-4 px-6 underline text-blue-500">
-                                1
-                            </td>
-                            <td className="py-4 px-6 text-black">
-                                Laptop
-                            </td>
-                            <td className="py-4 px-6 text-right ">
-                                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Details</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                {/* ProjectsTable */}
+                <div className={'mt-3 w-full'}>
+                    <ProjectsTable
+                        data={projects}
+                        firstColKey={'name'}
+                    />
                 </div>
             </div>
             {/* Body End */}

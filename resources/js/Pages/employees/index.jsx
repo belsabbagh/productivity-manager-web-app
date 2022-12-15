@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link, Head} from '@inertiajs/inertia-react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import EmployeesTable from "@/Components/EmployeesTable";
 import {isAdmin} from "@/lib";

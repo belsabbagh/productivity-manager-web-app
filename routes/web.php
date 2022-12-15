@@ -50,7 +50,10 @@ Route::resource('projects', ProjectController::class);
 Route::get('/dashboard', function ()
 {
     return Inertia::render('Dashboard', [
-        'employees' => EmployeeResource::collection(Employee::all()->sortBy('total_utilization', SORT_NATURAL, true)->take(4)),
+        'employees' => EmployeeResource::collection(
+            Employee::all()->sortBy('total_utilization', SORT_NATURAL, true)
+                ->take(4)
+        ),
         'projects' => Project::all()->take(4),
         'charts' => getStatistics()
     ]);

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Head } from '@inertiajs/inertia-react';
+import {Head} from '@inertiajs/inertia-react';
 import TextDisplay from "@/Components/TextDisplay";
 import AttributeDisplay from "@/Components/AttributeDisplay";
 import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import TeamTable from "@/Components/TeamTable";
+import CreateResource from "@/Components/CreateResource";
 
 export default function show(props) {
     let {project} = props
@@ -14,13 +15,11 @@ export default function show(props) {
             auth={props.auth}
             errors={props.errors}
             title={"Project Details"}
-        >            <Head>
-                <title>projects show</title>
-            </Head>
+        >
             <div className="bg-white p-6 flex flex-col">
                 <ItemHeader
-                title={project.name+" Details"}
-                href={`/projects/${project.id}/edit`}
+                    title={project.name + " Details"}
+                    href={`/projects/${project.id}/edit`}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
                     <TextDisplay
@@ -38,10 +37,12 @@ export default function show(props) {
                         value={project.leader.name}
                         className=" mb-5"
                     />
-                    <AttributeDisplay
-                        label={"Team"}
-                    />
-                    <TeamTable data={project.team} firstColKey={'email'}/>
+                    <AttributeDisplay label={"Team"}>
+                        <TeamTable data={project.team} firstColKey={'email'}/>
+                        <div className={'mr-auto mt-2'}>
+                            <CreateResource resource={'team'} label={'add team member'} href={'/teams/create'}/>
+                        </div>
+                    </AttributeDisplay>
                 </div>
             </div>
         </AuthenticatedLayout>

@@ -2,9 +2,12 @@ import React from 'react';
 import {Link, Head} from '@inertiajs/inertia-react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import ProjectsTable from "@/Components/ProjectsTable";
+import {isAdmin} from "@/lib";
+import CreateResource from "@/Components/CreateResource";
 
 export default function index(props) {
     const projects = props.projects.data
+    const userType = props.auth.user.user_type_id
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -29,9 +32,8 @@ export default function index(props) {
                             </form>
                         </div>
                     </div>
-                    <div>
-                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" className="text-white mr-4 pl-2 pr-2 rounded-lg bg-[#AFACD3] md:hover:text-purple-100 font-medium flex items-center justify-between w-full md:w-auto">+ Add Filter</button>
-                    </div>
+                    {isAdmin(userType) ? <CreateResource resource={'project'}/> : ""}
+
                 </div>
                 {/* ProjectsTable */}
                 <div className={'mt-3 w-full'}>

@@ -9,3 +9,11 @@ export function getUtilizationColor(val) {
         b = 100
     return formatColor(r, g, b)
 }
+
+export function isAdmin(userType){
+    return userType === 3
+}
+
+export function isEmployee(userType){
+    return userType === 2
+}

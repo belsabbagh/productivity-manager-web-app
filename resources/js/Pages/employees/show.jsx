@@ -5,21 +5,25 @@ import AttributeDisplay from "@/Components/AttributeDisplay";
 import TextDisplay from "@/Components/TextDisplay";
 import ListDisplay from "@/Components/ListDisplay";
 import EmployeeUtilization from "@/Components/EmployeeUtilization";
-import ApplicationLogo from "@/Components/ApplicationLogo";
 import {KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
 import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function show(props) {
     let {employee} = props
     employee=employee.data
     console.log(employee)
     return (
-        <>
+        <AuthenticatedLayout
+            auth={props.auth}
+            errors={props.errors}
+            title={"Employee Details"}
+        >
             <Head>
                 <title>employees show</title>
             </Head>
-            <div className="bg-white p-6 flex flex-col">
+            <div className="bg-white min-w-full p-6 flex flex-col">
                 <ItemHeader
                     title={employee.first_name+" Details"}
                 />
@@ -37,19 +41,35 @@ export default function show(props) {
                         value={employee.email}
                         className=" mb-5"
                     />
-                    <ListDisplay
-                        label={"Skills"}
-                        data={employee.skills}
-                        itemValueKey={'name'}
-                        className=" w-full mb-5"
-                    />
-                    <ProjectDisplay
-                        label={"Project"}
-                        resource={"projects"}
-                        data={employee.projects}
-                        itemValueKey={'name'}
-                        className="w-full"
-                    />
+                    {employee.skills.length > 0 ?
+                        <ListDisplay
+                            label={"Skills"}
+                            data={employee.skills}
+                            itemValueKey={'name'}
+                            className=" w-full mb-5"
+                        />
+                        :
+                        <TextDisplay
+                            label={"Skills"}
+                            value={"None"}
+                            className=" mb-5"
+                        />
+                    }
+                    {employee.projects.length > 0 ?
+                        <ProjectDisplay
+                            label={"Project"}
+                            resource={"projects"}
+                            data={employee.projects}
+                            itemValueKey={'name'}
+                            className="w-full"
+                        />
+                        :
+                        <TextDisplay
+                            label={"Projects"}
+                            value={"None"}
+                            className=" mb-5"
+                        />
+                    }
                     <AttributeDisplay
                         label={"Utilization"}
                         className="mb-5"
@@ -61,6 +81,6 @@ export default function show(props) {
                     </AttributeDisplay>
                 </div>
             </div>
-        </>
+        </AuthenticatedLayout>
     );
 }

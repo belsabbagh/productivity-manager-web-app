@@ -25,7 +25,8 @@ export default function show(props) {
             </Head>
             <div className="bg-white min-w-full p-6 flex flex-col">
                 <ItemHeader
-                    title={employee.first_name + " Details"}
+                    title={employee.first_name+" Details"}
+                    href={`/employees/${employee.id}/edit`}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
                     <div className="flex flex-row justify-center mb-3">

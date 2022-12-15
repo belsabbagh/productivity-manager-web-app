@@ -12,7 +12,7 @@ export default function Dashboard({employees, projects, charts, auth, errors}) {
         <AuthenticatedLayout
             auth={auth}
             errors={errors}
-            title={"Projects"}
+            title={"Dashboard"}
         >
             <Head><title>Dashboard</title></Head>
             <ChartsCarousel className={contentStyle} charts={charts}/>

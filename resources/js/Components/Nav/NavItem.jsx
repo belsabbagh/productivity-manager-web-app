@@ -1,11 +1,9 @@
 import NavLink from "@/Components/Nav/NavLink";
 
-export default function NavItem({href, children}) {
+export default function NavItem({href, children, active=false, className=""}) {
     return (
-        <div className={"p-1"}>
-            <NavLink href={href}>
-                {children}
-            </NavLink>
-        </div>
+        <NavLink href={href} className={"p-1 hover:bg-gray rounded-lg " + className}>
+            {children}
+        </NavLink>
     )
 }

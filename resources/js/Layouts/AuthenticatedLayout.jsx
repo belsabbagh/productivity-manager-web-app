@@ -8,13 +8,13 @@ import '../../css/app.css';
 import Header from "@/Components/Header";
 import Nav from "@/Components/Nav";
 
-export default function AuthenticatedLayout({ auth, title, children }) {
+export default function AuthenticatedLayout({ auth, title, children ,backHref }) {
     return (
         <div className={"whole-page"}>
             <div className="min-h-screen bg-background pt-2 flex flex-col">
-                <Header className={'py-2 pl-2'} user={auth.user} title={title}/>
-                <div id={'nav-and-content'} className={'flex flex-row items-center justify-between'}>
-                    <Nav className={'flex flex-col mt-2 ml-6'} svgClassName={"h-12 w-12 text-black"}/>
+                <Header className={'py-2 pl-2'} user={auth.user} title={title} backHref={backHref}/>
+                <div id={'nav-and-content'} className={'flex flex-row items-start justify-between'}>
+                    <Nav className={'flex flex-col mt-24 ml-6'} svgClassName={"h-12 w-12 text-black"}/>
                     <main className={'pt-4 flex justify-center items-center'}>
                         {children}
                     </main>

@@ -15,6 +15,7 @@ module.exports = {
             background: '#eaf0ff',
             content: '#faf4fd',
             white: '#FFFFFF',
+            gray: '#aaaaaa',
             red: '#FF0000',
             textbox: '#4b00820d',
         },

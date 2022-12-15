@@ -9,6 +9,7 @@ export default function index(props) {
             auth={props.auth}
             errors={props.errors}
             title={"Projects"}
+            backHref={'/dashboard'}
         >
             <Head>
                 <title>projects index</title>

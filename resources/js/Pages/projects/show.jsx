@@ -6,14 +6,18 @@ import ListDisplay from "@/Components/ListDisplay";
 import AttributeDisplay from "@/Components/AttributeDisplay";
 import EmployeeUtilization from "@/Components/EmployeeUtilization";
 import ItemHeader from "@/Components/ItemHeader";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function show(props) {
     let {project} = props
     project = project.data
     console.log(project)
     return (
-        <>
-            <Head>
+        <AuthenticatedLayout
+            auth={props.auth}
+            errors={props.errors}
+            title={"Project Details"}
+        >            <Head>
                 <title>projects show</title>
             </Head>
             <div className="bg-white p-6 flex flex-col">
@@ -44,6 +48,6 @@ export default function show(props) {
                     />
                 </div>
             </div>
-        </>
+        </AuthenticatedLayout>
     );
 }

@@ -12,7 +12,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function show(props) {
     let {employee} = props
-    employee=employee.data
+    employee = employee.data
     console.log(employee)
     return (
         <AuthenticatedLayout
@@ -25,10 +25,10 @@ export default function show(props) {
             </Head>
             <div className="bg-white min-w-full p-6 flex flex-col">
                 <ItemHeader
-                    title={employee.first_name+" Details"}
+                    title={employee.first_name + " Details"}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
-                    <div className="flex flex-row justify-center mb-5">
+                    <div className="flex flex-row justify-center mb-3">
                         <Person className="w-64 h-64"/>
                     </div>
                     <TextDisplay

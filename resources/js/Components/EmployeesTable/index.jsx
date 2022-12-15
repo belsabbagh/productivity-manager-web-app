@@ -34,7 +34,7 @@ export default function EmployeesTable(props) {
                                     }}
                                 >
                                     {Number((i.total_utilization).toFixed(2))}</TableCell>
-                                <TableCell align="center"><Link className={'p-2 rounded-lg hover:bg-gray'} href={`/projects/${i.id}`}>Show</Link></TableCell>
+                                <TableCell align="center"><Link className={'p-2 rounded-lg hover:bg-gray'} href={`/employees/${i.id}`}>Show</Link></TableCell>
                             </TableRow>
                         )
                     })}

@@ -25,7 +25,7 @@ export default function UsersTable(props) {
                                 <TableCell component="th" scope="row">{i[props.firstColKey]}</TableCell>
                                 <TableCell align="center">{i.email}</TableCell>
                                 <TableCell align="center">{i.user_type.name}</TableCell>
-                                <TableCell align="center"><Link className={'p-2 rounded-lg hover:bg-gray'} href={`/projects/${i.id}`}>Show</Link></TableCell>
+                                <TableCell align="center"><Link className={'p-2 rounded-lg hover:bg-gray'} href={`/users/${i.id}`}>Show</Link></TableCell>
                             </TableRow>
                         )
                     })}

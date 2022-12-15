@@ -3,7 +3,7 @@ import {ArrowForwardIos} from "@mui/icons-material";
 import React from "react";
 import {Link} from "@inertiajs/inertia-react";
 import '../../../css/app.css'
-import {formatColor} from '@/lib'
+import {formatColor, getUtilizationColor} from '@/lib'
 
 export default function EmployeeRow({data}) {
     const resource = 'employees'

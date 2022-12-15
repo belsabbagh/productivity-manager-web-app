@@ -11,7 +11,7 @@ export default function ProjectsTable(props) {
                     <TableRow>
                         <TableCell>Name</TableCell>
                         <TableCell align="center">Leader</TableCell>
-                        <TableCell align="center">Edit</TableCell>
+                        <TableCell align="center">Details</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -23,7 +23,7 @@ export default function ProjectsTable(props) {
                             >
                                 <TableCell component="th" scope="row">{i[props.firstColKey]}</TableCell>
                                 <TableCell align="center">{i.leader.name ?? 'None'}</TableCell>
-                                <TableCell align="center" sx={{backgroundColor: ''}}><Link href={`/projects/${i.id}/edit`}>Edit</Link></TableCell>
+                                <TableCell align="center" sx={{backgroundColor: ''}}><Link className={'p-2 rounded-lg hover:bg-gray'} href={`/projects/${i.id}`}>Show</Link></TableCell>
                             </TableRow>
                         )
                     })}

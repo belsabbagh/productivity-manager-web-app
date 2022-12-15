@@ -5,6 +5,7 @@ import {formatColor, getUtilizationColor} from "@/lib";
 
 export default function ProjectsTable(props) {
     const data = props.data ?? []
+    const isAdmin = props.isAdmin
     const textColor = data.total_utilization > 1 ? formatColor(255, 255, 255) : formatColor(0, 0, 0)
     return (
         <TableContainer className="border-2 rounded" component={Paper} sx={{minWidth: 800}}>
@@ -13,7 +14,7 @@ export default function ProjectsTable(props) {
                     <TableRow>
                         <TableCell>Email</TableCell>
                         <TableCell align="center">Utilization</TableCell>
-                        <TableCell align="center">Edit</TableCell>
+                        <TableCell align="center">Details</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -33,7 +34,7 @@ export default function ProjectsTable(props) {
                                     }}
                                 >
                                     {Number((i.total_utilization).toFixed(2))}</TableCell>
-                                <TableCell align="center"><Link href={`/projects/${i.id}/edit`}>Edit</Link></TableCell>
+                                <TableCell align="center"><Link className={'p-2 rounded-lg hover:bg-gray'} href={`/projects/${i.id}`}>Show</Link></TableCell>
                             </TableRow>
                         )
                     })}

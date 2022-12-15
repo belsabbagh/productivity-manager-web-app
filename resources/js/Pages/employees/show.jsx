@@ -22,6 +22,7 @@ export default function show(props) {
             <div className="bg-white p-6 flex flex-col">
                 <ItemHeader
                     title={employee.first_name+" Details"}
+                    href={`/employees/${employee.id}/edit`}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
                     <div className="flex flex-row justify-center mb-5">
@@ -37,19 +38,35 @@ export default function show(props) {
                         value={employee.email}
                         className=" mb-5"
                     />
-                    <ListDisplay
-                        label={"Skills"}
-                        data={employee.skills}
-                        itemValueKey={'name'}
-                        className=" w-full mb-5"
-                    />
-                    <ProjectDisplay
-                        label={"Project"}
-                        resource={"projects"}
-                        data={employee.projects}
-                        itemValueKey={'name'}
-                        className="w-full"
-                    />
+                    {employee.skills.length > 0 ?
+                        <ListDisplay
+                            label={"Skills"}
+                            data={employee.skills}
+                            itemValueKey={'name'}
+                            className=" w-full mb-5"
+                        />
+                        :
+                        <TextDisplay
+                            label={"Skills"}
+                            value={"None"}
+                            className=" mb-5"
+                        />
+                    }
+                    {employee.projects.length > 0 ?
+                        <ProjectDisplay
+                            label={"Project"}
+                            resource={"projects"}
+                            data={employee.projects}
+                            itemValueKey={'name'}
+                            className="w-full"
+                        />
+                        :
+                        <TextDisplay
+                            label={"Projects"}
+                            value={"None"}
+                            className=" mb-5"
+                        />
+                    }
                     <AttributeDisplay
                         label={"Utilization"}
                         className="mb-5"

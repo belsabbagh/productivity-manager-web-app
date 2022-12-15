@@ -1,23 +1,25 @@
 import {Link} from "@inertiajs/inertia-react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
-import {Typography} from "@mui/material";
+import ApplicationLogo from "@/Components/Icons/ApplicationLogo";
 import React from "react";
-import {ArrowBack} from "@mui/icons-material";
+import ProfileLink from "@/Components/ProfileLink";
+import BackIcon from "@/Components/Icons/BackIcon";
 
-export default function Header({title, user= null, backHref}){
+export default function Header({title, user = null, backHref}) {
+
     return (
-        <div className="max-h-fit bg-background flex align-bottom">
+        <div className="max-h-fit bg-background flex flex-row justify-between items-center">
             <Link href="/">
-                <ApplicationLogo className="w-24 h-24"/>
+                <ApplicationLogo className="w-24 h-24 hover:shadow-sm rounded-lg"/>
             </Link>
-            <div className="mx-auto mt-auto px-12 border-b-2 border-black">
-                <Typography variant='h4'>
+            <div className="px-6 border-b-2 border-black flex flex-row items-center justify-between">
+                <div className={'text-4xl font-bold'}>
                     {title}
-                </Typography>
+                </div>
+                {(user !== null) ? <ProfileLink user={user}/> : ""}
             </div>
-            <Link className={'justify-center items-center'} href={backHref}>
-                <ArrowBack className="w-24 h-24"/>
-            </Link>
+                <Link className={'hover:bg-gray py-2 px-4 mr-6 justify-center items-center font-bold rounded-lg'} href={backHref}>
+                    <BackIcon/>
+                </Link>
         </div>
     )
 }

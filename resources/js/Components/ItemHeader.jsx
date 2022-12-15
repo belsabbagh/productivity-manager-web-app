@@ -5,7 +5,7 @@ import {Link} from "@inertiajs/inertia-react";
 export default function ItemHeader({title, href}){
     return(
         <div className="flex flex-row justify-between items-center pb-6 pt-3">
-            <div>
+            <div className={'pr-8'}>
                 <h1>{title}</h1>
             </div>
             <Link href={href}>

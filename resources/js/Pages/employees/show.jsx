@@ -5,27 +5,31 @@ import AttributeDisplay from "@/Components/AttributeDisplay";
 import TextDisplay from "@/Components/TextDisplay";
 import ListDisplay from "@/Components/ListDisplay";
 import EmployeeUtilization from "@/Components/EmployeeUtilization";
-import ApplicationLogo from "@/Components/ApplicationLogo";
 import {KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
 import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function show(props) {
     let {employee} = props
-    employee=employee.data
+    employee = employee.data
     console.log(employee)
     return (
-        <>
+        <AuthenticatedLayout
+            auth={props.auth}
+            errors={props.errors}
+            title={"Employee Details"}
+        >
             <Head>
                 <title>employees show</title>
             </Head>
-            <div className="bg-white p-6 flex flex-col">
+            <div className="bg-white min-w-full p-6 flex flex-col">
                 <ItemHeader
                     title={employee.first_name+" Details"}
                     href={`/employees/${employee.id}/edit`}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
-                    <div className="flex flex-row justify-center mb-5">
+                    <div className="flex flex-row justify-center mb-3">
                         <Person className="w-64 h-64"/>
                     </div>
                     <TextDisplay
@@ -78,6 +82,6 @@ export default function show(props) {
                     </AttributeDisplay>
                 </div>
             </div>
-        </>
+        </AuthenticatedLayout>
     );
 }

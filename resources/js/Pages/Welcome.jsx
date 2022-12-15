@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Head } from '@inertiajs/inertia-react';
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import ApplicationLogo from "@/Components/Icons/ApplicationLogo";
 
 export default function Welcome(props) {
     return (

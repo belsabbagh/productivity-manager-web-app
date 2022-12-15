@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index(): \Inertia\Response
     {
         $users = UserResource::collection(User::all());
-        return Inertia::render("$this->resource_route/index", ['users' => $users]);
+        return Inertia::render("$this->resource_route/index", ['users' => UserResource::collection($users)]);
     }
 
     /**

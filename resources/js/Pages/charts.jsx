@@ -1,4 +1,3 @@
-import {Doughnut, Bar} from "react-chartjs-2";
 import React from "react";
 import {
     Chart,
@@ -11,38 +10,11 @@ import {
     PointElement,
     LineElement
 } from 'chart.js'
-
-function getChartsData(charts) {
-    return {
-        projectRegionDistribution: {
-            labels: charts.projectRegionDistribution.map(i => i.region),
-            datasets: [
-                {
-                    id: 1,
-                    label: "project count",
-                    data: charts.projectRegionDistribution.map(i => i.total),
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                    ],
-                    borderWidth: 1,
-                }
-            ],
-        }
-    };
-}
+import ContentView from "@/Components/ContentView";
+import getCharts from "@/Components/Dashboard/ChartsCarousel/config";
+import DoughnutChart from "@/Components/Charts/DoughnutChart";
+import LineChart from "@/Components/Charts/LineChart";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 Chart.register(
     ArcElement,
@@ -51,18 +23,92 @@ Chart.register(
     BarElement,
     PointElement,
     LineElement,
-    Legend,
     Tooltip
 );
 
-export default function charts({data}) {
-    const charts = getChartsData({projectRegionDistribution: data})
-    console.log(charts.projectRegionDistribution)
+export default function charts({charts, auth, errors}) {
+    const {
+        projectRegionDistribution,
+        employeeSkillDistribution,
+        averageUtilizationPerSkill,
+        employeeUtilizationDistribution,
+        crossUtilizationDistribution
+    } = getCharts(charts)
     return (
-        <Doughnut
-            className={'w-max h-max'}
-            data={charts.projectRegionDistribution}
-            options={{ maintainAspectRatio: true }}
-        />
+        <AuthenticatedLayout
+            auth={auth}
+            errors={errors}
+            title={"Charts"}
+            backHref={'/dashboard'}
+        >
+            <div className={'flex flex-col bg-background justify-center'}>
+                <div className={'flex flex-row justify-between'}>
+                    <ContentView title={employeeUtilizationDistribution.title} className={'w-max'}>
+                        <DoughnutChart
+                            className={'w-max'}
+                            chartClassName={'w-full h-full'}
+                            chartData={{
+                                data: employeeUtilizationDistribution.data,
+                                label: employeeUtilizationDistribution.label,
+                                labelKey: employeeUtilizationDistribution.labelKey,
+                                countKey: employeeUtilizationDistribution.countKey
+                            }}
+                        />
+                    </ContentView>
+                    <ContentView title={crossUtilizationDistribution.title} className={'w-max'}>
+                        <DoughnutChart
+                            className={'w-max'}
+                            chartClassName={'w-full h-full'}
+                            chartData={{
+                                data: crossUtilizationDistribution.data,
+                                label: crossUtilizationDistribution.label,
+                                labelKey: crossUtilizationDistribution.labelKey,
+                                countKey: crossUtilizationDistribution.countKey
+                            }}
+                        />
+                    </ContentView>
+
+                </div>
+                <div>
+                    <ContentView title={averageUtilizationPerSkill.title} className={'max-w-6'}>
+                        <LineChart
+                            className={'max-w-6'}
+                            chartData={{
+                                data: averageUtilizationPerSkill.data,
+                                label: averageUtilizationPerSkill.label,
+                                labelKey: averageUtilizationPerSkill.labelKey,
+                                countKey: averageUtilizationPerSkill.countKey
+                            }}
+                        />
+                    </ContentView>
+                </div>
+                <div className={'flex flex-row justify-between'}>
+                    <ContentView title={employeeSkillDistribution.title} className={'w-max'}>
+                        <DoughnutChart
+                            className={'w-max'}
+                            chartClassName={'w-full h-full'}
+                            chartData={{
+                                data: employeeSkillDistribution.data,
+                                label: employeeSkillDistribution.label,
+                                labelKey: employeeSkillDistribution.labelKey,
+                                countKey: employeeSkillDistribution.countKey
+                            }}
+                        />
+                    </ContentView>
+                    <ContentView title={projectRegionDistribution.title} className={'w-max'}>
+                        <DoughnutChart
+                            className={'w-max'}
+                            chartClassName={'w-full h-full'}
+                            chartData={{
+                                data: projectRegionDistribution.data,
+                                label: projectRegionDistribution.label,
+                                labelKey: projectRegionDistribution.labelKey,
+                                countKey: projectRegionDistribution.countKey
+                            }}
+                        />
+                    </ContentView>
+                </div>
+            </div>
+        </AuthenticatedLayout>
     )
 }

@@ -28,8 +28,11 @@ export default function show(props) {
     project = project.data
     console.log(project)
     return (
-        <>
-            <Head>
+        <AuthenticatedLayout
+            auth={props.auth}
+            errors={props.errors}
+            title={"Project Details"}
+        >            <Head>
                 <title>projects show</title>
             </Head>
             <div className="bg-white p-6 flex flex-col">
@@ -89,6 +92,6 @@ export default function show(props) {
                     </TableContainer>
                 </div>
             </div>
-        </>
+        </AuthenticatedLayout>
     );
 }

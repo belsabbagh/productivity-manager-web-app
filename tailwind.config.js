@@ -33,6 +33,13 @@ module.exports = {
                 '750px': '750px'
             }
         },
+        colors: {
+            background: '#eaf0ff',
+            content: '#faf4fd',
+            white: '#FFFFFF',
+            x: 'rgba(75, 0, 130, 0.3)',
+            gray:'#bfbac4'
+        },
     },
 
     plugins: [require('@tailwindcss/forms')],

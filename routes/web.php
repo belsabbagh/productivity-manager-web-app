@@ -4,6 +4,7 @@ include_once base_path() . '/services/statistics.php';
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
@@ -46,6 +47,7 @@ Route::get('/charts', function ()
 Route::resource('users', UserController::class);
 Route::resource('employees', EmployeeController::class);
 Route::resource('projects', ProjectController::class);
+Route::resource('teams', TeamController::class);
 
 Route::get('/dashboard', function ()
 {

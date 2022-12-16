@@ -24,7 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'user_type_id'
+        'user_type_id',
     ];
 
     /**
@@ -51,5 +51,9 @@ class User extends Authenticatable
     public function user_type(): BelongsTo
     {
         return $this->belongsTo(UserType::class);
+    }
+    public function projects()
+    {
+        return $this->hasMany(Project::class, 'leader_id', 'id');
     }
 }

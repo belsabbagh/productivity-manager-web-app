@@ -17,7 +17,7 @@ class SkillFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->jobTitle()
         ];
     }
 }

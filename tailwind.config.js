@@ -7,14 +7,33 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.jsx',
+        // './resources/css/app.css',
     ],
 
     theme: {
+        colors: {
+            background: '#eaf0ff',
+            content: '#faf4fd',
+            white: '#FFFFFF',
+            gray: '#aaaaaa',
+            red: '#FF0000',
+            textbox: '#4b00820d',
+        },
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
-        } ,colors: {
+            borderRadius: {
+                'tiny': '0.5rem',
+            },
+            widths: {
+                '75': '18.75rem'
+            },
+            margin: {
+                '750px': '750px'
+            }
+        },
+        colors: {
             background: '#eaf0ff',
             content: '#faf4fd',
             white: '#FFFFFF',

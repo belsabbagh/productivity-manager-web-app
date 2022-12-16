@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Models\Skill;
 use Illuminate\Http\Response;
 use Inertia\Inertia;
 
@@ -18,7 +20,7 @@ class EmployeeController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $employees = Employee::all();
+        $employees = EmployeeResource::collection(Employee::all()->sortBy('total_utilization', SORT_NATURAL, true));
         return Inertia::render("$this->resource_route/index", ['employees' => $employees]);
     }
 
@@ -29,7 +31,7 @@ class EmployeeController extends Controller
      */
     public function create(): \Inertia\Response
     {
-        return Inertia::render("$this->resource_route/create");
+        return Inertia::render("$this->resource_route/create", ['skills' => Skill::all()]);
     }
 
     /**
@@ -52,7 +54,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee): \Inertia\Response
     {
-        return Inertia::render("$this->resource_route/show", ['employee' => $employee->toArray()]);
+        return Inertia::render("$this->resource_route/show", ['employee' => new EmployeeResource($employee)]);
 
     }
 

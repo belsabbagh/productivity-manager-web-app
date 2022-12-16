@@ -19,8 +19,8 @@ class UserController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $users = User::all();
-        return Inertia::render("$this->resource_route/index", ['users' => $users]);
+        $users = UserResource::collection(User::all());
+        return Inertia::render("$this->resource_route/index", ['users' => UserResource::collection($users)]);
     }
 
     /**
@@ -53,7 +53,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return Inertia::render("$this->resource_route/show", ['user' => $user->toArray()]);
+        return Inertia::render("$this->resource_route/show", ['user' => new UserResource($user)]);
     }
 
     /**

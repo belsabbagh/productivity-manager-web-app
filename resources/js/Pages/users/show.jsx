@@ -1,10 +1,8 @@
 import React from 'react';
 import {Head} from '@inertiajs/inertia-react';
 import TextDisplay from "@/Components/TextDisplay";
-import AttributeDisplay from "@/Components/AttributeDisplay";
 import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import TeamTable from "@/Components/TeamTable";
 import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
 
 export default function show(props) {

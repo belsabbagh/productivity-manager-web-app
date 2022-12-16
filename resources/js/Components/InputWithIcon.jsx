@@ -3,8 +3,7 @@ import TextInput from "@/Components/TextInput";
 import InputError from "@/Components/InputError";
 import React from "react";
 
-export default function (props) {
-    const {textInputProps, data, errors, icon, title} = props
+export default function InputWithIcon({textInputProps, data, errors, icon, title}) {
     return (
         <>
             <InputLabel forInput={textInputProps.name}>{title}</InputLabel>

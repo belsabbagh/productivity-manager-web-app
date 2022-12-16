@@ -2,20 +2,21 @@ import React from 'react';
 import {Link, Head, useForm} from '@inertiajs/inertia-react';
 import {Inertia} from "@inertiajs/inertia";
 import {Autocomplete, Button, TextField, Typography} from "@mui/material";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function edit(props) {
     const resource = 'team'
-    const {project} = props
+    const {assignment} = props
     const {data, setData, errors, put} = useForm({});
 
     function handleSubmit(e) {
         e.preventDefault();
-        put(route(`${resource}s.update`, project.id));
+        put(route(`${resource}s.update`, assignment.id));
     }
 
     function destroy() {
         if (confirm(`Are you sure you want to delete this ${resource}?`)) {
-            Inertia.delete(route(`${resource}s.destroy`, project.id));
+            Inertia.delete(route(`${resource}s.destroy`, assignment.id));
         }
     }
 
@@ -33,15 +34,13 @@ export default function edit(props) {
     ];
 
     return (
-        <div id="background" className=" min-h-screen bg-background">
-            <Head>
-                <title>add a team member </title>
-            </Head>
-            <div id="white container"
-                 className=" rounded-lg  bg-white h-[550px]  w-[750px] flex flex-row justify-center">
-
-
-                <div id="form container" className="px-48 pt-16 ">
+        <AuthenticatedLayout
+            auth={props.auth}
+            errors={props.errors}
+            title={"Add team member"}
+        >
+            <div id="white container" className=" rounded-lg  bg-white flex flex-row justify-center">
+                <div id="form container" className="py-16 px-24">
                     <Typography sx={{mb: 2}} variant='h5'> add a new team member </Typography>
                     <div id="purple container" className=" rounded-lg  bg-content h-[350px]  w-[550px] flex flex-row justify-center pr-8">
 
@@ -84,16 +83,9 @@ export default function edit(props) {
                                 save changes
                             </Button>
                         </div>
-
                     </div>
-
-
                 </div>
-
             </div>
-
-        </div>
-
-
+        </AuthenticatedLayout>
     );
 }

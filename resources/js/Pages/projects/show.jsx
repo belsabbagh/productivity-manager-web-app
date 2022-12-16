@@ -1,15 +1,16 @@
 import React from 'react';
-import {Head} from '@inertiajs/inertia-react';
 import TextDisplay from "@/Components/TextDisplay";
 import AttributeDisplay from "@/Components/AttributeDisplay";
 import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import TeamTable from "@/Components/TeamTable";
 import CreateResource from "@/Components/CreateResource";
+import {isAdmin} from "@/lib";
 
 export default function show(props) {
     let {project} = props
     project = project.data
+    let userType = props.auth.user.user_type_id
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -20,6 +21,7 @@ export default function show(props) {
                 <ItemHeader
                     title={project.name + " Details"}
                     href={`/projects/${project.id}/edit`}
+                    isAllowedToEdit={isAdmin(userType)}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
                     <TextDisplay

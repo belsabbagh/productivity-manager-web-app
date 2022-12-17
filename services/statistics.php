@@ -1,4 +1,5 @@
 <?php
+namespace Statistics;
 
 use App\Models\Employee;
 use App\Models\Skill;

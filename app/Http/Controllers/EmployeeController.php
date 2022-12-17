@@ -20,7 +20,7 @@ class EmployeeController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $employees = EmployeeResource::collection(Employee::all());
+        $employees = EmployeeResource::collection(Employee::all()->sortBy('total_utilization', SORT_NATURAL, true));
         return Inertia::render("$this->resource_route/index", ['employees' => $employees]);
     }
 

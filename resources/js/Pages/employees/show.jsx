@@ -5,57 +5,31 @@ import AttributeDisplay from "@/Components/AttributeDisplay";
 import TextDisplay from "@/Components/TextDisplay";
 import ListDisplay from "@/Components/ListDisplay";
 import EmployeeUtilization from "@/Components/EmployeeUtilization";
-import ApplicationLogo from "@/Components/ApplicationLogo";
 import {KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
-
-const skills = [
-    {
-        id: 1, name: "C++"
-    },
-    {
-        id: 2, name: "Java"
-    },
-    {
-        id: 3, name: "PHP"
-    },
-    {
-        id: 4, name: "PHP"
-    },
-    {
-        id: 5, name: "PHP"
-    },
-    {
-        id: 6, name: "PHP"
-    },
-    {
-        id: 7, name: "PHP"
-    },
-    {
-        id: 8, name: "PHP"
-    },
-    {
-        id: 9, name: "PHP"
-    },
-    {
-        id: 10, name: "PHP"
-    }
-];
+import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function show(props) {
-    const {employee} = props
-    console.log(skills)
+    let {employee} = props
+    employee = employee.data
+    console.log(employee)
     return (
-        <>
+        <AuthenticatedLayout
+            auth={props.auth}
+            errors={props.errors}
+            title={"Employee Details"}
+        >
             <Head>
                 <title>employees show</title>
             </Head>
-            <div className="bg-white p-6 flex flex-col">
+            <div className="bg-white min-w-full p-6 flex flex-col">
                 <ItemHeader
                     title={employee.first_name+" Details"}
+                    href={`/employees/${employee.id}/edit`}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
-                    <div className="flex flex-row justify-center mb-5">
+                    <div className="flex flex-row justify-center mb-3">
                         <Person className="w-64 h-64"/>
                     </div>
                     <TextDisplay
@@ -68,29 +42,46 @@ export default function show(props) {
                         value={employee.email}
                         className=" mb-5"
                     />
-                    <ListDisplay
-                        label={"Skills"}
-                        data={skills}
-                        itemValueKey={'name'}
-                        className=" w-full mb-5"
-                    />
-                    <ListDisplay
-                        label={"Project"}
-                        data={skills}
-                        itemValueKey={'name'}
-                        className="w-full mb-5 rounded-lg"
-                    />
+                    {employee.skills.length > 0 ?
+                        <ListDisplay
+                            label={"Skills"}
+                            data={employee.skills}
+                            itemValueKey={'name'}
+                            className=" w-full mb-5"
+                        />
+                        :
+                        <TextDisplay
+                            label={"Skills"}
+                            value={"None"}
+                            className=" mb-5"
+                        />
+                    }
+                    {employee.projects.length > 0 ?
+                        <ProjectDisplay
+                            label={"Project"}
+                            resource={"projects"}
+                            data={employee.projects}
+                            itemValueKey={'name'}
+                            className="w-full"
+                        />
+                        :
+                        <TextDisplay
+                            label={"Projects"}
+                            value={"None"}
+                            className=" mb-5"
+                        />
+                    }
                     <AttributeDisplay
                         label={"Utilization"}
                         className="mb-5"
                     >
                         <EmployeeUtilization
-                            value={1.2}
-                            projectCount={2}
+                            value={employee.total_utilization}
+                            projectCount={employee.projects.length}
                         />
                     </AttributeDisplay>
                 </div>
             </div>
-        </>
+        </AuthenticatedLayout>
     );
 }

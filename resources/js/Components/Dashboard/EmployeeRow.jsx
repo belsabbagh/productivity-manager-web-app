@@ -3,23 +3,11 @@ import {ArrowForwardIos} from "@mui/icons-material";
 import React from "react";
 import {Link} from "@inertiajs/inertia-react";
 import '../../../css/app.css'
-
+import {formatColor, getUtilizationColor} from '@/lib'
 
 export default function EmployeeRow({data}) {
     const resource = 'employees'
-    function formatColor(r, g, b) {
-        return `rgb(${r},${g},${b})`
-    }
-
     const textColor = data.total_utilization > 1 ? formatColor(255,255,255) : formatColor(0,0,0)
-
-
-    function getUtilizationColor(val) {
-        const r = (val <= 1) ? 255 * val : 255,
-            g = (val <= 1) ? 255 : 100,
-            b = 100
-        return formatColor(r, g, b)
-    }
 
     return (
         <TableRow

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -19,7 +20,9 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return Inertia::render("$this->resource_route/index", ['projects' => $projects]);
+        return Inertia::render("$this->resource_route/index", [
+            'projects' => ProjectResource::collection($projects)
+        ]);
     }
 
     /**
@@ -52,7 +55,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return Inertia::render("$this->resource_route/show", ['project' => $project->toArray()]);
+        return Inertia::render("$this->resource_route/show", ['project' => new ProjectResource($project)]);
     }
 
     /**

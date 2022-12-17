@@ -64,7 +64,7 @@ export default function create(props) {
                             </div>
 
                             <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                       label="user's name" variant="outlined"/>
+                                       label="user's name" required variant="outlined"/>
 
                         </div>
 
@@ -79,7 +79,7 @@ export default function create(props) {
                             </div>
 
                             <TextField id="email" sx={{minWidth: 1}} className="bg-content "
-                                       label="user's email" variant="outlined"/>
+                                       label="user's email" required variant="outlined"/>
                         </div>
 
                         <div id="psw" className=" flex flex-row justify-start mb-2">
@@ -94,7 +94,7 @@ export default function create(props) {
                             </div>
 
                             <TextField id="psw" type= "password" sx={{minWidth: 1}} className="bg-content "
-                                       label="user's password" variant="outlined"/>
+                                       label="user's password" required variant="outlined"/>
                         </div>
 
                         <div id="user_type" className=" flex flex-row justify-start mb-2">
@@ -112,7 +112,7 @@ export default function create(props) {
                                           id="combo-box-user-type"
                                           options={user_type}
                                           getOptionLabel={(i) => i.name}
-
+                                          required
                                           renderInput={(params) => <TextField {...params} label="user type"/>}/>
 
                         </div>

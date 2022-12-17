@@ -6,17 +6,19 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function edit(props) {
     const resource = 'project'
-    const {project} = props
+    const resourcePlural = `${resource}s`
+    const project = props.project.data
+    const {leaders} = props
     const {data, setData, errors, put} = useForm({});
 
     function handleSubmit(e) {
         e.preventDefault();
-        put(route(`${resource}s.update`, project.id));
+        put(route(`${resourcePlural}.update`, project.id));
     }
 
     function destroy() {
         if (confirm(`Are you sure you want to delete this ${resource}?`)) {
-            Inertia.delete(route(`${resource}s.destroy`, project.id));
+            Inertia.delete(route(`${resourcePlural}.destroy`, project.id));
         }
     }
 
@@ -51,7 +53,7 @@ export default function edit(props) {
             auth={props.auth}
             errors={props.errors}
             title={"Projects"}
-            backHref={`/${resource}s`}
+            backHref={`/${resourcePlural}`}
         >
             <Head>
                 <title>create a project</title>
@@ -70,9 +72,7 @@ export default function edit(props) {
                             </svg>
                         </div>
 
-                        <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                   label="Project name" variant="outlined"/>
-
+                        <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content" label="Project name" variant="outlined" defaultValue={project.name}/>
                     </div>
                     <div id="leader" className=" flex flex-row justify-start mb-2">
                         <div id="icon css"
@@ -87,9 +87,9 @@ export default function edit(props) {
                         <Autocomplete className="bg-content" sx={{minWidth: 1}}
                                       disablePortal
                                       id="combo-box-team_leaders"
-                                      options={teamleader_names}
+                                      options={leaders}
                                       getOptionLabel={(i) => i.name}
-
+                                      defaultValue={project.leader}
                                       renderInput={(params) => <TextField {...params} label="team leader"/>}/>
                     </div>
                     <div id="region" className="flex flex-row justify-start mb-2">
@@ -107,12 +107,26 @@ export default function edit(props) {
                                       id="combo-box-regions"
                                       options={regions}
                                       getOptionLabel={(i) => i.name}
-
+                                      defaultValue={{name: project.region}}
                                       renderInput={(params) => <TextField {...params} label="region"/>}/>
                     </div>
-                    <Button style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}}
-                            onClick={handleSubmit}>
-                        Add project
+                    <Button
+                        sx={{
+                            mr: 1,
+                            backgroundColor: 'rgba(75, 0, 130, 0.3)',
+                            color: 'black'
+                        }} onClick={handleSubmit}
+                    >
+                        edit {resource}
+                    </Button>
+                    <Button
+                        sx={{
+                            mr: 1,
+                            backgroundColor: 'rgba(75, 0, 130, 0.3)',
+                            color: 'black'
+                        }} onClick={destroy}
+                    >
+                        delete {resource}
                     </Button>
                 </form>
             </div>

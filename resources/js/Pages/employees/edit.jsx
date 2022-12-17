@@ -14,42 +14,32 @@ import {
     TextField, Typography
 } from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import {Inertia} from "@inertiajs/inertia";
 
 export default function edit(props) {
     const resource = 'employee'
+    const resourcePlural = `${resource}s`
     const employee = props.employee.data
     console.log(employee)
-    const { data, setData, errors, put } = useForm({});
+    const {data, setData, errors, put} = useForm({});
+
     function handleSubmit(e) {
         e.preventDefault();
-        put(route(`${resource}s.store`));
+        put(route(`${resourcePlural}.update`, employee.id));
     }
 
-    const [personName, setPersonName] = React.useState([]);
+    function destroy() {
+        if (confirm(`Are you sure you want to delete this ${resource}?`)) {
+            Inertia.delete(route(`${resourcePlural}.destroy`, employee.id));
+        }
+    }
 
-    const handleChange = (event) => {
-        const {
-            target: {value},
-        } = event;
-        setPersonName(
-            /**
-             * On autofill we get a stringified value.
-             */
-            typeof value === 'string' ? value.split(',') : value,
-        );
-    };
-
-    const skills=[
-        {id:1,  name: 'cpp'},
-        {id:2, name:'php'},
-        {id:3, name: 'java'},
-        {id:4, name: 'javascript'}];
     return (
         <AuthenticatedLayout
             auth={props.auth}
             errors={props.errors}
             title={"Employees"}
-            backHref={'/dashboard'}
+            backHref={`/${resourcePlural}`}
         >
             <div id="white container" className=" rounded-lg  bg-white">
                 <div id="form container" className="px-48 py-16">
@@ -68,7 +58,7 @@ export default function edit(props) {
                             </div>
 
                             <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                       label="employee first name" variant="outlined" value={employee.first_name}/>
+                                       label="employee first name" variant="outlined" defaultValue={employee.first_name}/>
 
                         </div>
 
@@ -84,7 +74,7 @@ export default function edit(props) {
                             </div>
 
                             <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                       label="employee last name" variant="outlined" value={employee.last_name}/>
+                                       label="employee last name" variant="outlined" defaultValue={employee.last_name}/>
 
                         </div>
 
@@ -99,7 +89,7 @@ export default function edit(props) {
                             </div>
 
                             <TextField id="email" sx={{minWidth: 1}} className="bg-content "
-                                       label="employee's email" variant="outlined" value={employee.email}/>
+                                       label="employee's email" variant="outlined" defaultValue={employee.email}/>
                         </div>
 
                         <div id="skills" className=" flex flex-row justify-start mb-2">
@@ -112,12 +102,26 @@ export default function edit(props) {
                                 </svg>
                             </div>
                             <MultipleSelectCheckmarks data={props.skills}
-                                                      label="employee's skills" variant="outlined" values={employee.skills.map(i=>i.name)}/>
+                                                      label="employee's skills" variant="outlined" values={employee.skills.map(i => i.name)}/>
                         </div>
 
-                        <Button style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}}
-                                onClick={handleSubmit}>
-                            edit employee
+                        <Button
+                            sx={{
+                                mr: 1,
+                                backgroundColor: 'rgba(75, 0, 130, 0.3)',
+                                color: 'black'
+                            }} onClick={handleSubmit}
+                        >
+                            edit {resource}
+                        </Button>
+                        <Button
+                            sx={{
+                                mr: 1,
+                                backgroundColor: 'rgba(75, 0, 130, 0.3)',
+                                color: 'black'
+                            }} onClick={destroy}
+                        >
+                            delete {resource}
                         </Button>
                     </form>
                 </div>

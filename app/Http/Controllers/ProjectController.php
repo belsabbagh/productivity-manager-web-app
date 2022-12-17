@@ -75,7 +75,10 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return Inertia::render("$this->resource_route/edit", ['project' => $project->toArray()]);
+        return Inertia::render("$this->resource_route/edit", [
+            'project' => new ProjectResource($project),
+            'leaders' => User::where('user_type_id', 2)->get()
+        ]);
     }
 
     /**
@@ -88,7 +91,7 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        return Redirect::route("$this->resource_route.show");
+        return Redirect::route("$this->resource_route.show", [$project]);
     }
 
     /**

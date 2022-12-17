@@ -87,7 +87,7 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        return Redirect::route("$this->resource_route.show");
+        return Redirect::route("$this->resource_route.show", [$employee]);
     }
 
     /**

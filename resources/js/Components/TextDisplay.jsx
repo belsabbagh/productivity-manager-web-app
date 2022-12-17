@@ -7,7 +7,7 @@ export default function TextDisplay({className='', label, value}) {
             label={label}
             className={className}
         >
-            <div className="bg-textbox p-2 rounded justify-items-center">
+            <div style={{backgroundColor: '#4b00820d'}} className="p-2 rounded justify-items-center">
                 {value}
             </div>
         </AttributeDisplay>

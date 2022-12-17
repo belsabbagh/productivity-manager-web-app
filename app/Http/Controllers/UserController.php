@@ -80,7 +80,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        return Redirect::route("$this->resource_route.show");
+        return Redirect::route("$this->resource_route.show", [$user]);
     }
 
     /**

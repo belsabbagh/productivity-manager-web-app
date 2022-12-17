@@ -5,6 +5,9 @@ const bgColors = [
     'rgba(54, 162, 235, 0.2)',
     'rgba(153, 102, 255, 0.2)',
     'rgba(255, 159, 64, 0.2)',
+    'rgba(224, 80, 200, 0.2)',
+    'rgba(130,200,98, 0.2)',
+    'rgba(224,71,248, 0.2)',
 ]
 
 const borderColors = [
@@ -14,6 +17,9 @@ const borderColors = [
     'rgba(54, 162, 235, 1)',
     'rgba(153, 102, 255, 1)',
     'rgba(255, 159, 64, 1)',
+    'rgba(210, 80, 200, 1)',
+    'rgba(130,200,98, 1)',
+    'rgba(224,71,248, 1)',
 ]
 
 export default function makeChart(data, label, labelKey, countKey) {

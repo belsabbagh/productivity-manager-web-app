@@ -14,39 +14,30 @@ import {
     TextField, Typography
 } from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import {Inertia} from "@inertiajs/inertia";
 
 export default function edit(props) {
-    const resource = 'employee'
+    const resource = 'user'
+    const resourcePlural = `${resource}s`
     const {user} = props
     const { data, setData, errors, put } = useForm({});
     function handleSubmit(e) {
         e.preventDefault();
-        put(route(`${resource}s.store`));
+        put(route(`${resourcePlural}.update`, user.id));
     }
 
-    const [personName, setPersonName] = React.useState([]);
+    function destroy() {
+        if (confirm(`Are you sure you want to delete this ${resource}?`)) {
+            Inertia.delete(route(`${resourcePlural}.destroy`, employee.id));
+        }
+    }
 
-    const handleChange = (event) => {
-        const {
-            target: {value},
-        } = event;
-        setPersonName(
-            /**
-             * On autofill we get a stringified value.
-             */
-            typeof value === 'string' ? value.split(',') : value,
-        );
-    };
-
-    const user_type=[
-        {id:1,  name: 'admin'},
-        {id:2, name:'developer'}];
     return (
         <AuthenticatedLayout
             auth={props.auth}
             errors={props.errors}
             title={"Users"}
-            backHref={'/dashboard'}
+            backHref={`/${resourcePlural}`}
         >
             <div id="white container" className=" rounded-lg  bg-white">
                 <div id="form container" className="px-48 py-16">
@@ -101,9 +92,23 @@ export default function edit(props) {
 
 
 
-                        <Button style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}}
-                                onClick={handleSubmit}>
-                            edit user
+                        <Button
+                            sx={{
+                                mr: 1,
+                                backgroundColor: 'rgba(75, 0, 130, 0.3)',
+                                color: 'black'
+                            }} onClick={handleSubmit}
+                        >
+                            edit {resource}
+                        </Button>
+                        <Button
+                            sx={{
+                                mr: 1,
+                                backgroundColor: 'rgba(75, 0, 130, 0.3)',
+                                color: 'black'
+                            }} onClick={destroy}
+                        >
+                            delete {resource}
                         </Button>
                     </form>
                 </div>

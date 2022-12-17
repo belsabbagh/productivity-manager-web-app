@@ -39,12 +39,19 @@ export default function show(props) {
                         value={project.leader.name}
                         className=" mb-5"
                     />
-                    <AttributeDisplay label={"Team"}>
-                        <TeamTable data={project.team} firstColKey={'email'}/>
-                        <div className={'mr-auto mt-2'}>
-                            <CreateResource resource={'team'} label={'add team member'} href={'/teams/create'}/>
-                        </div>
-                    </AttributeDisplay>
+                    {(project.length > 0) ?
+                        <AttributeDisplay label={"Team"}>
+                            <TeamTable data={project.team} firstColKey={'email'}/>
+                        </AttributeDisplay>  :
+                        <TextDisplay
+                            label={"Team"}
+                            value={"None"}
+                            className=" mb-5"
+                        />
+                    }
+                    <div className={'mr-auto mt-2'}>
+                        <CreateResource resource={'team'} label={'add team member'} href={'/teams/create'}/>
+                    </div>
                 </div>
             </div>
         </AuthenticatedLayout>

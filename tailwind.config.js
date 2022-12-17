@@ -17,6 +17,7 @@ module.exports = {
             white: '#FFFFFF',
             red: '#FF0000',
             textbox: '#4b00820d',
+            gray:'#bfbac4'
         },
         extend: {
             fontFamily: {

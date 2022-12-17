@@ -1,6 +1,6 @@
 <?php
 
-include_once '../services/statistics.php';
+include_once base_path().'/services/statistics.php';
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectController;

@@ -6,7 +6,7 @@ export default function CreateResource({resource, href=null, label=null}){
     href = (href===null)?`/${resource}s/create`:href
     return (
         <div>
-            <Link href={href} className="text-white mr-4 px-3 py-2 rounded-lg bg-[#AFACD3] md:hover:text-purple-100 font-medium flex items-center justify-between w-full md:w-auto">+ {" "+ label}</Link>
+            <Link href={href} className="text-white mr-4 px-3 py-2 rounded-lg bg-[#AFACD3] hover:bg-gray font-medium flex items-center justify-between w-full md:w-auto">+ {" "+ label}</Link>
         </div>
     )
 }

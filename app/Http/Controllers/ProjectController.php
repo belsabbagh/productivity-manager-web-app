@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProjectResource;
+use App\Models\Employee;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\User;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ProjectController extends Controller
@@ -32,18 +35,21 @@ class ProjectController extends Controller
      */
     public function create(): \Inertia\Response
     {
-        return Inertia::render("$this->resource_route/create");
+        return Inertia::render("$this->resource_route/create", [
+            'leaders' => User::where('user_type_id', 2)->get()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreProjectRequest  $request
-     * @return Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        return Redirect::route('projects.index');
     }
 
     /**

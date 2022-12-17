@@ -10,7 +10,7 @@ export default function ProfileLink({user}) {
                 <Link href={`/users/${user.id}`}  className={'rounded-lg hover:bg-gray p-1'}>{user.name}</Link>
             </div>
 
-            <Link href={route('logout')} className={'rounded-lg hover:bg-gray p-1'} method="post"><Logout/></Link>
+            <Link href={route('logout')} className={'rounded-lg hover:bg-gray p-1'} as="button" method="post"><Logout/></Link>
         </div>
     )
 }

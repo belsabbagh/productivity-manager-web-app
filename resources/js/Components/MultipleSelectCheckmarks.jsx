@@ -12,7 +12,7 @@ const MenuProps = {
     },
 };
 
-export default function MultipleSelectCheckmarks({data}) {
+export default function MultipleSelectCheckmarks({data, label}) {
     const [name, setName] = React.useState([]);
 
     const handleChange = (event) => {
@@ -21,31 +21,29 @@ export default function MultipleSelectCheckmarks({data}) {
     };
 
     return (
-        <div>
-            <FormControl sx={{minWidth:1 }} className="bg-content flex flex-row justify-start mb-2 ">
-                <InputLabel id="demo-multiple-checkbox-label">Programming languages</InputLabel>
-                <Select
-                    labelId="demo-multiple-checkbox-label"
-                    id="demo-multiple-checkbox"
-                    multiple
-                    value={name}
-                    onChange={handleChange}
-                    input={<OutlinedInput label="Tag"/>}
-                    renderValue={(selected) => selected.join(', ')}
-                    MenuProps={MenuProps}
-                >
-                    {
-                        data.map((i) => {
-                            return (
-                                <MenuItem key={i['id']} value={i['name']}>
-                                    <Checkbox checked={name.indexOf(i['name']) > -1}/>
-                                    <ListItemText primary={i['name']}/>
-                                </MenuItem>
-                            )
-                        })
-                    }
-                </Select>
-            </FormControl>
-        </div>
+        <FormControl sx={{minWidth: 1}} className="bg-white flex flex-row justify-start mb-2 ">
+            <InputLabel id="demo-multiple-checkbox-label">{label}</InputLabel>
+            <Select
+                labelId="demo-multiple-checkbox-label"
+                id="demo-multiple-checkbox"
+                multiple
+                value={name}
+                onChange={handleChange}
+                input={<OutlinedInput label="Tag"/>}
+                renderValue={(selected) => selected.join(', ')}
+                MenuProps={MenuProps}
+            >
+                {
+                    data.map((i) => {
+                        return (
+                            <MenuItem key={i['id']} value={i['name']}>
+                                <Checkbox checked={name.indexOf(i['name']) > -1}/>
+                                <ListItemText primary={i['name']}/>
+                            </MenuItem>
+                        )
+                    })
+                }
+            </Select>
+        </FormControl>
     );
 }

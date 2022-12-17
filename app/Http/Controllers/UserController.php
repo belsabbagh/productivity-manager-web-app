@@ -88,10 +88,10 @@ class UserController extends Controller
      *
      * @param  User  $user
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)
     {
-        //
+        return Redirect::route("$this->resource_route.index");
     }
 }

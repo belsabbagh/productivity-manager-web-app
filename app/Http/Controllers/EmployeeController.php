@@ -94,10 +94,11 @@ class EmployeeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Employee  $employee
-     * @return Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Employee $employee)
     {
-        //
+        return Redirect::route("$this->resource_route.index");
     }
 }

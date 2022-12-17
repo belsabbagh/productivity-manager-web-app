@@ -51,7 +51,7 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        return Redirect::route('projects.index');
+        return Redirect::route("$this->resource_route.index");
     }
 
     /**
@@ -83,11 +83,12 @@ class ProjectController extends Controller
      *
      * @param  \App\Http\Requests\UpdateProjectRequest  $request
      * @param  \App\Models\Project  $project
-     * @return Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        return Redirect::route("$this->resource_route.show");
     }
 
     /**

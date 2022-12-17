@@ -8,6 +8,7 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Skill;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class EmployeeController extends Controller
@@ -41,11 +42,12 @@ class EmployeeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreEmployeeRequest  $request
-     * @return Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreEmployeeRequest $request)
     {
-        //
+        return Redirect::route("$this->resource_route.index");
     }
 
     /**
@@ -80,11 +82,12 @@ class EmployeeController extends Controller
      *
      * @param  \App\Http\Requests\UpdateEmployeeRequest  $request
      * @param  \App\Models\Employee  $employee
-     * @return Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        return Redirect::route("$this->resource_route.show");
     }
 
     /**

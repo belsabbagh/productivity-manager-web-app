@@ -17,7 +17,7 @@ export default function index(props) {
             title={"Employees"}
             backHref={'/dashboard'}
         >
-            <EmployeeIndexContent resource={'project'} canCreate={isAdmin(userType)} skills={skills}>
+            <EmployeeIndexContent resource={'employee'} canCreate={isAdmin(userType)} skills={skills}>
                 <EmployeesTable
                     data={employees}
                     firstColKey={'email'}

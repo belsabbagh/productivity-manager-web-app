@@ -9,6 +9,7 @@ import {KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
 import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import {isAdmin} from "@/lib";
 
 export default function show(props) {
     let {employee} = props
@@ -20,13 +21,11 @@ export default function show(props) {
             errors={props.errors}
             title={"Employee Details"}
         >
-            <Head>
-                <title>employees show</title>
-            </Head>
             <div className="bg-white min-w-full p-6 flex flex-col">
                 <ItemHeader
                     title={employee.first_name+" Details"}
                     href={`/employees/${employee.id}/edit`}
+                    isAllowedToEdit={isAdmin(props.auth.user.user_type_id)}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
                     <div className="flex flex-row justify-center mb-3">

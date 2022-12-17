@@ -23,7 +23,7 @@ export default function show(props) {
             <div className="bg-white p-6 flex flex-col">
                 <ItemHeader
                     title={user.name + " Details"}
-                    href={`/user/${user.id}/edit`}
+                    href={`/users/${user.id}/edit`}
                     isAllowedToEdit={userId === user.id}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">

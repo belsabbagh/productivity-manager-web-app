@@ -17,9 +17,8 @@ export default function show(props) {
             auth={props.auth}
             errors={props.errors}
             title={"User Details"}
-        > <Head>
-            <title>user show</title>
-        </Head>
+            backHref={'/users'}
+        >
             <div className="bg-white p-6 flex flex-col">
                 <ItemHeader
                     title={user.name + " Details"}

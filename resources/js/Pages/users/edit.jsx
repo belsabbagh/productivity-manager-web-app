@@ -37,7 +37,7 @@ export default function edit(props) {
             auth={props.auth}
             errors={props.errors}
             title={"Users"}
-            backHref={`/${resourcePlural}`}
+            backHref={`/${resourcePlural}/${user.id}`}
         >
             <div id="white container" className=" rounded-lg  bg-white">
                 <div id="form container" className="px-48 py-16">

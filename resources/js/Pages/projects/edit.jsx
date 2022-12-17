@@ -53,7 +53,7 @@ export default function edit(props) {
             auth={props.auth}
             errors={props.errors}
             title={"Projects"}
-            backHref={`/${resourcePlural}`}
+            backHref={`/${resourcePlural}/${project.id}`}
         >
             <Head>
                 <title>create a project</title>

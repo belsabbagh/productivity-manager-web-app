@@ -46,9 +46,6 @@ export default function create(props) {
             title={"Employees"}
             backHref={`/${resource}s`}
         >
-            <Head>
-                <title>add an employee</title>
-            </Head>
             <div id="white container" className="rounded-lg px-48 py-16 bg-white">
                 <Typography sx={{mb: 2}} variant='h5'> Add an employee </Typography>
                 <form>

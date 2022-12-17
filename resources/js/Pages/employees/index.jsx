@@ -2,9 +2,7 @@ import React from 'react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import EmployeesTable from "@/Components/EmployeesTable";
 import {isAdmin} from "@/lib";
-import CreateResource from "@/Components/CreateResource";
 import EmployeeIndexContent from "@/Components/EmployeeIndexContent";
-import MultipleSelectCheckmarks from "@/Components/MultipleSelectCheckmarks";
 
 export default function index(props) {
     const employees = props.employees.data

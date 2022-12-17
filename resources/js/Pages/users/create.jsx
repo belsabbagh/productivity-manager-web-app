@@ -13,9 +13,10 @@ import {
     Select,
     TextField, Typography
 } from "@mui/material";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
-export default function create() {
-    const resource = 'employee'
+export default function create(props) {
+    const resource = 'user'
     const { data, setData, errors, post } = useForm({});
     function handleSubmit(e) {
         e.preventDefault();
@@ -40,11 +41,13 @@ export default function create() {
         {id:1,  name: 'admin'},
         {id:2, name:'developer'}];
     return (
-        <div id="background" className=" min-h-screen bg-background">
-            <Head>
-                <title>add a user</title>
-            </Head>
-            <div id="white container" className=" rounded-lg  bg-white h-[550px]  w-[750px] ">
+        <AuthenticatedLayout
+            auth={props.auth}
+            errors={props.errors}
+            title={"Users"}
+            backHref={`/${resource}s`}
+        >
+            <div id="white container" className="rounded-lg px-48 py-16 bg-white">
                 <div id="form container" className="px-48 pt-16">
                     <Typography sx={{mb: 2}} variant='h5'> Add a user </Typography>
                     <form>
@@ -121,6 +124,6 @@ export default function create() {
                     </form>
                 </div>
             </div>
-        </div>
+        </AuthenticatedLayout>
     );
 }

@@ -71,7 +71,7 @@ export default function create(props) {
             <Head>
                 <title>create a project</title>
             </Head>
-            <div id="white container" className="rounded-lg px-48 py-16 bg-white">
+            <div id="white container" className="rounded-lg px-32 py-12 bg-white">
 
 
                 <Typography sx={{mb: 2}} variant='h5'> Create a project</Typography>

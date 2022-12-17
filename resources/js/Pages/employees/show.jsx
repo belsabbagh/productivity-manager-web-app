@@ -20,6 +20,7 @@ export default function show(props) {
             auth={props.auth}
             errors={props.errors}
             title={"Employee Details"}
+            backHref={'/employees'}
         >
             <div className="bg-white min-w-full p-6 flex flex-col">
                 <ItemHeader

@@ -7,6 +7,7 @@ use App\Models\Employee;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;
@@ -24,7 +25,8 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
         return Inertia::render("$this->resource_route/index", [
-            'projects' => ProjectResource::collection($projects)
+            'projects' => ProjectResource::collection($projects),
+            'skills' => Skill::all()
         ]);
     }
 

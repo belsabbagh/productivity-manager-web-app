@@ -2,7 +2,7 @@ import React from "react";
 import SearchIcon from "@/Components/Icons/SearchIcon";
 import MultipleSelectCheckmarks from "@/Components/MultipleSelectCheckmarks";
 
-export default function ProjectIndexQuery({regions}) {
+export default function ProjectIndexQuery({regions, skills}) {
     return (
         <div className={'flex flex-col'}>
             <div className="flex flex-row w-full border border-gray-300 rounded-lg">
@@ -14,8 +14,9 @@ export default function ProjectIndexQuery({regions}) {
                     </input>
                 </form>
             </div>
-            <div className={'mt-2'}>
-                <MultipleSelectCheckmarks label={'Regions'} data={regions}/>
+            <div className={'flex flex-row mt-2'}>
+                    <MultipleSelectCheckmarks label={'Skills'} data={skills}/>
+                    <MultipleSelectCheckmarks label={'Regions'} data={regions}/>
             </div>
         </div>
     );

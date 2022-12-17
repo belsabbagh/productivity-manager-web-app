@@ -20,7 +20,7 @@ export default function index(props) {
             title={"Projects"}
             backHref={'/dashboard'}
         >
-            <ProjectIndexContent resource={'project'} canCreate={isAdmin(userType)} regions={regions}>
+            <ProjectIndexContent resource={'project'} canCreate={isAdmin(userType)} regions={regions} skills={props.skills}>
                 <ProjectsTable
                     data={projects}
                     firstColKey={'name'}

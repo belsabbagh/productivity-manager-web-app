@@ -62,7 +62,7 @@ export default function create(props) {
                         </div>
 
                         <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                   label="employee first name" variant="outlined"/>
+                                   required label="employee first name" variant="outlined"/>
 
                     </div>
 
@@ -78,7 +78,7 @@ export default function create(props) {
                         </div>
 
                         <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                   label="employee last name" variant="outlined"/>
+                                   required label="employee last name" variant="outlined"/>
 
                     </div>
 
@@ -93,7 +93,7 @@ export default function create(props) {
                         </div>
 
                         <TextField id="email" sx={{minWidth: 1}} className="bg-content "
-                                   label="employee's email" variant="outlined"/>
+                                   required label="employee's email" variant="outlined"/>
                     </div>
 
                     <div id="skills" className=" flex flex-row justify-start mb-2">

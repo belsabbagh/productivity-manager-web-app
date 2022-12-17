@@ -58,7 +58,7 @@ export default function edit(props) {
                             </div>
 
                             <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                       label="employee first name" variant="outlined" defaultValue={employee.first_name}/>
+                                       label="employee first name" variant="outlined" required defaultValue={employee.first_name}/>
 
                         </div>
 
@@ -74,7 +74,7 @@ export default function edit(props) {
                             </div>
 
                             <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                       label="employee last name" variant="outlined" defaultValue={employee.last_name}/>
+                                       label="employee last name" variant="outlined" required defaultValue={employee.last_name}/>
 
                         </div>
 
@@ -89,7 +89,7 @@ export default function edit(props) {
                             </div>
 
                             <TextField id="email" sx={{minWidth: 1}} className="bg-content "
-                                       label="employee's email" variant="outlined" defaultValue={employee.email}/>
+                                       label="employee's email" variant="outlined" required defaultValue={employee.email}/>
                         </div>
 
                         <div id="skills" className=" flex flex-row justify-start mb-2">

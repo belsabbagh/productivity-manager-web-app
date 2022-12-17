@@ -12,7 +12,7 @@ const MenuProps = {
     },
 };
 
-export default function MultipleSelectCheckmarks({data, label, values=[]}) {
+export default function MultipleSelectCheckmarks({data, required=false, label, values=[]}) {
     const [name, setName] = React.useState(values);
 
     const handleChange = (event) => {
@@ -26,6 +26,7 @@ export default function MultipleSelectCheckmarks({data, label, values=[]}) {
             <Select
                 labelId="demo-multiple-checkbox-label"
                 id="demo-multiple-checkbox"
+                required={required}
                 multiple
                 value={name}
                 onChange={handleChange}

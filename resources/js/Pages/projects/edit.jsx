@@ -22,19 +22,6 @@ export default function edit(props) {
         }
     }
 
-
-    const teamleader_names = [
-        {
-            id: 1, name: 'Jeff'
-        },
-        {
-            id: 2, name: 'Steve'
-        },
-        {
-            id: 3, name: 'Karen'
-        }
-    ];
-
     const regions = [
         {
             id: 1, name: 'Egypt'
@@ -72,7 +59,7 @@ export default function edit(props) {
                             </svg>
                         </div>
 
-                        <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content" label="Project name" variant="outlined" defaultValue={project.name}/>
+                        <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content" label="Project name" variant="outlined" defaultValue={project.name} required/>
                     </div>
                     <div id="leader" className=" flex flex-row justify-start mb-2">
                         <div id="icon css"
@@ -90,6 +77,7 @@ export default function edit(props) {
                                       options={leaders}
                                       getOptionLabel={(i) => i.name}
                                       defaultValue={project.leader}
+                                      required
                                       renderInput={(params) => <TextField {...params} label="team leader"/>}/>
                     </div>
                     <div id="region" className="flex flex-row justify-start mb-2">
@@ -108,6 +96,7 @@ export default function edit(props) {
                                       options={regions}
                                       getOptionLabel={(i) => i.name}
                                       defaultValue={{name: project.region}}
+                                      required
                                       renderInput={(params) => <TextField {...params} label="region"/>}/>
                     </div>
                     <Button

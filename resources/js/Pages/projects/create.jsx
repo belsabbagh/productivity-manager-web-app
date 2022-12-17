@@ -87,7 +87,7 @@ export default function create(props) {
                         </div>
 
                         <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                   label="Project name" variant="outlined"/>
+                                   required label="Project name" variant="outlined"/>
 
                     </div>
 
@@ -108,7 +108,7 @@ export default function create(props) {
                                       id="combo-box-team_leaders"
                                       options={leaders}
                                       getOptionLabel={(i) => i.name}
-
+                                      required
                                       renderInput={(params) => <TextField {...params} label="team leader"/>}/>
                     </div>
 
@@ -129,7 +129,7 @@ export default function create(props) {
                                       id="combo-box-regions"
                                       options={regions}
                                       getOptionLabel={(i) => i.name}
-
+                                      required
                                       renderInput={(params) => <TextField {...params} label="region"/>}/>
                     </div>
                     <Button style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}}

@@ -70,7 +70,9 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee): \Inertia\Response
     {
-        return Inertia::render("$this->resource_route/edit", ['employee' => $employee->toArray()]);
+        return Inertia::render("$this->resource_route/edit", [
+            'employee' => new EmployeeResource($employee),
+            'skills'=> Skill::all()]);
     }
 
     /**

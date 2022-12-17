@@ -17,10 +17,11 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function edit(props) {
     const resource = 'employee'
-    const { data, setData, errors, post } = useForm({});
+    const {user} = props
+    const { data, setData, errors, put } = useForm({});
     function handleSubmit(e) {
         e.preventDefault();
-        post(route(`${resource}s.store`));
+        put(route(`${resource}s.store`));
     }
 
     const [personName, setPersonName] = React.useState([]);
@@ -65,7 +66,7 @@ export default function edit(props) {
                             </div>
 
                             <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                       label="user's name" variant="outlined"/>
+                                       label="user's name" variant="outlined" value={user.name}/>
 
                         </div>
 
@@ -80,7 +81,7 @@ export default function edit(props) {
                             </div>
 
                             <TextField id="email" sx={{minWidth: 1}} className="bg-content "
-                                       label="user's email" variant="outlined"/>
+                                       label="user's email" variant="outlined" value={user.email}/>
                         </div>
 
                         <div id="psw" className=" flex flex-row justify-start mb-2">

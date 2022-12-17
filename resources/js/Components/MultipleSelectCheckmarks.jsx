@@ -12,8 +12,8 @@ const MenuProps = {
     },
 };
 
-export default function MultipleSelectCheckmarks({data, label}) {
-    const [name, setName] = React.useState([]);
+export default function MultipleSelectCheckmarks({data, label, values=[]}) {
+    const [name, setName] = React.useState(values);
 
     const handleChange = (event) => {
         const {target: {value}} = event;

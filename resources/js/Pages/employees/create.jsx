@@ -17,26 +17,17 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function create(props) {
     const resource = 'employee'
-    const {data, setData, errors, post} = useForm({});
+    const {data, setData, errors, post} = useForm({
+        firstName: '',
+        lastName: '',
+        email: '',
+        skills: []
+    });
 
     function handleSubmit(e) {
         e.preventDefault();
         post(route(`${resource}s.store`));
     }
-
-    const [personName, setPersonName] = React.useState([]);
-
-    const handleChange = (event) => {
-        const {
-            target: {value},
-        } = event;
-        setPersonName(
-            /**
-             * On autofill we get a stringified value.
-             */
-            typeof value === 'string' ? value.split(',') : value,
-        );
-    };
 
     const skills = props.skills;
     return (
@@ -61,8 +52,15 @@ export default function create(props) {
                             </svg>
                         </div>
 
-                        <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                   required label="employee first name" variant="outlined"/>
+                        <TextField
+                            id="text_inputs"
+                            sx={{minWidth: 1}}
+                            className="bg-content"
+                            required
+                            label="employee first name"
+                            variant="outlined"
+                            onChange={(e) => setData('firstName', e.target.value)}
+                        />
 
                     </div>
 
@@ -77,8 +75,14 @@ export default function create(props) {
                             </svg>
                         </div>
 
-                        <TextField id="text_inputs" sx={{minWidth: 1}} className="bg-content "
-                                   required label="employee last name" variant="outlined"/>
+                        <TextField
+                            id="text_inputs" sx={{minWidth: 1}}
+                            className="bg-content "
+                            required
+                            label="employee last name"
+                            variant="outlined"
+                            onChange={(e) => setData('lastName', e.target.value)}
+                        />
 
                     </div>
 
@@ -92,8 +96,15 @@ export default function create(props) {
                             </svg>
                         </div>
 
-                        <TextField id="email" sx={{minWidth: 1}} className="bg-content "
-                                   required label="employee's email" variant="outlined"/>
+                        <TextField
+                            id="email"
+                            sx={{minWidth: 1}}
+                            className="bg-content "
+                            required
+                            label="employee's email"
+                            variant="outlined"
+                            onChange={(e) => setData('email', e.target.value)}
+                        />
                     </div>
 
                     <div id="skills" className=" flex flex-row justify-start mb-2">

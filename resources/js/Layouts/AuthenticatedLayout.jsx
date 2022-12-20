@@ -1,26 +1,20 @@
-import React, { useState } from 'react';
-import ApplicationLogo from '@/Components/Icons/ApplicationLogo';
-import Dropdown from '@/Components/Dropdown';
-import NavLink from '@/Components/Nav/NavLink';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import {Head, Link} from '@inertiajs/inertia-react';
+import React from 'react';
+import { Head } from '@inertiajs/inertia-react';
 import '../../css/app.css';
-import Header from "@/Components/Header";
+import Header from '@/Components/Header';
 import Nav from "@/Components/Nav";
 
-export default function AuthenticatedLayout({ auth, title, children ,backHref }) {
+export default function AuthenticatedLayout({ auth, title, children, backHref }) {
     return (
-        <div className={"whole-page"}>
+        <div className="min-h-screen bg-background pt-2 flex flex-col">
             <Head><title>{title}</title></Head>
-            <div className="min-h-screen bg-background pt-2 flex flex-col">
-                <Header className={'py-2 pl-2'} user={auth.user} title={title} backHref={backHref}/>
-                <div id={'nav-and-content'} className={'flex flex-row items-start justify-start'}>
-                    <Nav className={'flex flex-col mt-24 ml-6 mr-auto'} svgClassName={"h-12 w-12 text-black"}/>
-                    <main className={'pt-4 flex justify-center items-center'}>
-                        {children}
-                    </main>
-                    <Nav className={'opacity-0 flex flex-col mr-6 ml-auto mt-2'} svgClassName={"h-8 w-8 text-black"}/>
-                </div>
+            <Header className={'py-2 pl-2'} user={auth.user} title={title} backHref={backHref} />
+            <div id={'nav-and-content'} className={'flex flex-row items-start justify-start'}>
+                <Nav className={'flex flex-col mt-24 ml-6 mr-auto'} svgClassName={"h-12 w-12 text-black"} />
+                <main className={'pt-4 flex justify-center items-center'}>
+                    {children}
+                </main>
+                <Nav className={'opacity-0 flex flex-col mr-6 ml-auto mt-2'} svgClassName={"h-8 w-8 text-black"} />
             </div>
         </div>
     );

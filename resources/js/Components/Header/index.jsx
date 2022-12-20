@@ -1,13 +1,13 @@
-import {Link} from "@inertiajs/inertia-react";
-import ApplicationLogo from "@/Components/Icons/ApplicationLogo";
-import React from "react";
-import ProfileLink from "@/Components/ProfileLink";
-import BackIcon from "@/Components/Icons/BackIcon";
+import {Link} from '@inertiajs/inertia-react';
+import ApplicationLogo from '@/Components/Icons/ApplicationLogo';
+import React from 'react';
+import ProfileLink from '@/Components/ProfileLink';
+import BackIcon from '@/Components/Icons/BackIcon';
 
 export default function Header({title, user = null, backHref}) {
 
     return (
-        <div className="max-h-fit bg-background flex flex-row justify-between items-center">
+        <header className="max-h-fit bg-background flex flex-row justify-between items-center">
             <Link href="/">
                 <ApplicationLogo className="w-24 h-24 hover:shadow-sm rounded-lg"/>
             </Link>
@@ -15,11 +15,11 @@ export default function Header({title, user = null, backHref}) {
                 <div className={'text-4xl font-bold'}>
                     {title}
                 </div>
-                {(user !== null) ? <ProfileLink user={user}/> : ""}
+                {(user !== null) ? <ProfileLink user={user}/> : null}
             </div>
                 <Link className={'hover:bg-gray py-2 px-4 mr-6 justify-center items-center font-bold rounded-lg'} href={backHref}>
                     <BackIcon/>
                 </Link>
-        </div>
+        </header>
     )
 }

@@ -13,6 +13,8 @@
         "@vitejs/plugin-react": "^2.0.0",
         "autoprefixer": "^10.4.2",
         "axios": "^0.27",
+        "eslint": "^8.30.0",
+        "eslint-plugin-react": "^7.31.11",
         "laravel-vite-plugin": "^0.6.0",
         "lodash": "^4.17.19",
         "postcss": "^8.4.6",
@@ -26,16 +28,17 @@
         "@emotion/styled": "^11.10.5",
         "@fontsource/roboto": "^4.5.8",
         "@mui/icons-material": "^5.10.16",
-        "@mui/styled-engine-sc": "^5.10.16",
-        "styled-components": "^5.3.6",
         "@mui/material": "^5.10.15",
+        "@mui/styled-engine-sc": "^5.10.16",
         "bootstrap": "^5.2.3",
         "chart.js": "^4.0.1",
+        "prop-types": "^15.8.1",
         "react-bootstrap": "^2.7.0",
         "react-chartjs-2": "^5.0.1",
         "react-icons": "^4.7.1",
         "react-material-ui-carousel": "^3.4.2",
         "react-multi-carousel": "^2.8.2",
-        "react-window": "^1.8.8"
+        "react-window": "^1.8.8",
+        "styled-components": "^5.3.6"
     }
 }

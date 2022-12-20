@@ -11,7 +11,7 @@ export default function ContentHeader({title, href=null}) {
                 {title}
             </div>
             {(href!== null)? (<Link href={href} className={'rounded-lg hover:bg-gray p-1'}>
-                <MoreIcon svgClassName={"h-8 w-8 text-black"}/>
+                <MoreIcon svgClassName={"text-black"}/>
             </Link>): ""}
         </div>
     );

@@ -43,6 +43,7 @@ function getEmployeeUtilizationDistribution()
 {
     $employees = Employee::all();
     $total = count($employees);
+    if ($total <= 0) return [];
     return [
         [
             'category' => 'over utilized',

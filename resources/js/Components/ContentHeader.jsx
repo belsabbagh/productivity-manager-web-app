@@ -1,6 +1,4 @@
-import {Typography} from "@mui/material";
 import {Link} from "@inertiajs/inertia-react";
-import {ListAltOutlined} from "@mui/icons-material";
 import React from "react";
 import MoreIcon from "@/Components/Icons/MoreIcon";
 

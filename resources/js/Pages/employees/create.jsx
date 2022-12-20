@@ -1,16 +1,9 @@
 import React from 'react';
 import './../../../css/App.css';
-import {Link, Head, useForm} from '@inertiajs/inertia-react';
+import {useForm} from '@inertiajs/inertia-react';
 import MultipleSelectCheckmarks from '@/Components/MultipleSelectCheckmarks';
 import {
-    Autocomplete,
     Button,
-    Checkbox,
-    FormControl,
-    InputLabel,
-    ListItemText,
-    MenuItem, OutlinedInput,
-    Select,
     TextField, Typography
 } from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";

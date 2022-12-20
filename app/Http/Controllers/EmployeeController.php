@@ -7,13 +7,14 @@ use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Skill;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Services\Service;
 
 class EmployeeController extends Controller
 {
     private string $resource_route = 'employees';
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +42,7 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreEmployeeRequest  $request
+     * @param \App\Http\Requests\StoreEmployeeRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -53,7 +54,7 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param \App\Models\Employee $employee
      *
      * @return \Inertia\Response
      */
@@ -66,7 +67,7 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param \App\Models\Employee $employee
      *
      * @return \Inertia\Response
      */
@@ -74,14 +75,14 @@ class EmployeeController extends Controller
     {
         return Inertia::render("$this->resource_route/edit", [
             'employee' => new EmployeeResource($employee),
-            'skills'=> Skill::all()]);
+            'skills' => Skill::all()]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateEmployeeRequest  $request
-     * @param  \App\Models\Employee  $employee
+     * @param \App\Http\Requests\UpdateEmployeeRequest $request
+     * @param \App\Models\Employee $employee
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -93,12 +94,13 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param \App\Models\Employee $employee
      *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Employee $employee)
     {
+        $employee->delete();
         return Redirect::route("$this->resource_route.index");
     }
 }

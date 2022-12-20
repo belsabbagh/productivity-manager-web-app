@@ -4,27 +4,29 @@
 
 ### UI Fixes
 
-- Create and Edit pages collect data from form attributes to send through the `handleSubmit` function.
-- Using Inertia's `useForm` hook, form data is collected.
-- Form data should be formatted correctly to be posted.
+- Users and employees index pages should have inner navigation between one another.
+- Select components find a way to save and return selected items for further use in forms.
+- ```teams.create``` and ```teams.edit``` pages should reactively display of expected utilization for an employee.
 - Success and error messages should be displayed (requires synchronization with back-end controller responses).
 - More fixes may be necessary depending on HCI requirements.
 
-### Form Handling
+### Front-end Form Handling
 
-- Users and employees index pages should have inner navigation between one another.
-- Select components find a way to save and return selected items for further use in forms.
-- `teams.create` and `teams.edit` pages should reactively display of expected utilization for an employee.
+- Create and Edit pages collect data from form attributes to send through the `handleSubmit` function.
+- Using Inertia's ```useForm``` hook, form data is collected.
+- Form data should be formatted correctly to be posted.
 - <https://inertiajs.com/forms>
 - <https://adocasts.com/lessons/introducing-forms-and-the-inertia-form-helper>
 
-## Back-end 
+<div style="page-break-after: always"></div>
+
+## Back-end
 
 ### Models
 
 - The backend that handles the resource management of an employee's assignment on a project as part of a team.
 
-### Form Handling
+### Back-end Form Handling
 
 #### Authorization
 
@@ -34,7 +36,7 @@
 
 #### Validation
 
-- Defining the form structure that should be validated for each request type per resource. 
+- Defining the form structure that should be validated for each request type per resource.
 - <https://laravel.com/docs/9.x/validation>
 
 #### Execution

@@ -20,18 +20,12 @@ export default function create(props) {
     });
 
     const updateFormData = (e) => {
-        setData(e.target.name, e.target.value);
+        setData((currentData) => ({...currentData, [e.target.name]: e.target.value}));
     }
-
     const handleSubmit = (e) => {
         e.preventDefault()
         post(route(`${resource}s.store`), {
             onSuccess: () => alert('success'),
-            onError: (errors) => {
-                setError(errors)
-                console.log(errors)
-                alert('There were some errors')
-            }
         });
     }
 

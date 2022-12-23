@@ -4,7 +4,7 @@ import '../../css/app.css';
 import Header from '@/Components/Header';
 import Nav from "@/Components/Nav";
 
-export default function AuthenticatedLayout({ auth, title, children, backHref }) {
+export default function AuthenticatedLayout({ auth, title, children, backHref}) {
     return (
         <div className="min-h-screen bg-background pt-2 flex flex-col">
             <Head><title>{title}</title></Head>

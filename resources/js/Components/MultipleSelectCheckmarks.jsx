@@ -1,5 +1,6 @@
 import React from 'react';
 import {Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select} from "@mui/material";
+import * as PropTypes from "prop-types";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -12,39 +13,58 @@ const MenuProps = {
     },
 };
 
-export default function MultipleSelectCheckmarks({data, required=false, label, values=[]}) {
-    const [name, setName] = React.useState(values);
+export default class MultipleSelectCheckmarks extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: this.props.values,
+            onChange: this.props.onChange
+        }
+    }
+    render() {
+        const updateTitle = (event) => {
+            const {target: {value}} = event;
+            this.setState({
+                name: typeof value === 'string' ? value.split(',') : value
+            });
+            this.state.onChange(event)
+        };
 
-    const handleChange = (event) => {
-        const {target: {value}} = event;
-        setName(typeof value === 'string' ? value.split(',') : value,);
-    };
-
-    return (
-        <FormControl sx={{minWidth: 1}} className="bg-white flex flex-row justify-start mb-2 ">
-            <InputLabel id="demo-multiple-checkbox-label">{label}</InputLabel>
-            <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                required={required}
-                multiple
-                value={name}
-                onChange={handleChange}
-                input={<OutlinedInput label="Tag"/>}
-                renderValue={(selected) => selected.join(', ')}
-                MenuProps={MenuProps}
-            >
-                {
-                    data.map((i) => {
-                        return (
-                            <MenuItem key={i['id']} value={i['name']}>
-                                <Checkbox checked={name.indexOf(i['name']) > -1}/>
-                                <ListItemText primary={i['name']}/>
-                            </MenuItem>
-                        )
-                    })
-                }
-            </Select>
-        </FormControl>
-    );
+        return (
+            <FormControl sx={{minWidth: 1}} className="bg-content flex flex-row justify-start mb-2 ">
+                <InputLabel id="skills-box">Skills</InputLabel>
+                <Select
+                    labelId="skills-box"
+                    name={this.props.name}
+                    required
+                    multiple
+                    value={this.state.name}
+                    onChange={updateTitle}
+                    input={<OutlinedInput label="Tag"/>}
+                    renderValue={(selected) => selected.join(', ')}
+                    MenuProps={MenuProps}
+                >
+                    {
+                        this.props.data.map((i) => {
+                            return (
+                                <MenuItem key={i['id']} value={i['id']}>
+                                    <Checkbox checked={this.state.name.indexOf(i['id']) > -1}/>
+                                    <ListItemText primary={i['name']}/>
+                                </MenuItem>
+                            )
+                        })
+                    }
+                </Select>
+            </FormControl>
+        );
+    }
 }
+
+MultipleSelectCheckmarks.propTypes = {
+    data: PropTypes.any,
+    required: PropTypes.bool,
+    label: PropTypes.any,
+    values: PropTypes.arrayOf(PropTypes.any)
+}
+
+MultipleSelectCheckmarks.defaultProps = {required: false, values: []}

@@ -48,6 +48,13 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
+        $employee = new Employee([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'email' => $request->input('email'),
+        ]);
+        $employee->save();
+        $employee->skills()->attach($request->input('skills', []));
         return Redirect::route("$this->resource_route.index");
     }
 

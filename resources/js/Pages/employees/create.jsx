@@ -12,7 +12,7 @@ import SkillsIcon from "@/Components/Icons/SkillsIcon";
 
 export default function create(props) {
     const resource = 'employee'
-    const {data, setData, errors, setError, post} = useForm({
+    const {data, setData, errors, post} = useForm({
         firstName: '',
         lastName: '',
         email: '',

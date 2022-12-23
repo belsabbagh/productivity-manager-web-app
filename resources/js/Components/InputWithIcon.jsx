@@ -1,27 +1,16 @@
-import InputLabel from "@/Components/InputLabel";
-import TextInput from "@/Components/TextInput";
-import InputError from "@/Components/InputError";
 import React from "react";
+import InputError from "@/Components/InputError";
 
-export default function (props) {
-    const {textInputProps, data, errors, icon, title} = props
+export default function InputWithIcon({input, icon, error=null}) {
     return (
-        <>
-            <InputLabel forInput={textInputProps.name}>{title}</InputLabel>
-            <div style={{display: "flex"}}>
-                {icon}
-                <TextInput
-                    type={textInputProps.type}
-                    name={textInputProps.name}
-                    value={data.email}
-                    className="mt-1 block w-full"
-                    autoComplete={textInputProps.autoComplete}
-                    isFocused={textInputProps.isFocused}
-                    handleChange={textInputProps.handleChange}
-                />
+        <div className={'flex flex-col justify-start  mb-2'}>
+            <div className="flex flex-row justify-start">
+                <div className=" bg-content p-3 border rounded border-gray flex flex-row justify-center items-center">
+                    {icon}
+                </div>
+                {input}
             </div>
-            <InputError message={errors.email} className="mt-2"/>
-        </>
+            <InputError message={error}/>
+        </div>
     )
-
 }

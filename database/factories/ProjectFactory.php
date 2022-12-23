@@ -19,7 +19,7 @@ class ProjectFactory extends Factory
         return [
             'name' => fake()->company(),
             'region' => fake()->country(),
-            'leader_id' => fake()->numberBetween(1, 10)
+            'leader_id' => fake()->numberBetween(1, 25)
         ];
     }
 }

@@ -1,15 +1,31 @@
 import React from 'react';
-import { Link, Head } from '@inertiajs/inertia-react';
+import {Link, Head} from '@inertiajs/inertia-react';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import UsersTable from "@/Components/UsersTable";
+import {isAdmin} from "@/lib";
+import CreateResource from "@/Components/CreateResource";
+import UserIndexContent from "@/Components/UserIndexContent";
 
 export default function index(props) {
-    const {users} = props
+    const users = props.users.data
+    const userType = props.auth.user.user_type_id
     return (
-        <>
-            <Head>
-                <title>users index</title>
-            </Head>
-            <h1>users index page goes here</h1>
-            {JSON.stringify(users, null, 2)}
-        </>
+        <AuthenticatedLayout
+            auth={props.auth}
+            errors={props.errors}
+            title={"Users"}
+            backHref={'/dashboard'}
+        >
+            <UserIndexContent
+                resource={'user'}
+                canCreate={isAdmin(userType)}
+
+            >
+                <UsersTable
+                    data={users}
+                    firstColKey={'name'}
+                />
+            </UserIndexContent>
+        </AuthenticatedLayout>
     );
 }

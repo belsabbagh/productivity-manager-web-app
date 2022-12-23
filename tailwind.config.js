@@ -15,8 +15,10 @@ module.exports = {
             background: '#eaf0ff',
             content: '#faf4fd',
             white: '#FFFFFF',
+            gray: '#aaaaaa',
             red: '#FF0000',
             textbox: '#4b00820d',
+            gray:'#bfbac4'
         },
         extend: {
             fontFamily: {
@@ -27,8 +29,17 @@ module.exports = {
             },
             widths: {
                 '75': '18.75rem'
+            },
+            margin: {
+                '750px': '750px'
             }
-
+        },
+        colors: {
+            background: '#eaf0ff',
+            content: '#faf4fd',
+            white: '#FFFFFF',
+            x: 'rgba(75, 0, 130, 0.3)',
+            gray:'#bfbac4'
         },
     },
 

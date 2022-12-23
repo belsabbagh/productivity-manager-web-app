@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -20,7 +21,7 @@ class UserController extends Controller
     public function index(): \Inertia\Response
     {
         $users = UserResource::collection(User::all());
-        return Inertia::render("$this->resource_route/index", ['users' => $users]);
+        return Inertia::render("$this->resource_route/index", ['users' => UserResource::collection($users)]);
     }
 
     /**
@@ -37,11 +38,12 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        return Redirect::route("$this->resource_route.index");
     }
 
     /**
@@ -53,7 +55,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return Inertia::render("$this->resource_route/show", ['user' => $user->toArray()]);
+        return Inertia::render("$this->resource_route/show", ['user' => new UserResource($user)]);
     }
 
     /**
@@ -74,11 +76,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param User  $user
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, User $user)
     {
-        //
+        return Redirect::route("$this->resource_route.show", [$user]);
     }
 
     /**
@@ -86,10 +88,10 @@ class UserController extends Controller
      *
      * @param  User  $user
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)
     {
-        //
+        return Redirect::route("$this->resource_route.index");
     }
 }

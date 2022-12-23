@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
-        Skill::factory(10)->create();
-        Employee::factory(10)->create();
-        Project::factory(10)->create();
+        User::factory(25)->create();
+        Skill::factory(25)->create();
+        Employee::factory(25)->create();
+        Project::factory(25)->create();
         for($i=0; $i < 25; $i++)
         {
             DB::table('employee_skill')->insert([
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             ]);
 
             DB::table('employee_project')->insert([
-                'project_id' => rand(1, 20),
+                'project_id' => rand(1, 25),
                 'employee_id' => rand(1, 25),
                 'utilization' => rand(2, 7) / 10
             ]);

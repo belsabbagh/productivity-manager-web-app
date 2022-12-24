@@ -17,15 +17,16 @@ export default class MultipleSelectCheckmarks extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: this.props.values,
+            choices: [],
             onChange: this.props.onChange
         }
     }
+
     render() {
-        const updateTitle = (event) => {
+        const updateChoices = (event) => {
             const {target: {value}} = event;
             this.setState({
-                name: typeof value === 'string' ? value.split(',') : value
+                choices: typeof value === 'string' ? value.split(',') : value
             });
             this.state.onChange(event)
         };
@@ -38,23 +39,17 @@ export default class MultipleSelectCheckmarks extends React.Component {
                     name={this.props.name}
                     required
                     multiple
-                    value={this.state.name}
-                    onChange={updateTitle}
+                    value={this.state.choices}
+                    onChange={updateChoices}
                     input={<OutlinedInput label="Tag"/>}
-                    renderValue={(selected) => {
-                        const names = selected.map((i)=> {
-                            const found = this.props.data.filter((item) =>  item.id === i)
-                            return found[0].name
-                        })
-                        return names.join(', ')
-                    }}
+                    renderValue={this.getRenderValue}
                     MenuProps={MenuProps}
                 >
                     {
                         this.props.data.map((i) => {
                             return (
                                 <MenuItem key={i['id']} value={i['id']}>
-                                    <Checkbox checked={this.state.name.indexOf(i['id']) > -1}/>
+                                    <Checkbox checked={this.state.choices.indexOf(i['id']) > -1}/>
                                     <ListItemText primary={i['name']}/>
                                 </MenuItem>
                             )
@@ -64,13 +59,20 @@ export default class MultipleSelectCheckmarks extends React.Component {
             </FormControl>
         );
     }
+
+    getRenderValue = (selected) => {
+        const names = selected.map((i) => {
+            const found = this.props.data.filter((item) => item.id === i)
+            return found[0].name
+        })
+        return names.join(', ')
+    }
 }
 
 MultipleSelectCheckmarks.propTypes = {
     data: PropTypes.any,
     required: PropTypes.bool,
     label: PropTypes.any,
-    values: PropTypes.arrayOf(PropTypes.any)
 }
 
-MultipleSelectCheckmarks.defaultProps = {required: false, values: []}
+MultipleSelectCheckmarks.defaultProps = {required: false}

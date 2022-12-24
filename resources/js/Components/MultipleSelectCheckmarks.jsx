@@ -41,7 +41,13 @@ export default class MultipleSelectCheckmarks extends React.Component {
                     value={this.state.name}
                     onChange={updateTitle}
                     input={<OutlinedInput label="Tag"/>}
-                    renderValue={(selected) => selected.join(', ')}
+                    renderValue={(selected) => {
+                        const names = selected.map((i)=> {
+                            const found = this.props.data.filter((item) =>  item.id === i)
+                            return found[0].name
+                        })
+                        return names.join(', ')
+                    }}
                     MenuProps={MenuProps}
                 >
                     {

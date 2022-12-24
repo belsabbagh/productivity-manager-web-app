@@ -61,6 +61,7 @@ export default function create(props) {
                     <InputWithIcon
                         input={<MultipleSelectCheckmarks
                             name={'skills'}
+                            label={'Skills'}
                             onChange={updateFormData}
                             data={props.skills}/>}
                         icon={<SkillsIcon svgClassName={'w-6 h-6'}/>}

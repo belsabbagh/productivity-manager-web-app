@@ -32,10 +32,9 @@ export default class MultipleSelectCheckmarks extends React.Component {
         };
 
         return (
-            <FormControl sx={{minWidth: 1}} className="bg-content flex flex-row justify-start mb-2 ">
-                <InputLabel id="skills-box">Skills</InputLabel>
+            <FormControl sx={{minWidth: 1}} className="bg-content">
+                <InputLabel>{this.props.label}</InputLabel>
                 <Select
-                    labelId="skills-box"
                     name={this.props.name}
                     required
                     multiple

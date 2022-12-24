@@ -10,6 +10,7 @@ import {isAdmin} from "@/lib";
 export default function show(props) {
     let {project} = props
     project = project.data
+    console.log(project)
     let userType = props.auth.user.user_type_id
     return (
         <AuthenticatedLayout
@@ -40,7 +41,7 @@ export default function show(props) {
                         value={project.leader.name}
                         className=" mb-5"
                     />
-                    {(project.length > 0) ?
+                    {(project.team.length > 0) ?
                         <AttributeDisplay label={"Team"}>
                             <TeamTable data={project.team} firstColKey={'email'}/>
                         </AttributeDisplay>  :

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import TextInput from "@/Components/TextInput";
 
 export default function BasicPopover() {
     const [anchorEl, setAnchorEl] = React.useState(null);

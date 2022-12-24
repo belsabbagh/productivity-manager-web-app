@@ -1,5 +1,6 @@
 <?php
-namespace Statistics;
+
+namespace Services\Statistics;
 
 use App\Models\Employee;
 use App\Models\Skill;
@@ -18,8 +19,7 @@ function getAverageUtilizationPerSkill(): array
 {
     $skills = Skill::all();
     $arr = [];
-    foreach ($skills as $i)
-    {
+    foreach ($skills as $i) {
         $total = 0;
         $employees = $i->employees;
         foreach ($employees as $emp)
@@ -43,27 +43,28 @@ function getEmployeeUtilizationDistribution()
 {
     $employees = Employee::all();
     $total = count($employees);
+    if ($total <= 0) return [];
+    $over_utilization_filter = function ($employee) {
+        return ($employee['total_utilization'] > 1);
+    };
+    $most_utilization_filter = function ($employee) {
+        return ($employee['total_utilization'] <= 0.5 && $employee['total_utilization'] > 0);
+    };
+    $light_utilization_filter = function ($employee) {
+        return ($employee['total_utilization'] < 0.5);
+    };
     return [
         [
             'category' => 'over utilized',
-            'count' => count(array_filter($employees->toArray(), function ($var)
-                {
-                    return ($var['total_utilization'] > 1);
-                })) / $total
+            'count' => count(array_filter($employees->toArray(), $over_utilization_filter)) / $total
         ],
         [
             'category' => 'mostly utilized',
-            'count' => count(array_filter($employees->toArray(), function ($var)
-                {
-                    return ($var['total_utilization'] <= 0.5 && $var['total_utilization'] > 0);
-                })) / $total
+            'count' => count(array_filter($employees->toArray(), $most_utilization_filter)) / $total
         ],
         [
             'category' => 'lightly utilized',
-            'count' => count(array_filter($employees->toArray(), function ($var)
-                {
-                    return ($var['total_utilization'] < 0.5);
-                })) / $total
+            'count' => count(array_filter($employees->toArray(), $light_utilization_filter)) / $total
         ]
     ];
 }
@@ -71,8 +72,7 @@ function getEmployeeUtilizationDistribution()
 function getCrossUtilizationDistribution()
 {
     $employees = Employee::all();
-    $cross = count(array_filter($employees->toArray(), function ($var)
-    {
+    $cross = count(array_filter($employees->toArray(), function ($var) {
         return ($var['total_utilization'] > 1);
     }));
     $total = count($employees);

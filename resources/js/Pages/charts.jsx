@@ -3,7 +3,6 @@ import {
     Chart,
     CategoryScale,
     ArcElement,
-    Legend,
     Tooltip,
     LinearScale,
     BarElement,

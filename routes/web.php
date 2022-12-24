@@ -12,7 +12,7 @@ use App\Models\Project;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use function Statistics\getStatistics;
+use function Services\Statistics\getStatistics;
 
 /*
 |--------------------------------------------------------------------------

@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Team>
  */
-class ProjectFactory extends Factory
+class TeamFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,7 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->company(),
-            'region' => fake()->country(),
-            'leader_id' => fake()->numberBetween(1, 25)
+            //
         ];
     }
 }

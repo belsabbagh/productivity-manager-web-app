@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Head, useForm} from '@inertiajs/inertia-react';
+import {Head, useForm} from '@inertiajs/inertia-react';
 import {Inertia} from "@inertiajs/inertia";
 import {Autocomplete, Button, TextField, Typography} from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";

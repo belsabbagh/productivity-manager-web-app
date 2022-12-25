@@ -11,7 +11,7 @@ import UserIcon from "@/Components/Icons/UserIcon";
 import MailIcon from "@/Components/Icons/MailIcon";
 import TextFieldWithIcon from "@/Components/TextFieldWithIcon";
 import InputWithIcon from "@/Components/InputWithIcon";
-import {KeyOutlined, PasswordOutlined, VpnKeyOutlined} from "@mui/icons-material";
+import {VpnKeyOutlined} from "@mui/icons-material";
 
 export default function edit(props) {
     const resource = 'user'
@@ -45,54 +45,52 @@ export default function edit(props) {
             title={"Users"}
             backHref={`/${resourcePlural}/${user.id}`}
         >
-            <div id="white container" className=" rounded-lg  bg-white">
-                <div id="form container" className="px-48 py-16">
-                    <Typography sx={{mb: 2}} variant='h5'> edit a user </Typography>
+            <div id="white container" className="rounded-lg px-48 py-16 bg-white">
+                <Typography sx={{mb: 2}} variant='h5'> edit a user </Typography>
 
-                    <form>
-                        <TextFieldWithIcon
-                            label={'Name'}
-                            icon={<UserIcon svgClassName={"w-6 h-6"}/>}
-                            initialValue={user.name}
-                            onChange={updateFormData}
-                            error={errors.name}
-                            name={'name'}
-                        />
-                        <TextFieldWithIcon
-                            label={'Email'}
-                            icon={<MailIcon svgClassName={"w-6 h-6"}/>}
-                            initialValue={user.email}
-                            onChange={updateFormData}
-                            error={errors.email}
-                            name={'email'}
-                        />
+                <form onSubmit={handleSubmit}>
+                    <TextFieldWithIcon
+                        label={'Name'}
+                        icon={<UserIcon svgClassName={"w-6 h-6"}/>}
+                        initialValue={user.name}
+                        onChange={updateFormData}
+                        error={errors.name}
+                        name={'name'}
+                    />
+                    <TextFieldWithIcon
+                        label={'Email'}
+                        icon={<MailIcon svgClassName={"w-6 h-6"}/>}
+                        initialValue={user.email}
+                        onChange={updateFormData}
+                        error={errors.email}
+                        name={'email'}
+                    />
 
-                        <InputWithIcon
-                            input={<TextField id="psw" type="password" sx={{minWidth: 1}} className="bg-content"
-                                              required label="user's password" variant="outlined"/>}
-                            icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
-                        />
-                        <Button
+                    <InputWithIcon
+                        input={<TextField id="psw" type="password" sx={{minWidth: 1}} className="bg-content"
+                                          required label="user's password" variant="outlined"/>}
+                        icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
+                    />
+                    <Button type={'submit'}
                             sx={{
                                 mr: 1,
                                 backgroundColor: 'rgba(75, 0, 130, 0.3)',
                                 color: 'black'
-                            }} onClick={handleSubmit}
+                            }}
+                    >
+                        edit {resource}
+                    </Button>
+                    {
+                        props.auth.user.user_type_id === 3 ? <Button
+                            sx={{
+                                mr: 1,
+                                backgroundColor: 'rgba(75, 0, 130, 0.3)',
+                                color: 'black'
+                            }} onClick={destroy}
                         >
-                            edit {resource}
-                        </Button>
-                        {
-                            props.auth.user.user_type_id === 3 ? <Button
-                                sx={{
-                                    mr: 1,
-                                    backgroundColor: 'rgba(75, 0, 130, 0.3)',
-                                    color: 'black'
-                                }} onClick={destroy}
-                            >
-                                delete {resource}
-                            </Button> : null}
-                    </form>
-                </div>
+                            delete {resource}
+                        </Button> : null}
+                </form>
             </div>
         </AuthenticatedLayout>
     );

@@ -9,10 +9,14 @@ use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Skill;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
-use Services\Service;
 
 class EmployeeController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Employee::class);
+    }
+
     private string $resource_route = 'employees';
 
     /**

@@ -11,6 +11,10 @@ use Inertia\Response;
 
 class TeamController extends Controller
 {
+        public function __construct()
+    {
+        $this->authorizeResource(Team::class);
+    }
     /**
      * Display a listing of the resource.
      *

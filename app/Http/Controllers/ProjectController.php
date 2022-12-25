@@ -15,7 +15,13 @@ use Inertia\Inertia;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Project::class);
+    }
+
     private string $resource_route = 'projects';
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +51,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProjectRequest  $request
+     * @param \App\Http\Requests\StoreProjectRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -57,7 +63,7 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param \App\Models\Project $project
      *
      * @return \Inertia\Response
      */
@@ -69,7 +75,7 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param \App\Models\Project $project
      *
      * @return \Inertia\Response
      */
@@ -84,8 +90,8 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProjectRequest  $request
-     * @param  \App\Models\Project  $project
+     * @param \App\Http\Requests\UpdateProjectRequest $request
+     * @param \App\Models\Project $project
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -97,7 +103,7 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param \App\Models\Project $project
      *
      * @return \Illuminate\Http\RedirectResponse
      */

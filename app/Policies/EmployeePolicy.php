@@ -2,6 +2,8 @@
 
 namespace App\Policies;
 
+include_once base_path() . '/services/auth.php';
+
 use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;

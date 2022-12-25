@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Skill;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class EmployeeController extends Controller
 {
@@ -22,9 +23,9 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function index(): \Inertia\Response
+    public function index(): Response
     {
         $employees = EmployeeResource::collection(Employee::all()->sortBy('total_utilization', SORT_NATURAL, true));
         return Inertia::render("$this->resource_route/index", [
@@ -36,9 +37,9 @@ class EmployeeController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function create(): \Inertia\Response
+    public function create(): Response
     {
         return Inertia::render("$this->resource_route/create", ['skills' => Skill::all()]);
     }
@@ -67,9 +68,9 @@ class EmployeeController extends Controller
      *
      * @param \App\Models\Employee $employee
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function show(Employee $employee): \Inertia\Response
+    public function show(Employee $employee): Response
     {
         return Inertia::render("$this->resource_route/show", ['employee' => new EmployeeResource($employee)]);
 
@@ -80,9 +81,9 @@ class EmployeeController extends Controller
      *
      * @param \App\Models\Employee $employee
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function edit(Employee $employee): \Inertia\Response
+    public function edit(Employee $employee): Response
     {
         return Inertia::render("$this->resource_route/edit", [
             'employee' => new EmployeeResource($employee),

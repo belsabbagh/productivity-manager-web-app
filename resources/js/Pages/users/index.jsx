@@ -5,6 +5,7 @@ import UsersTable from "@/Components/UsersTable";
 import {isAdmin} from "@/lib";
 import CreateResource from "@/Components/CreateResource";
 import UserIndexContent from "@/Components/UserIndexContent";
+import PersonnelNav from "@/Components/PersonnelNav";
 
 export default function index(props) {
     const users = props.users.data
@@ -16,6 +17,7 @@ export default function index(props) {
             title={"Users"}
             backHref={'/dashboard'}
         >
+            <PersonnelNav active={'users'}/>
             <UserIndexContent
                 resource={'user'}
                 canCreate={isAdmin(userType)}

@@ -3,6 +3,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import EmployeesTable from "@/Components/EmployeesTable";
 import {isAdmin} from "@/lib";
 import EmployeeIndexContent from "@/Components/EmployeeIndexContent";
+import PersonnelNav from "@/Components/PersonnelNav";
 
 export default function index(props) {
     const employees = props.employees.data
@@ -15,6 +16,7 @@ export default function index(props) {
             title={"Employees"}
             backHref={'/dashboard'}
         >
+            <PersonnelNav active={'employees'}/>
             <EmployeeIndexContent resource={'employee'} canCreate={isAdmin(userType)} skills={skills}>
                 <EmployeesTable
                     data={employees}

@@ -4,21 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(User::class);
+    }
+
     private string $resource_route = 'users';
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function index(): \Inertia\Response
+    public function index(): Response
     {
         $users = UserResource::collection(User::all());
         return Inertia::render("$this->resource_route/index", ['users' => UserResource::collection($users)]);
@@ -27,7 +32,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
     public function create()
     {
@@ -37,7 +42,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -51,7 +56,7 @@ class UserController extends Controller
      *
      * @param User $user
      *
-     * @return \Inertia\Response
+     * @return Response
      */
     public function show(User $user)
     {
@@ -63,7 +68,7 @@ class UserController extends Controller
      *
      * @param User $user
      *
-     * @return \Inertia\Response
+     * @return Response
      */
     public function edit(User $user)
     {
@@ -73,8 +78,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param User  $user
+     * @param \Illuminate\Http\Request $request
+     * @param User $user
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -86,7 +91,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  User  $user
+     * @param User $user
      *
      * @return \Illuminate\Http\RedirectResponse
      */

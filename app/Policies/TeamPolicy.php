@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Policies;
+include_once base_path() . '/services/auth.php';
 
 use App\Models\Team;
 use App\Models\User;

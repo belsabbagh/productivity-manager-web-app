@@ -3,13 +3,11 @@
 namespace App\Policies;
 include_once base_path() . '/services/auth.php';
 
-use App\Models\Project;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use function Services\Auth\isAdmin;
-use function Services\Auth\isUser;
 
-class ProjectPolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 
@@ -21,19 +19,19 @@ class ProjectPolicy
      */
     public function viewAny(User $user)
     {
-        return isUser($user);
+        return isAdmin($user);
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\Project $project
+     * @param \App\Models\User $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Project $project)
+    public function view(User $user, User $model)
     {
-        return isUser($user);
+        return isAdmin($user) || $user->id === $model->id;
     }
 
     /**
@@ -51,22 +49,22 @@ class ProjectPolicy
      * Determine whether the user can update the model.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\Project $project
+     * @param \App\Models\User $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Project $project)
+    public function update(User $user, User $model)
     {
-        return isAdmin($user) || $user->id === $project->leader->id;
+        return isAdmin($user) || $user->id === $model->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\Project $project
+     * @param \App\Models\User $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Project $project)
+    public function delete(User $user, User $model)
     {
         return isAdmin($user);
     }
@@ -75,10 +73,10 @@ class ProjectPolicy
      * Determine whether the user can restore the model.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\Project $project
+     * @param \App\Models\User $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Project $project)
+    public function restore(User $user, User $model)
     {
         //
     }
@@ -87,10 +85,10 @@ class ProjectPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\Project $project
+     * @param \App\Models\User $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Project $project)
+    public function forceDelete(User $user, User $model)
     {
         //
     }

@@ -6,11 +6,17 @@ use App\Http\Resources\TeamResource;
 use App\Models\Team;
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class TeamController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Team::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,11 +41,18 @@ class TeamController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\StoreTeamRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreTeamRequest $request)
     {
-        //
+        $project_id = $request->input('projectId');
+        $team = new Team([
+            'employee_id' => $request->input('employeeId'),
+            'project_id' => $project_id,
+            'utilization' => $request->input('utilization'),
+        ]);
+        $team->save();
+        return Redirect::route("projects.show", ['project' => $project_id]);
     }
 
     /**

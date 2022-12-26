@@ -4,7 +4,7 @@ import EmployeesTable from "@/Components/Tables/EmployeesTable";
 import {isAdmin} from "@/lib";
 import PersonnelNav from "@/Components/PersonnelNav";
 import IndexContent from "@/Components/IndexContent";
-import EmployeeIndexFilter from "@/Components/IndexFilters/EmployeeIndexFilter";
+import EmployeeIndexFilter from "@/Components/IndexContent/IndexFilters/EmployeeIndexFilter";
 
 export default function index(props) {
     const employees = props.employees.data

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Checkbox from '@/Components/Checkbox';
+import Checkbox from '@/Components/Inputs/Checkbox';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/Inputs/InputError';
 import InputLabel from '@/Components/Inputs/InputLabel';

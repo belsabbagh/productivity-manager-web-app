@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../css/app.css'
 import ContentView from "@/Components/ContentView";
-import ContentHeader from "@/Components/ContentHeader";
+import ContentHeader from "@/Components/ContentView/ContentHeader";
 import ResourceHeader from "@/Components/Dashboard/ResourceHeader";
 
 export default function ResourceView({children, resource}) {

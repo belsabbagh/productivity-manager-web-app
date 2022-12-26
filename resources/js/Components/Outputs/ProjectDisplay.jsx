@@ -1,10 +1,10 @@
 import {List, ListItem} from "@mui/material";
-import AttributeDisplay from "@/Components/AttributeDisplay";
+import AttributeDisplay from "@/Components/Outputs/AttributeDisplay";
 import React from "react";
 import {Link} from "@inertiajs/inertia-react";
 import {ArrowForwardIos} from "@mui/icons-material";
 
-export default function EmployeeDisplay({data, label, itemValueKey, itemId = 'id', className, resource}) {
+export default function ProjectDisplay({data, label, itemValueKey, itemId = 'id', className, resource}) {
     return (
         <AttributeDisplay
             label={label}

@@ -1,4 +1,4 @@
-import ContentHeader from "@/Components/ContentHeader";
+import ContentHeader from "@/Components/ContentView/ContentHeader";
 import React from "react";
 
 export default function ContentView({className='', children, title, moreHref=null}) {

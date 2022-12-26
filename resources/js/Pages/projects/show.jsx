@@ -1,11 +1,12 @@
 import React from 'react';
-import TextDisplay from "@/Components/TextDisplay";
-import AttributeDisplay from "@/Components/AttributeDisplay";
+import TextDisplay from "@/Components/Outputs/TextDisplay";
+import AttributeDisplay from "@/Components/Outputs/AttributeDisplay";
 import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import TeamTable from "@/Components/Tables/TeamTable";
-import CreateResource from "@/Components/CreateResource";
+import CreateResource from "@/Components/Inputs/CreateResource";
 import {isAdmin} from "@/lib";
+import {Edit} from "@mui/icons-material";
 
 export default function show(props) {
     let {project} = props
@@ -22,8 +23,8 @@ export default function show(props) {
             <div className="bg-white p-6 flex flex-col">
                 <ItemHeader
                     title={project.name + " Details"}
-                    href={`/projects/${project.id}/edit`}
-                    isAllowedToEdit={isAdmin(userType)}
+                    href={isAdmin(userType) ? `/projects/${project.id}/edit` : null}
+                    linkIcon={<Edit className={'w-6 h-6'}/>}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
                     <TextDisplay

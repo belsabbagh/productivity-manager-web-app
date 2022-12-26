@@ -1,5 +1,4 @@
-import EmployeeIndexFilter from "@/Components/IndexFilters/EmployeeIndexFilter";
-import CreateResource from "@/Components/CreateResource";
+import CreateResource from "@/Components/Inputs/CreateResource";
 
 export default function IndexContent({indexQuery, canCreate, resource, children}) {
         return (

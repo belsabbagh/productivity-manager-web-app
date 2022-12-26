@@ -2,7 +2,7 @@ import React from 'react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import ProjectsTable from "@/Components/Tables/ProjectsTable";
 import {isAdmin} from "@/lib";
-import ProjectIndexFilter from "@/Components/IndexFilters/ProjectIndexFilter";
+import ProjectIndexFilter from "@/Components/IndexContent/IndexFilters/ProjectIndexFilter";
 import IndexContent from "@/Components/IndexContent";
 
 export default function index(props) {

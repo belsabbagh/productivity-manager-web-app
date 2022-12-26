@@ -1,5 +1,5 @@
 import React from "react";
-import AttributeDisplay from "@/Components/AttributeDisplay";
+import AttributeDisplay from "@/Components/Outputs/AttributeDisplay";
 
 export default function TextDisplay({className='', label, value}) {
     return(

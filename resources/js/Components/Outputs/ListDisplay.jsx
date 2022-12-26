@@ -1,5 +1,5 @@
 import {List, ListItem} from "@mui/material";
-import AttributeDisplay from "@/Components/AttributeDisplay";
+import AttributeDisplay from "@/Components/Outputs/AttributeDisplay";
 import React from "react";
 
 export default function ListDisplay({data, label, itemValueKey, itemId = 'id', className}) {

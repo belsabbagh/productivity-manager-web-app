@@ -14,18 +14,19 @@ export default function Dashboard({employees, projects, charts, auth, errors}) {
             errors={errors}
             title={"Dashboard"}
         >
-            <Head><title>Dashboard</title></Head>
-            <ChartsCarousel className={contentStyle} charts={charts}/>
-            <div className={"flex-col mx-3"}>
-                <EmployeesList
-                    className={`w-full ${contentStyle}`}
-                    employees={employees.data}
-                />
-                <ProjectsList
-                    className={`w-full ${contentStyle}`}
-                    projects={projects}
-                />
-            </div>
+            <div className={'flex flex-row items-center'}>
+                <ChartsCarousel className={contentStyle} charts={charts}/>
+                <div className={"flex-col mx-3"}>
+                    <EmployeesList
+                        className={`w-full ${contentStyle}`}
+                        employees={employees.data}
+                    />
+                    <ProjectsList
+                        className={`w-full ${contentStyle}`}
+                        projects={projects}
+                    />
+                </div></div>
+
         </AuthenticatedLayout>
 
     );

@@ -1,11 +1,10 @@
 import React from 'react';
-import {Link, Head} from '@inertiajs/inertia-react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import UsersTable from "@/Components/Tables/UsersTable";
 import {isAdmin} from "@/lib";
-import CreateResource from "@/Components/CreateResource";
-import UserIndexContent from "@/Components/UserIndexContent";
 import PersonnelNav from "@/Components/PersonnelNav";
+import IndexContent from "@/Components/IndexContent";
+import UserIndexFilter from "@/Components/IndexFilters/UserIndexFilter";
 
 export default function index(props) {
     const users = props.users.data
@@ -18,16 +17,16 @@ export default function index(props) {
             backHref={'/dashboard'}
         >
             <PersonnelNav active={'users'}/>
-            <UserIndexContent
+            <IndexContent
                 resource={'user'}
                 canCreate={isAdmin(userType)}
-
+                indexQuery={<UserIndexFilter/>}
             >
                 <UsersTable
                     data={users}
                     firstColKey={'name'}
                 />
-            </UserIndexContent>
+            </IndexContent>
         </AuthenticatedLayout>
     );
 }

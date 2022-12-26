@@ -2,8 +2,9 @@ import React from 'react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import EmployeesTable from "@/Components/Tables/EmployeesTable";
 import {isAdmin} from "@/lib";
-import EmployeeIndexContent from "@/Components/EmployeeIndexContent";
 import PersonnelNav from "@/Components/PersonnelNav";
+import IndexContent from "@/Components/IndexContent";
+import EmployeeIndexFilter from "@/Components/IndexFilters/EmployeeIndexFilter";
 
 export default function index(props) {
     const employees = props.employees.data
@@ -17,12 +18,16 @@ export default function index(props) {
             backHref={'/dashboard'}
         >
             <PersonnelNav active={'employees'}/>
-            <EmployeeIndexContent resource={'employee'} canCreate={isAdmin(userType)} skills={skills}>
+            <IndexContent
+                indexQuery={<EmployeeIndexFilter skills={skills}/>}
+                resource={'employee'}
+                canCreate={isAdmin(userType)}
+            >
                 <EmployeesTable
                     data={employees}
                     firstColKey={'email'}
                 />
-            </EmployeeIndexContent>
+            </IndexContent>
         </AuthenticatedLayout>
     );
 }

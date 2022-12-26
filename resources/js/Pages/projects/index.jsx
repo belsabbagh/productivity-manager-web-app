@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link, Head} from '@inertiajs/inertia-react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import ProjectsTable from "@/Components/Tables/ProjectsTable";
 import {isAdmin} from "@/lib";
-import ProjectIndexContent from "@/Components/ProjectIndexContent";
+import ProjectIndexFilter from "@/Components/IndexFilters/ProjectIndexFilter";
+import IndexContent from "@/Components/IndexContent";
 
 export default function index(props) {
     const projects = props.projects.data
@@ -20,12 +20,16 @@ export default function index(props) {
             title={"Projects"}
             backHref={'/dashboard'}
         >
-            <ProjectIndexContent resource={'project'} canCreate={isAdmin(userType)} regions={regions} skills={props.skills}>
+            <IndexContent
+                indexQuery={<ProjectIndexFilter regions={regions} skills={props.skills}/>}
+                resource={'project'}
+                canCreate={isAdmin(userType)}
+            >
                 <ProjectsTable
                     data={projects}
                     firstColKey={'name'}
                 />
-            </ProjectIndexContent>
+            </IndexContent>
         </AuthenticatedLayout>
     );
 }

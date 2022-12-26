@@ -3,7 +3,7 @@ import SearchIcon from "@/Components/Icons/SearchIcon";
 import MultipleSelectCheckmarks from "@/Components/Inputs/MultipleSelectCheckmarks";
 import {Slider} from "@mui/material";
 
-export default function EmployeeIndexQuery({skills}) {
+export default function EmployeeIndexFilter({skills}) {
     function valuetext(value) {
         return `${value}`;
     }

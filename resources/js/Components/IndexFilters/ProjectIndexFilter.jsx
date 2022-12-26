@@ -2,7 +2,7 @@ import React from "react";
 import SearchIcon from "@/Components/Icons/SearchIcon";
 import MultipleSelectCheckmarks from "@/Components/Inputs/MultipleSelectCheckmarks";
 
-export default function ProjectIndexQuery({regions, skills}) {
+export default function ProjectIndexFilter({regions, skills}) {
     return (
         <div className={'flex flex-col'}>
             <div className="flex flex-row w-full border border-gray-300 rounded-lg">

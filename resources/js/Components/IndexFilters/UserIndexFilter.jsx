@@ -3,7 +3,7 @@ import SearchIcon from "@/Components/Icons/SearchIcon";
 import MultipleSelectCheckmarks from "@/Components/Inputs/MultipleSelectCheckmarks";
 import {Slider} from "@mui/material";
 
-export default function UserIndexQuery() {
+export default function UserIndexFilter() {
     return (
         <div className={'flex flex-col'}>
             <div className="flex flex-row w-full border border-gray-300 rounded-lg">

@@ -1,10 +1,7 @@
 import React from 'react';
-import {Head} from '@inertiajs/inertia-react';
 import TextDisplay from "@/Components/Outputs/TextDisplay";
-import AttributeDisplay from "@/Components/Outputs/AttributeDisplay";
 import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import TeamTable from "@/Components/Tables/TeamTable";
 import ProjectDisplay from "@/Components/Outputs/ProjectDisplay";
 import {Edit} from "@mui/icons-material";
 

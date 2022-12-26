@@ -1,4 +1,4 @@
-import NavLink from "@/Components/Nav/NavLink";
+import NavLink from "@/Layouts/Nav/NavLink";
 
 export default function NavItem({href, children, active=false, title='', className=""}) {
     return (

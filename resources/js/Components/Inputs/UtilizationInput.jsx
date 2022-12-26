@@ -1,5 +1,5 @@
 import React from "react";
-import NumberInput from "@/Components/NumberInput";
+import NumberInput from "@/Components/Inputs/NumberInput";
 
 export default function UtilizationInput({defaultValue = null}) {
     return (

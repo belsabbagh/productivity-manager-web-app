@@ -7,7 +7,7 @@ import ListDisplay from "@/Components/ListDisplay";
 import EmployeeUtilization from "@/Components/EmployeeUtilization";
 import {KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
-import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
+import ProjectDisplay from "@/Components/ProjectDisplay";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import {isAdmin} from "@/lib";
 

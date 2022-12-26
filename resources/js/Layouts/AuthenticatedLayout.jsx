@@ -1,8 +1,8 @@
 import React from 'react';
 import { Head } from '@inertiajs/inertia-react';
 import '../../css/app.css';
-import Header from '@/Components/Header';
-import Nav from "@/Components/Nav";
+import Header from '@/Layouts/Header';
+import Nav from "@/Layouts/Nav";
 
 export default function AuthenticatedLayout({ auth, title, children, backHref}) {
     return (

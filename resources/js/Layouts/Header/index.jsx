@@ -1,7 +1,7 @@
 import {Link} from '@inertiajs/inertia-react';
 import ApplicationLogo from '@/Components/Icons/ApplicationLogo';
 import React from 'react';
-import ProfileLink from '@/Components/ProfileLink';
+import ProfileLink from '@/Layouts/Header/ProfileLink';
 import BackIcon from '@/Components/Icons/BackIcon';
 
 export default function Header({title, user = null, backHref}) {

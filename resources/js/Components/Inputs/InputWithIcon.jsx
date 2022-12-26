@@ -1,5 +1,5 @@
 import React from "react";
-import InputError from "@/Components/InputError";
+import InputError from "@/Components/Inputs/InputError";
 
 export default function InputWithIcon({input, icon, error=null}) {
     return (

@@ -9,8 +9,8 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import {Inertia} from "@inertiajs/inertia";
 import UserIcon from "@/Components/Icons/UserIcon";
 import MailIcon from "@/Components/Icons/MailIcon";
-import TextFieldWithIcon from "@/Components/TextFieldWithIcon";
-import InputWithIcon from "@/Components/InputWithIcon";
+import TextFieldWithIcon from "@/Components/Inputs/TextFieldWithIcon";
+import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 import {VpnKeyOutlined} from "@mui/icons-material";
 
 export default function edit(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import EmployeesTable from "@/Components/EmployeesTable";
+import EmployeesTable from "@/Components/Tables/EmployeesTable";
 import {isAdmin} from "@/lib";
 import EmployeeIndexContent from "@/Components/EmployeeIndexContent";
 import PersonnelNav from "@/Components/PersonnelNav";

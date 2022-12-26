@@ -1,6 +1,6 @@
 import {TextField} from "@mui/material";
 import React from "react";
-import InputWithIcon from "@/Components/InputWithIcon";
+import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 
 export default function TextFieldWithIcon({name, label, error, initialValue='', onChange, icon}) {
     const input = <TextField

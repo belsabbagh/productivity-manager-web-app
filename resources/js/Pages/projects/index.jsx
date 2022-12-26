@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, Head} from '@inertiajs/inertia-react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import ProjectsTable from "@/Components/ProjectsTable";
+import ProjectsTable from "@/Components/Tables/ProjectsTable";
 import {isAdmin} from "@/lib";
 import ProjectIndexContent from "@/Components/ProjectIndexContent";
 

@@ -3,7 +3,7 @@ import TextDisplay from "@/Components/TextDisplay";
 import AttributeDisplay from "@/Components/AttributeDisplay";
 import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import TeamTable from "@/Components/TeamTable";
+import TeamTable from "@/Components/Tables/TeamTable";
 import CreateResource from "@/Components/CreateResource";
 import {isAdmin} from "@/lib";
 

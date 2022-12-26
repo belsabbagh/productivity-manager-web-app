@@ -3,10 +3,10 @@ import {useForm} from '@inertiajs/inertia-react';
 import {Inertia} from "@inertiajs/inertia";
 import {Autocomplete, Button, Input, TextField, Typography} from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import InputWithIcon from "@/Components/InputWithIcon";
+import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 import UtilizationIcon from "@/Components/Icons/UtilizationIcon";
-import NumberInput from "@/Components/NumberInput";
-import UtilizationInput from "@/Components/UtilizationInput";
+import NumberInput from "@/Components/Inputs/NumberInput";
+import UtilizationInput from "@/Components/Inputs/UtilizationInput";
 
 export default function edit(props) {
     const resource = 'team'

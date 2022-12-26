@@ -1,5 +1,5 @@
 import React from "react";
-import NavItem from "@/Components/Nav/NavItem";
+import NavItem from "@/Layouts/Nav/NavItem";
 import HomeIcon from "@/Components/Icons/HomeIcon";
 import ChartsIcon from "@/Components/Icons/ChartsIcon";
 import ProjectsIcon from "@/Components/Icons/ProjectsIcon";

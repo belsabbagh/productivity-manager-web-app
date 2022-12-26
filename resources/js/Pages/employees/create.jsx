@@ -1,13 +1,13 @@
 import React from 'react';
 import './../../../css/App.css';
 import {useForm} from '@inertiajs/inertia-react';
-import MultipleSelectCheckmarks from '@/Components/MultipleSelectCheckmarks';
+import MultipleSelectCheckmarks from '@/Components/Inputs/MultipleSelectCheckmarks';
 import {Button, Typography} from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import UserIcon from "@/Components/Icons/UserIcon";
-import TextFieldWithIcon from "@/Components/TextFieldWithIcon";
+import TextFieldWithIcon from "@/Components/Inputs/TextFieldWithIcon";
 import MailIcon from "@/Components/Icons/MailIcon";
-import InputWithIcon from "@/Components/InputWithIcon";
+import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 import SkillsIcon from "@/Components/Icons/SkillsIcon";
 
 export default function create(props) {

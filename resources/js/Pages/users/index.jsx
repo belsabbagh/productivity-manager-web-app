@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, Head} from '@inertiajs/inertia-react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import UsersTable from "@/Components/UsersTable";
+import UsersTable from "@/Components/Tables/UsersTable";
 import {isAdmin} from "@/lib";
 import CreateResource from "@/Components/CreateResource";
 import UserIndexContent from "@/Components/UserIndexContent";

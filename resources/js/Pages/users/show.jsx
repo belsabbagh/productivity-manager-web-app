@@ -4,8 +4,8 @@ import TextDisplay from "@/Components/TextDisplay";
 import AttributeDisplay from "@/Components/AttributeDisplay";
 import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import TeamTable from "@/Components/TeamTable";
-import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
+import TeamTable from "@/Components/Tables/TeamTable";
+import ProjectDisplay from "@/Components/ProjectDisplay";
 
 export default function show(props) {
     let {user} = props

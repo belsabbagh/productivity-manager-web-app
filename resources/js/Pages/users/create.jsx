@@ -7,10 +7,10 @@ import {
     TextField, Typography
 } from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import TextFieldWithIcon from "@/Components/TextFieldWithIcon";
+import TextFieldWithIcon from "@/Components/Inputs/TextFieldWithIcon";
 import UserIcon from "@/Components/Icons/UserIcon";
 import MailIcon from "@/Components/Icons/MailIcon";
-import InputWithIcon from "@/Components/InputWithIcon";
+import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 import {VpnKeyOutlined} from "@mui/icons-material";
 
 export default function create(props) {

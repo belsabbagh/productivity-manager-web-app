@@ -12,6 +12,7 @@ import UserIcon from "@/Components/Icons/UserIcon";
 import MailIcon from "@/Components/Icons/MailIcon";
 import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 import {VpnKeyOutlined} from "@mui/icons-material";
+import SelectIndex from "@/Components/Inputs/Select/SelectIndex";
 
 export default function create(props) {
     const resource = 'user'
@@ -34,8 +35,8 @@ export default function create(props) {
         setData((currentData) => ({...currentData, [e.target.name]: e.target.value}));
     }
     const user_type = [
-        {id: 1, name: 'admin'},
-        {id: 2, name: 'developer'}];
+        {id: 3, name: 'admin'},
+        {id: 2, name: 'leader'}];
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -63,7 +64,8 @@ export default function create(props) {
                         />
 
                         <InputWithIcon
-                            input={<TextField name={"password"} type="password" sx={{minWidth: 1}} className="bg-content"
+                            input={<TextField name={"password"} type="password" sx={{minWidth: 1}}
+                                              className="bg-content"
                                               onChange={updateFormData}
                                               required label="user's password" variant="outlined"/>}
                             error={errors.password}
@@ -73,6 +75,11 @@ export default function create(props) {
                             input={<TextField name={"password_confirmation"} type="password" sx={{minWidth: 1}}
                                               className="bg-content" onChange={updateFormData}
                                               required label="confirm password" variant="outlined"/>}
+                            error={errors.password_confirmation}
+                            icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
+                        />
+                        <InputWithIcon
+                            input={<SelectIndex name={'userType'} label={'user type'} onChange={updateFormData} data={user_type}/>}
                             error={errors.password_confirmation}
                             icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
                         />

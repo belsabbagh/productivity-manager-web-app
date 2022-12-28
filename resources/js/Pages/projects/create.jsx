@@ -11,7 +11,7 @@ import TextFieldWithIcon from "@/Components/Inputs/TextFieldWithIcon";
 import UserIcon from "@/Components/Icons/UserIcon";
 import ProjectsIcon from "@/Components/Icons/ProjectsIcon";
 import InputWithIcon from "@/Components/Inputs/InputWithIcon";
-import MultipleSelectCheckmarks from "@/Components/Inputs/MultipleSelectCheckmarks";
+import MultipleSelectCheckmarks from "@/Components/Inputs/Select/MultipleSelectCheckmarks";
 import SkillsIcon from "@/Components/Icons/SkillsIcon";
 import RegionIcon from "@/Components/Icons/RegionIcon";
 

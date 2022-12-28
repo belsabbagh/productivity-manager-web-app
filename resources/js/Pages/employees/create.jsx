@@ -1,7 +1,7 @@
 import React from 'react';
 import './../../../css/App.css';
 import {useForm} from '@inertiajs/inertia-react';
-import MultipleSelectCheckmarks from '@/Components/Inputs/MultipleSelectCheckmarks';
+import MultipleSelectCheckmarks from '@/Components/Inputs/Select/MultipleSelectCheckmarks';
 import {Button, Typography} from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import UserIcon from "@/Components/Icons/UserIcon";

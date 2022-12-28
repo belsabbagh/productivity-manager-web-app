@@ -1,6 +1,6 @@
 import React from "react";
 import SearchIcon from "@/Components/Icons/SearchIcon";
-import MultipleSelectCheckmarks from "@/Components/Inputs/MultipleSelectCheckmarks";
+import MultipleSelectCheckmarks from "@/Components/Inputs/Select/MultipleSelectCheckmarks";
 
 export default function ProjectIndexFilter({regions, skills}) {
     return (

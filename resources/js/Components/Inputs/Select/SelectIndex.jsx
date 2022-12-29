@@ -13,7 +13,7 @@ const MenuProps = {
     },
 };
 
-export default class SelectIndex extends React.Component {
+class SelectIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,3 +62,5 @@ SelectIndex.defaultProps = {
         )
     }
 }
+
+export default SelectIndex

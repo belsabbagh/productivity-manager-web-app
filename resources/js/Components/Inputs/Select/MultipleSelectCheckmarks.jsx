@@ -13,12 +13,11 @@ const MenuProps = {
     },
 };
 
-export default class MultipleSelectCheckmarks extends React.Component {
+class MultipleSelectCheckmarks extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            choices: [],
-            onChange: this.props.onChange
+            choices: props.choices,
         }
     }
 
@@ -28,7 +27,7 @@ export default class MultipleSelectCheckmarks extends React.Component {
             this.setState({
                 choices: typeof value === 'string' ? value.split(',') : value
             });
-            this.state.onChange(event)
+            this.props.onChange(event)
         };
 
         return (
@@ -45,14 +44,9 @@ export default class MultipleSelectCheckmarks extends React.Component {
                     MenuProps={MenuProps}
                 >
                     {
-                        this.props.data.map((i) => {
-                            return (
-                                <MenuItem key={i['id']} value={i['id']}>
-                                    <Checkbox checked={this.state.choices.indexOf(i['id']) > -1}/>
-                                    <ListItemText primary={i['name']}/>
-                                </MenuItem>
-                            )
-                        })
+                        this.props.data.map((i) => this.props.getItem(i,(i) => {
+                            return this.state.choices.includes(i['id'])
+                        }))
                     }
                 </Select>
             </FormControl>
@@ -72,6 +66,22 @@ MultipleSelectCheckmarks.propTypes = {
     data: PropTypes.any,
     required: PropTypes.bool,
     label: PropTypes.any,
+    choices: PropTypes.array,
+    getItem: PropTypes.func,
 }
 
-MultipleSelectCheckmarks.defaultProps = {required: false}
+MultipleSelectCheckmarks.defaultProps = {
+    required: false,
+    choices: [],
+    getItem: (i, isChecked) => {
+        return (
+            <MenuItem key={i['id']} value={i['id']}>
+                <Checkbox checked={isChecked(i)}/>
+                <ListItemText primary={i['name']}/>
+            </MenuItem>
+        )
+    },
+    onChange: (e) => {return null}
+}
+
+export default MultipleSelectCheckmarks

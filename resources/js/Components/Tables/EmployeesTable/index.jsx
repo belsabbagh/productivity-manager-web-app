@@ -8,7 +8,7 @@ export default function EmployeesTable(props) {
     const isAdmin = props.isAdmin
     const textColor = data.total_utilization > 1 ? formatColor(255, 255, 255) : formatColor(0, 0, 0)
     return (
-        <TableContainer className="border-2 rounded" component={Paper} sx={{minWidth: 800}}>
+        <TableContainer className="border-2 rounded" component={Paper} sx={{width: 800}}>
             <Table>
                 <TableHead>
                     <TableRow>

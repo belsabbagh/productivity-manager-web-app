@@ -6,7 +6,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import CreateResource from "@/Components/Inputs/CreateResource";
 import {isAdmin} from "@/lib";
 import {Edit} from "@mui/icons-material";
-import Table from "@/Components/Tables/Table";
+import Table from "@/Components/Outputs/Table";
 import {createTeamIndexTableRow} from "@/lib/factories";
 
 export default function show(props) {

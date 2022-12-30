@@ -39,6 +39,7 @@
         "react-material-ui-carousel": "^3.4.2",
         "react-multi-carousel": "^2.8.2",
         "react-window": "^1.8.8",
-        "styled-components": "^5.3.6"
+        "styled-components": "^5.3.6",
+        "uuid": "^9.0.0"
     }
 }

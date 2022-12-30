@@ -5,12 +5,11 @@ import PersonnelNav from "@/Components/PersonnelNav";
 import IndexContent from "@/Components/IndexContent";
 import EmployeeIndexFilter from "@/Components/IndexContent/IndexFilters/EmployeeIndexFilter";
 import Table from "@/Components/Outputs/Table";
-import {createEmployeeIndexTableRow} from "@/lib/factories/TableFactories";
+import {EmployeeIndexTableRowCells} from "@/lib/factories/TableFactories";
 
 export default function index(props) {
     const employees = props.employees.data
     const skills = props.skills
-    const userType = props.auth.user.user_type_id
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -22,11 +21,11 @@ export default function index(props) {
             <IndexContent
                 indexQuery={<EmployeeIndexFilter skills={skills}/>}
                 resource={'employee'}
-                canCreate={isAdmin(userType)}
+                canCreate={isAdmin(props.auth.user.user_type_id)}
             >
                 <Table
                     data={employees}
-                    getRowCells={createEmployeeIndexTableRow}
+                    getRowCells={EmployeeIndexTableRowCells}
                     headers={['Email', 'Utilization', 'Show']}
                 />
             </IndexContent>

@@ -7,7 +7,7 @@ import CreateResource from "@/Components/Inputs/CreateResource";
 import {isAdmin} from "@/lib";
 import {Edit} from "@mui/icons-material";
 import Table from "@/Components/Outputs/Table";
-import {createTeamIndexTableRow} from "@/lib/factories/TableFactories";
+import {TeamIndexTableRowCells} from "@/lib/factories/TableFactories";
 
 export default function show(props) {
     let {project} = props
@@ -47,7 +47,7 @@ export default function show(props) {
                         <AttributeDisplay label={"Team"}>
                             <Table
                                 data={project.team}
-                                getRowCells={createTeamIndexTableRow}
+                                getRowCells={TeamIndexTableRowCells}
                                 headers={['Email', 'Utilization', 'Edit']}
                             />
                         </AttributeDisplay> :

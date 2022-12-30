@@ -3,10 +3,11 @@ import TextDisplay from "@/Components/Outputs/TextDisplay";
 import AttributeDisplay from "@/Components/Outputs/AttributeDisplay";
 import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import TeamTable from "@/Components/Tables/TeamTable";
 import CreateResource from "@/Components/Inputs/CreateResource";
 import {isAdmin} from "@/lib";
 import {Edit} from "@mui/icons-material";
+import Table from "@/Components/Tables/Table";
+import {createTeamIndexTableRow} from "@/lib/factories";
 
 export default function show(props) {
     let {project} = props
@@ -44,8 +45,12 @@ export default function show(props) {
                     />
                     {(project.team.length > 0) ?
                         <AttributeDisplay label={"Team"}>
-                            <TeamTable data={project.team} firstColKey={'email'}/>
-                        </AttributeDisplay>  :
+                            <Table
+                                data={project.team}
+                                getRowCells={createTeamIndexTableRow}
+                                headers={['Email', 'Utilization', 'Edit']}
+                            />
+                        </AttributeDisplay> :
                         <TextDisplay
                             label={"Team"}
                             value={"None"}

@@ -1,11 +1,9 @@
 import React from 'react';
-import {Head} from '@inertiajs/inertia-react';
-import TextDisplay from "@/Components/TextDisplay";
-import AttributeDisplay from "@/Components/AttributeDisplay";
+import TextDisplay from "@/Components/Outputs/TextDisplay";
 import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import TeamTable from "@/Components/TeamTable";
-import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
+import ProjectDisplay from "@/Components/Outputs/ProjectDisplay";
+import {Edit} from "@mui/icons-material";
 
 export default function show(props) {
     let {user} = props
@@ -22,8 +20,8 @@ export default function show(props) {
             <div className="bg-white p-6 flex flex-col">
                 <ItemHeader
                     title={user.name + " Details"}
-                    href={`/users/${user.id}/edit`}
-                    isAllowedToEdit={userId === user.id}
+                    href={userId === user.id ? `/users/${user.id}/edit` : null}
+                    linkIcon={<Edit className={'w-6 h-6'}/>}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
                     <TextDisplay

@@ -25,7 +25,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'leader' => 'required|exists:users,id',
+            'leader' => 'required|int|exists:users,id',
             'region' => 'required|string',
         ];
     }

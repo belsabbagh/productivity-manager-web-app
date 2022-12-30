@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import '../../../css/app.css';
 import {Head} from "@inertiajs/inertia-react";
-import AttributeDisplay from "@/Components/AttributeDisplay";
-import TextDisplay from "@/Components/TextDisplay";
-import ListDisplay from "@/Components/ListDisplay";
+import AttributeDisplay from "@/Components/Outputs/AttributeDisplay";
+import TextDisplay from "@/Components/Outputs/TextDisplay";
+import ListDisplay from "@/Components/Outputs/ListDisplay";
 import EmployeeUtilization from "@/Components/EmployeeUtilization";
-import {KeyboardOptionKey, Person} from "@mui/icons-material";
+import {Edit, KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
-import ProjectDisplay from "@/Components/PracticeNavBar/ProjectDisplay";
+import ProjectDisplay from "@/Components/Outputs/ProjectDisplay";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import {isAdmin} from "@/lib";
 
@@ -24,9 +24,9 @@ export default function show(props) {
         >
             <div className="bg-white min-w-full p-6 flex flex-col">
                 <ItemHeader
-                    title={employee.first_name+" Details"}
-                    href={`/employees/${employee.id}/edit`}
-                    isAllowedToEdit={isAdmin(props.auth.user.user_type_id)}
+                    title={employee.first_name + " Details"}
+                    href={isAdmin(props.auth.user.user_type_id) ? `/employees/${employee.id}/edit` : null}
+                    linkIcon={<Edit className={'w-6 h-6'}/>}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">
                     <div className="flex flex-row justify-center mb-3">

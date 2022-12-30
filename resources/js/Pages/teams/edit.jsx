@@ -4,9 +4,9 @@ import {Inertia} from "@inertiajs/inertia";
 import {Button, Input, TextField, Typography} from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import UserIcon from "@/Components/Icons/UserIcon";
-import InputWithIcon from "@/Components/InputWithIcon";
+import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 import UtilizationIcon from "@/Components/Icons/UtilizationIcon";
-import UtilizationInput from "@/Components/UtilizationInput";
+import UtilizationInput from "@/Components/Inputs/UtilizationInput";
 
 export default function edit(props) {
     const resource = 'team'

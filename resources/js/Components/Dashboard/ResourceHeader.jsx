@@ -1,4 +1,4 @@
-import ContentHeader from "@/Components/ContentHeader";
+import ContentHeader from "@/Components/ContentView/ContentHeader";
 
 export default function ResourceHeader({resource}) {
     return (

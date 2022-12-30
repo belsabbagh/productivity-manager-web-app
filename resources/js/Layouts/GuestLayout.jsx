@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/app.css'
-import Header from "@/Components/Header";
+import Header from "@/Layouts/Header";
 
 export default function Guest({children, title}) {
     return (

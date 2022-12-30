@@ -6,7 +6,7 @@ import PersonnelNav from "@/Components/PersonnelNav";
 import IndexContent from "@/Components/IndexContent";
 import UserIndexFilter from "@/Components/IndexContent/IndexFilters/UserIndexFilter";
 import Table from "@/Components/Outputs/Table";
-import {creatUserIndexTableRow} from "@/lib/factories";
+import {createUserIndexTableRow} from "@/lib/factories/TableFactories";
 
 export default function index(props) {
     const users = props.users.data
@@ -26,7 +26,7 @@ export default function index(props) {
             >
                 <Table
                     data={users}
-                    getRowCells={creatUserIndexTableRow}
+                    getRowCells={createUserIndexTableRow}
                     headers={['Name', 'Email', 'Position', 'Show']}
                 />
             </IndexContent>

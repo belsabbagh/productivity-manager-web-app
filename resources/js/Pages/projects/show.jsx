@@ -7,7 +7,7 @@ import CreateResource from "@/Components/Inputs/CreateResource";
 import {isAdmin} from "@/lib";
 import {Edit} from "@mui/icons-material";
 import Table from "@/Components/Outputs/Table";
-import {createTeamIndexTableRow} from "@/lib/factories";
+import {createTeamIndexTableRow} from "@/lib/factories/TableFactories";
 
 export default function show(props) {
     let {project} = props

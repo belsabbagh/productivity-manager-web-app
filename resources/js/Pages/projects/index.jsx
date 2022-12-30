@@ -4,7 +4,7 @@ import {isAdmin} from "@/lib";
 import ProjectIndexFilter from "@/Components/IndexContent/IndexFilters/ProjectIndexFilter";
 import IndexContent from "@/Components/IndexContent";
 import Table from "@/Components/Outputs/Table";
-import {createProjectIndexTableRow} from "@/lib/factories";
+import {createProjectIndexTableRow} from "@/lib/factories/TableFactories";
 
 export default function index(props) {
     const projects = props.projects.data

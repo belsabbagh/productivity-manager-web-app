@@ -3,7 +3,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import {isAdmin} from "@/lib";
 import ProjectIndexFilter from "@/Components/IndexContent/IndexFilters/ProjectIndexFilter";
 import IndexContent from "@/Components/IndexContent";
-import Table from "@/Components/Tables/Table";
+import Table from "@/Components/Outputs/Table";
 import {createProjectIndexTableRow} from "@/lib/factories";
 
 export default function index(props) {

@@ -5,7 +5,7 @@ import {isAdmin} from "@/lib";
 import PersonnelNav from "@/Components/PersonnelNav";
 import IndexContent from "@/Components/IndexContent";
 import UserIndexFilter from "@/Components/IndexContent/IndexFilters/UserIndexFilter";
-import Table from "@/Components/Tables/Table";
+import Table from "@/Components/Outputs/Table";
 import {creatUserIndexTableRow} from "@/lib/factories";
 
 export default function index(props) {

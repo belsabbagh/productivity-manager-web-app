@@ -4,7 +4,7 @@ import {Head} from "@inertiajs/inertia-react";
 import AttributeDisplay from "@/Components/Outputs/AttributeDisplay";
 import TextDisplay from "@/Components/Outputs/TextDisplay";
 import ListDisplay from "@/Components/Outputs/ListDisplay";
-import EmployeeUtilization from "@/Components/EmployeeUtilization";
+import EmployeeUtilization from "@/Components/Outputs/EmployeeUtilization";
 import {Edit, KeyboardOptionKey, Person} from "@mui/icons-material";
 import ItemHeader from "@/Components/ItemHeader";
 import ProjectDisplay from "@/Components/Outputs/ProjectDisplay";

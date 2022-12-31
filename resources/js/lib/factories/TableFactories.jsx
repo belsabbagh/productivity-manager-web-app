@@ -1,9 +1,9 @@
-import React from "react";
-import {TableCell} from "@mui/material";
 import {formatColor, getUtilizationColor} from "@/lib";
+import {TableCell} from "@mui/material";
 import {Link} from "@inertiajs/inertia-react";
+import React from "react";
 
-export function creatUserIndexTableRow(user) {
+export function UserIndexTableRow(user) {
     return [
         <TableCell key={'name'} component="th" scope="row">{user.name}</TableCell>,
         <TableCell key={'email'} align="center">{user.email}</TableCell>,
@@ -14,27 +14,22 @@ export function creatUserIndexTableRow(user) {
     ]
 }
 
-
-export function createEmployeeIndexTableRow(employee) {
-    const textColor = employee.total_utilization > 1 ? formatColor(255, 255, 255) : formatColor(0, 0, 0)
+export function EmployeeIndexTableRowCells(employee) {
+    const utilizationStyle = {
+        backgroundColor: getUtilizationColor(employee.total_utilization),
+        color: employee.total_utilization > 1 ? formatColor(255, 255, 255) : formatColor(0, 0, 0)
+    }
+    const formattedUtilization = Number((employee.total_utilization).toFixed(2));
     return [
         <TableCell key={'email'} component="th" scope="row">{employee.email}</TableCell>,
-        <TableCell
-            key={'total_utilization'}
-            align="center"
-            style={{
-                backgroundColor: getUtilizationColor(employee.total_utilization),
-                color: textColor
-            }}
-        >
-            {Number((employee.total_utilization).toFixed(2))}</TableCell>,
+        <TableCell key={'total_utilization'} align="center" style={utilizationStyle}>{formattedUtilization}</TableCell>,
         <TableCell align="center" key={'show'}>
             <Link className={'p-2 rounded-lg hover:bg-gray'} href={`/employees/${employee.id}`}>Show</Link>
         </TableCell>,
     ]
 }
 
-export function createProjectIndexTableRow(project) {
+export function ProjectIndexTableRowCells(project) {
     return [
         <TableCell key={'name'} component="th" scope="row">{project.name}</TableCell>,
         <TableCell key={'leader'} align="center">{project.leader.name ?? 'None'}</TableCell>,
@@ -44,7 +39,7 @@ export function createProjectIndexTableRow(project) {
     ]
 }
 
-export function createTeamIndexTableRow(team) {
+export function TeamIndexTableRowCells(team) {
     return [
         <TableCell key={'email'} component="th" scope="row">{team.email}</TableCell>,
         <TableCell key={'utilization'} align="center">{Number(team.pivot.utilization)}</TableCell>,

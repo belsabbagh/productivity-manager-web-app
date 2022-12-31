@@ -32,17 +32,17 @@ export default function edit(props) {
         >
             <div id="white container" className=" rounded-lg  bg-white flex flex-row justify-center">
                 <div id="form container" className="py-16 px-24">
-                    <Typography sx={{mb: 2}} variant='h5'> edit team member capacity </Typography>
+                    <Typography sx={{mb: 2}} variant='h5'> Edit team member capacity </Typography>
                     <div id="purple container"
                          className=" rounded-lg  bg-content h-[350px]  w-[550px] flex flex-row justify-center pr-8 ">
                         <div id="form" className="pt-16">
-                            <form>
+
                                 <div id="team member name" className=" border rounded border-gray flex flex-row justify-start items-center mb-2">
                                     <div id="icon css"
                                          className=" bg-content p-3 mr-1 border rounded border-gray flex flex-row justify-center items-center">
                                         <UserIcon svgClassName={'w-6 h-6'}/>
                                     </div>
-                                    <Typography variant='h6'> {team.employee.email} </Typography>
+                                    <Typography sx={{minWidth: 1}} variant='h7'> {team.employee.first_name +' '+ team.employee.last_name } </Typography>
                                 </div>
                                 <InputWithIcon
                                     input={<UtilizationInput defaultValue={team.utilization}/>}
@@ -61,7 +61,7 @@ export default function edit(props) {
                                         onClick={handleSubmit}>
                                     save changes
                                 </Button>
-                            </form>
+
                         </div>
                     </div>
                 </div>

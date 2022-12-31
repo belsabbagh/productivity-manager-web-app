@@ -4,14 +4,13 @@ import {isAdmin} from "@/lib";
 import ProjectIndexFilter from "@/Components/IndexContent/IndexFilters/ProjectIndexFilter";
 import IndexContent from "@/Components/IndexContent";
 import Table from "@/Components/Outputs/Table";
-import {createProjectIndexTableRow} from "@/lib/factories";
+import {ProjectIndexTableRowCells} from "@/lib/factories/TableFactories";
+import {v4} from "uuid";
 
 export default function index(props) {
     const projects = props.projects.data
     const regions = projects.map(i => {
-        return {
-            name: i.region
-        }
+        return {id: v4(), name: i.region}
     })
     const userType = props.auth.user.user_type_id
     return (
@@ -28,7 +27,7 @@ export default function index(props) {
             >
                 <Table
                     data={projects}
-                    getRowCells={createProjectIndexTableRow}
+                    getRowCells={ProjectIndexTableRowCells}
                     headers={['Name', 'Leader', 'Show']}
                 />
             </IndexContent>

@@ -7,7 +7,7 @@ export default function NumberInput({min, max, step, defaultValue = null}) {
             type="number"
             inputProps={{min: min, max: max, step: step}}
             defaultValue={defaultValue} sx={{minWidth: 1, pl: 1}} className="bg-content"
-            label="project capacity" variant="outlined"
+            variant="outlined"
         />
     )
 }

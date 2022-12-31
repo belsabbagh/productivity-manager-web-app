@@ -31,12 +31,6 @@ Route::get('/', function ()
     return Redirect::route('login');
 });
 
-
-Route::get('/dashboard', function ()
-{
-    return Inertia::render('Dashboard');
-});
-
 Route::get('/charts', function ()
 {
     return Inertia::render('charts', [

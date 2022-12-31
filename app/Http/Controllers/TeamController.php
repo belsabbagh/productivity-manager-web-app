@@ -15,6 +15,7 @@ class TeamController extends Controller
 {
     public function __construct()
     {
+        $this->authorizeResource(Team::class);
     }
 
     /**

@@ -40,13 +40,11 @@ export function ProjectIndexTableRowCells(project) {
 }
 
 export function TeamIndexTableRowCells(team) {
-    const href = `/projects/${team.pivot.project_id}/team/${team.id}/edit`
-    console.log(href);
     return [
         <TableCell key={'email'} component="th" scope="row">{team.email}</TableCell>,
         <TableCell key={'utilization'} align="center">{Number(team.pivot.utilization)}</TableCell>,
         <TableCell key={'edit'} align="center">
-            <Link className={'p-2 rounded-lg hover:bg-gray'} href={href}>Edit</Link>
+            <Link className={'p-2 rounded-lg hover:bg-gray'} href={`/projects/${team.pivot.project_id}/team/${team.id}/edit`}>Edit</Link>
         </TableCell>
     ]
 }

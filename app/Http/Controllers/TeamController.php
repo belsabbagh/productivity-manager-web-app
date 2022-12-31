@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\TeamResource;
+use App\Models\Project;
 use App\Models\Team;
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
@@ -14,7 +15,6 @@ class TeamController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Team::class);
     }
 
     /**
@@ -34,7 +34,7 @@ class TeamController extends Controller
      */
     public function create(): Response
     {
-        return Inertia::render('teams/create');
+        return Inertia::render('team/create');
     }
 
     /**
@@ -72,9 +72,9 @@ class TeamController extends Controller
      * @param \App\Models\Team $team
      * @return Response
      */
-    public function edit(Team $team)
+    public function edit($team)
     {
-        return Inertia::render('teams/edit', ['team' => new TeamResource($team)]);
+        return Inertia::render('team/edit', ['team' => new TeamResource(Team::find($team))]);
     }
 
     /**
@@ -86,7 +86,7 @@ class TeamController extends Controller
      */
     public function update(UpdateTeamRequest $request, Team $team)
     {
-        //
+
     }
 
     /**
@@ -97,6 +97,6 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+
     }
 }

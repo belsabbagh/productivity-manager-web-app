@@ -47,7 +47,7 @@ Route::get('/charts', function ()
 Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
 Route::resource('employees', EmployeeController::class)->middleware(['auth', 'verified']);
 Route::resource('projects', ProjectController::class)->middleware(['auth', 'verified']);
-Route::resource('teams', TeamController::class)->middleware(['auth', 'verified']);
+Route::resource('projects.team', TeamController::class)->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function ()
 {

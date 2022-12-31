@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProjectResource;
 use App\Http\Resources\TeamResource;
 use App\Models\Employee;
 use App\Models\Project;
@@ -53,7 +54,8 @@ class TeamController extends Controller
             'utilization' => $request->input('utilization'),
         ]);
         $team->save();
-        return Redirect::route("projects.show", ['project' => $project]);
+        unset($project->employees);
+        return Redirect::route("projects.show", ['project' => new ProjectResource($project)]);
     }
 
     /**
@@ -86,11 +88,13 @@ class TeamController extends Controller
      *
      * @param \App\Http\Requests\UpdateTeamRequest $request
      * @param \App\Models\Team $team
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateTeamRequest $request, Team $team)
+    public function update(UpdateTeamRequest $request, Project $project, Team $team)
     {
-
+        $team->update(['utilization' => $request->input('utilization')]);
+        unset($project->employees);
+        return Redirect::route("projects.show", ['project' => new ProjectResource($project)]);
     }
 
     /**
@@ -101,8 +105,8 @@ class TeamController extends Controller
      */
     public function destroy(Project $project, Team $team)
     {
-        $team->delete();
-        $project->employees()->sync($team);
-        return Redirect::route("projects.show", ['project' => $project]);
+        $team->forceDelete();
+        unset($project->employees);
+        return Redirect::route("projects.show", ['project' => new ProjectResource($project)]);
     }
 }

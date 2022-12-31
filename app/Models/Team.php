@@ -13,6 +13,8 @@ class Team extends Pivot
         'utilization',
     ];
 
+    protected $primaryKey = 'id';
+
     protected $table = 'employee_project';
 
     public function employee(): BelongsTo

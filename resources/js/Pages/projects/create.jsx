@@ -30,7 +30,6 @@ export default function create(props) {
         e.preventDefault();
         post(route(`${resource}s.store`), {
             onSuccess: () => {
-                console.log(data)
                 alert('success')
             },
         });

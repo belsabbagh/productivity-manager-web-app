@@ -13,7 +13,7 @@ class UpdateTeamRequest extends FormRequest
      */
     public function authorize()
     {
-        request()->user()->isAdmin();
+        return request()->user()->isAdmin();
     }
 
     /**

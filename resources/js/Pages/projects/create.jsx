@@ -3,7 +3,7 @@ import './../../../css/App.css';
 import {Head, useForm} from '@inertiajs/inertia-react';
 import {
     Autocomplete,
-    Button,
+    Button, FormControl, InputLabel, MenuItem, Select,
     TextField, Typography
 } from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
@@ -14,6 +14,7 @@ import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 import MultipleSelectCheckmarks from "@/Components/Inputs/Select/MultipleSelectCheckmarks";
 import SkillsIcon from "@/Components/Icons/SkillsIcon";
 import RegionIcon from "@/Components/Icons/RegionIcon";
+import SelectInput from "@mui/material/Select/SelectInput";
 
 
 export default function create(props) {
@@ -27,10 +28,16 @@ export default function create(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        post(route(`${resource}s.store`));
+        post(route(`${resource}s.store`), {
+            onSuccess: () => {
+                console.log(data)
+                alert('success')
+            },
+        });
     }
 
     const updateFormData = (e) => {
+        console.log(e.target.name)
         setData((currentData) => ({...currentData, [e.target.name]: e.target.value}));
     }
 
@@ -62,23 +69,28 @@ export default function create(props) {
                 <Typography sx={{mb: 2}} variant='h5'> Create a project</Typography>
                 <form>
                     <TextFieldWithIcon
-                        label={'Name'} name={'firstName'}
+                        label={'Name'} name={'name'}
                         icon={<ProjectsIcon svgClassName={'w-6 h-6'}/>}
                         onChange={updateFormData}
                         error={errors.name}
                     />
 
                     <InputWithIcon
-                        input={<Autocomplete
+                        input={<FormControl fullWidth> <InputLabel id="demo-simple-select-label">Leader</InputLabel>
+                            <Select
                             className="bg-content" sx={{minWidth: 1}}
-                            disablePortal
-                            id="combo-box-team_leaders"
-                            options={leaders}
-                            onChange={updateFormData}
-                            getOptionLabel={(i) => i.name}
+                            name={'leader'}
+                            label={'leader'}
+                            labelId="demo-simple-select-label"
                             required
-                            renderInput={(params) => <TextField {...params} label="Team leader"/>}
-                        />}
+                            value={data.leader}
+                            onChange={updateFormData}
+
+                        >
+                            {props.leaders.map((i) => {
+                                return <MenuItem value={i.id}> {i.name}</MenuItem>
+                            })}
+                        </Select></FormControl>}
                         icon={<UserIcon svgClassName={'w-6 h-6'}/>}
                         error={errors.leader}
                     />
@@ -91,9 +103,10 @@ export default function create(props) {
                                 id="combo-box-regions"
                                 options={regions}
                                 getOptionLabel={(i) => i.name}
-                                onChange={updateFormData}
+                                name={'region'}
                                 required
-                                renderInput={(params) => <TextField {...params} label="Region"/>}
+                                renderInput={(params) => <TextField onChange={updateFormData} {...params} label="Region"
+                                                                    name={'region'}/>}
                             />
                         }
                         icon={<RegionIcon svgClassName={'w-6 h-6'}/>}

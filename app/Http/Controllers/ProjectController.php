@@ -120,6 +120,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $project->forceDelete();
         return Redirect::route("$this->resource_route.index");
     }
 }

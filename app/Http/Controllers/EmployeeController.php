@@ -101,6 +101,13 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
+        $employee->update([
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'email' => $request->input('email'),
+        ]);
+        $employee->skills()->detach();
+        $employee->skills()->attach($request->input('skills', $employee->skills));
         return Redirect::route("$this->resource_route.show", [$employee]);
     }
 

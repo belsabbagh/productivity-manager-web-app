@@ -103,6 +103,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'userType' => 'required|int|exists:user_types,id',
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'user_type_id' => $request->userType
+        ]);
         return Redirect::route("$this->resource_route.show", [$user]);
     }
 
@@ -115,6 +128,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $user->delete();
         return Redirect::route("$this->resource_route.index");
     }
 }

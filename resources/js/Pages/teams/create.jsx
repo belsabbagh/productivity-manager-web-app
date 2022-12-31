@@ -38,7 +38,7 @@ export default function edit(props) {
         >
             <div id="white container" className=" rounded-lg  bg-white flex flex-row justify-center">
                 <div id="form container" className="py-16 px-24">
-                    <Typography sx={{mb: 2}} variant='h5'> add a new team member </Typography>
+                    <Typography sx={{mb: 2}} variant='h5'> Add a new team member </Typography>
                     <div id="purple container"
                          className=" rounded-lg  bg-content h-[350px]  w-[550px] flex flex-row justify-center pr-8">
 

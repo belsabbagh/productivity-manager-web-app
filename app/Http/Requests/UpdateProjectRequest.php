@@ -21,10 +21,13 @@ class UpdateProjectRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string',
+            'leader' => 'required|int|exists:users,id',
+            'region' => 'required|string',
         ];
     }
 }

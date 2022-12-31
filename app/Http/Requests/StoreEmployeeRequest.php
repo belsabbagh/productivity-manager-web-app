@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+include_once base_path() . '/services/auth.php';
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEmployeeRequest extends FormRequest
@@ -13,7 +15,7 @@ class StoreEmployeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return request()->user()->isAdmin();
     }
 
     /**

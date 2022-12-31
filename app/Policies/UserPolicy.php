@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Policies;
-include_once base_path() . '/services/auth.php';
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -19,7 +18,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        return isAdmin($user);
+        return $user->isAdmin() || $user->isLeader();
     }
 
     /**
@@ -31,7 +30,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return isAdmin($user) || $user->id === $model->id;
+        return $user->isAdmin() || $user->id === $model->id;
     }
 
     /**
@@ -42,7 +41,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return isAdmin($user);
+        return $user->isAdmin();
     }
 
     /**
@@ -54,7 +53,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return isAdmin($user) || $user->id === $model->id;
+        return $user->isAdmin() || $user->id === $model->id;
     }
 
     /**
@@ -66,7 +65,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        return isAdmin($user);
+        return $user->isAdmin();
     }
 
     /**

@@ -31,12 +31,6 @@ Route::get('/', function ()
     return Redirect::route('login');
 });
 
-
-Route::get('/dashboard', function ()
-{
-    return Inertia::render('Dashboard');
-});
-
 Route::get('/charts', function ()
 {
     return Inertia::render('charts', [
@@ -47,7 +41,7 @@ Route::get('/charts', function ()
 Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
 Route::resource('employees', EmployeeController::class)->middleware(['auth', 'verified']);
 Route::resource('projects', ProjectController::class)->middleware(['auth', 'verified']);
-Route::resource('teams', TeamController::class)->middleware(['auth', 'verified']);
+Route::resource('projects.team', TeamController::class)->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function ()
 {

@@ -7,7 +7,6 @@ function createTableRows(data, getRowCells) {
 }
 
 export default function Table({headers, data, getRowCells}) {
-    console.log({headers, data, getRowCells})
     return (
         <TableContainer className="border-2 rounded" component={Paper} sx={{minWidth: 800}}>
             <MuiTable>

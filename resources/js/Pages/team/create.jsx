@@ -1,34 +1,39 @@
 import React from 'react';
 import {useForm} from '@inertiajs/inertia-react';
 import {Inertia} from "@inertiajs/inertia";
-import {Autocomplete, Button, Input, TextField, Typography} from "@mui/material";
+import {
+    Autocomplete,
+    Button,
+    FormControl,
+    Input,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+    Typography
+} from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 import UtilizationIcon from "@/Components/Icons/UtilizationIcon";
 import NumberInput from "@/Components/Inputs/NumberInput";
 import UtilizationInput from "@/Components/Inputs/UtilizationInput";
+import UserIcon from "@/Components/Icons/UserIcon";
 
 export default function edit(props) {
     const resource = 'team'
-    const {assignment} = props
-    const {data, setData, errors, post} = useForm({});
+    const {data, setData, errors, post} = useForm({
+        employee: null,
+        utilization: null
+    });
+
+    const updateFormData = (e) => {
+        setData((currentData) => ({...currentData, [e.target.name]: e.target.value}));
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
-        post(route(`${resource}s.update`, assignment.id));
+        post(route(`projects.team.store`, props.project.id));
     }
-
-    const employee_names = [
-        {
-            id: 1, name: 'Jeff'
-        },
-        {
-            id: 2, name: 'Steve'
-        },
-        {
-            id: 3, name: 'Karen'
-        }
-    ];
 
     return (
         <AuthenticatedLayout
@@ -55,17 +60,37 @@ export default function edit(props) {
                                     </svg>
 
                                 </div>
+
                                 <Autocomplete sx={{minWidth: 1}} className="bg-content "
                                               disablePortal
                                               id="combo-box-team_leaders"
-                                              options={employee_names}
-                                              getOptionLabel={(i) => i.name}
+                                              options={props.employees}
+                                              getOptionLabel={(i) => i.first_name}
                                               renderInput={(params) => <TextField {...params}
                                                                                   label="Team member name"/>}/>
                             </div>
                             <InputWithIcon
-                                input={<UtilizationInput/>}
+                                input={<FormControl fullWidth> <InputLabel
+                                    id="demo-simple-select-label">Employee</InputLabel>
+                                    <Select
+                                        className="bg-content" sx={{minWidth: 1}}
+                                        name={'employee'}
+                                        labelId="demo-simple-select-label"
+                                        required
+                                        onChange={updateFormData}
+
+                                    >
+                                        {props.employees.map((i) => {
+                                            return <MenuItem value={i.id}> {i.first_name + ' ' + i.last_name}</MenuItem>
+                                        })}
+                                    </Select></FormControl>}
+                                icon={<UserIcon svgClassName={'w-6 h-6'}/>}
+                                error={errors.employee}
+                            />
+                            <InputWithIcon
+                                input={<UtilizationInput onChange={updateFormData}/>}
                                 icon={<UtilizationIcon svgClassName={'w-6 h-6'}/>}
+                                error={errors.utilization}
                             />
                             <Button style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}}
                                     onClick={handleSubmit}>

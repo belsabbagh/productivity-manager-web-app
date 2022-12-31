@@ -57,6 +57,12 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        $project = new Project([
+            'name' => $request->input('name'),
+            'leader_id' => $request->input('leader'),
+            'region' => $request->input('region'),
+        ]);
+        $project->save();
         return Redirect::route("$this->resource_route.index");
     }
 
@@ -97,6 +103,11 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        $project->update([
+            'name' => $request->input('name'),
+            'leader_id' => $request->input('leader'),
+            'region' => $request->input('region'),
+        ]);
         return Redirect::route("$this->resource_route.show", [$project]);
     }
 

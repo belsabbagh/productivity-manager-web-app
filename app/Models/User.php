@@ -52,8 +52,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserType::class);
     }
+
     public function projects()
     {
         return $this->hasMany(Project::class, 'leader_id', 'id');
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->user_type->id == 3;
+    }
+
+    public function isLeader(): bool
+    {
+        return $this->user_type->id == 2;
     }
 }

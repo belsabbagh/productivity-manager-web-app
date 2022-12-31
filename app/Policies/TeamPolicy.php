@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Policies;
-include_once base_path() . '/services/auth.php';
 
 use App\Models\Team;
 use App\Models\User;
@@ -20,7 +19,7 @@ class TeamPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -32,6 +31,7 @@ class TeamPolicy
      */
     public function view(User $user, Team $team)
     {
+        return $user->isAdmin();
     }
 
     /**
@@ -42,7 +42,7 @@ class TeamPolicy
      */
     public function create(User $user)
     {
-        return isAdmin($user);
+        return $user->isAdmin();
     }
 
     /**
@@ -54,7 +54,7 @@ class TeamPolicy
      */
     public function update(User $user, Team $team)
     {
-        return isAdmin($user) || $user->id === $team->project->leader->id;
+        return $user->isAdmin() || $user->id === $team->project->leader->id;
     }
 
     /**
@@ -66,7 +66,7 @@ class TeamPolicy
      */
     public function delete(User $user, Team $team)
     {
-        //
+        return $user->isAdmin() || $user->id === $team->project->leader->id;
     }
 
     /**

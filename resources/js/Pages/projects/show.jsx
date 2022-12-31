@@ -12,7 +12,6 @@ import {TeamIndexTableRowCells} from "@/lib/factories/TableFactories";
 export default function show(props) {
     let {project} = props
     project = project.data
-    console.log(project)
     let userType = props.auth.user.user_type_id
     return (
         <AuthenticatedLayout
@@ -58,7 +57,7 @@ export default function show(props) {
                         />
                     }
                     <div className={'mr-auto mt-2'}>
-                        <CreateResource resource={'team'} label={'add team member'} href={'/teams/create'}/>
+                        <CreateResource resource={'team'} label={'add team member'} href={`/projects/${project.id}/team/create`}/>
                     </div>
                 </div>
             </div>

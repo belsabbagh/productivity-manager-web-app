@@ -17,13 +17,15 @@ export default function ProjectDisplay({data, label, itemValueKey, itemId = 'id'
                             return (
                                 <ListItem className="bg-textbox flex flex-row justify-between items-center" key={i[itemId]}>
                                     <Link href={itemHref}>
-                                        <div className="">
-                                            {i[itemValueKey]}
+                                        <div className={'flex flex-row justify-between'}>
+                                            <div className="">
+                                                {i[itemValueKey]}
+                                            </div>
+                                            <div className={'ml-auto'}>
+                                                <ArrowForwardIos sx={{color: 'black'}}/>
+                                            </div>
                                         </div>
                                     </Link>
-                                    <div className={'ml-auto'}>
-                                        <ArrowForwardIos sx={{color: 'black'}}/>
-                                    </div>
                                 </ListItem>
                             )
                         }

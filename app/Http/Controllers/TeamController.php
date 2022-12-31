@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\TeamResource;
+use App\Models\Employee;
 use App\Models\Project;
 use App\Models\Team;
 use App\Http\Requests\StoreTeamRequest;
@@ -33,9 +34,9 @@ class TeamController extends Controller
      *
      * @return Response
      */
-    public function create(): Response
+    public function create(Project $project): Response
     {
-        return Inertia::render('team/create');
+        return Inertia::render('team/create', ['project' => $project, 'employees' => Employee::all()]);
     }
 
     /**
@@ -44,16 +45,15 @@ class TeamController extends Controller
      * @param \App\Http\Requests\StoreTeamRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreTeamRequest $request)
+    public function store(StoreTeamRequest $request, Project $project)
     {
-        $project_id = $request->input('projectId');
         $team = new Team([
-            'employee_id' => $request->input('employeeId'),
-            'project_id' => $project_id,
+            'employee_id' => $request->input('employee'),
+            'project_id' => $project->id,
             'utilization' => $request->input('utilization'),
         ]);
         $team->save();
-        return Redirect::route("projects.show", ['project' => $project_id]);
+        return Redirect::route("projects.show", ['project' => $project]);
     }
 
     /**
@@ -73,9 +73,12 @@ class TeamController extends Controller
      * @param \App\Models\Team $team
      * @return Response
      */
-    public function edit($team)
+    public function edit(Project $project, Team $team)
     {
-        return Inertia::render('team/edit', ['team' => new TeamResource(Team::find($team))]);
+        return Inertia::render('team/edit', [
+            'project' => $project,
+            'team' => new TeamResource($team)
+        ]);
     }
 
     /**
@@ -94,10 +97,12 @@ class TeamController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Models\Team $team
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Team $team)
+    public function destroy(Project $project, Team $team)
     {
-
+        $team->delete();
+        $project->employees()->sync($team);
+        return Redirect::route("projects.show", ['project' => $project]);
     }
 }

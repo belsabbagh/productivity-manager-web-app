@@ -40,6 +40,7 @@ export function ProjectIndexTableRowCells(project) {
 }
 
 export function TeamIndexTableRowCells(team) {
+    console.log(team)
     return [
         <TableCell key={'email'} component="th" scope="row">{team.email}</TableCell>,
         <TableCell key={'utilization'} align="center">{Number(team.pivot.utilization)}</TableCell>,

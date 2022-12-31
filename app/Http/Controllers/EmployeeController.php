@@ -87,7 +87,8 @@ class EmployeeController extends Controller
     {
         return Inertia::render("$this->resource_route/edit", [
             'employee' => new EmployeeResource($employee),
-            'skills' => Skill::all()]);
+            'skills' => Skill::all()
+        ]);
     }
 
     /**

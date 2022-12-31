@@ -31,7 +31,7 @@ class MultipleSelectCheckmarks extends React.Component {
         };
 
         return (
-            <FormControl sx={{minWidth: 1}} className="bg-content">
+            <FormControl sx={{minWidth: 1, mr: 2}} className={"bg-content"}>
                 <InputLabel>{this.props.label}</InputLabel>
                 <Select
                     name={this.props.name}

@@ -8,6 +8,7 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Skill;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -101,6 +102,9 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
+        $request->validate([
+            'email' => Rule::unique('users')->ignore($employee->email, 'email'),
+        ]);
         $employee->update([
             'first_name' => $request->input('firstName'),
             'last_name' => $request->input('lastName'),

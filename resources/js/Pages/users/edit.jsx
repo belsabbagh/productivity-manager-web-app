@@ -20,7 +20,9 @@ export default function edit(props) {
     const {data, setData, errors, put} = useForm({
         name: user.name,
         email: user.email,
-        password: ''
+        password: '',
+        password_confirmation: '',
+        userType: user.user_type_id
     });
 
     const updateFormData = (e) => {
@@ -29,7 +31,10 @@ export default function edit(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        put(route(`${resourcePlural}.update`, user.id));
+        console.log(data)
+        put(route(`${resourcePlural}.update`, user.id), {
+            onSuccess: () => alert('success'),
+        });
     }
 
     function destroy() {
@@ -67,21 +72,31 @@ export default function edit(props) {
                     />
 
                     <InputWithIcon
-                        input={<TextField id="psw" type="password" sx={{minWidth: 1}} className="bg-content"
-                                          required label="user's password" variant="outlined"/>}
+                        input={<TextField name={'password'} type="password" sx={{minWidth: 1}} className="bg-content"
+                                          required label="user's password" variant="outlined"
+                                          onChange={updateFormData}/>}
+                        icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
+                        error={errors.password}
+                    />
+                    <InputWithIcon
+                        input={<TextField name={"password_confirmation"} type="password" sx={{minWidth: 1}}
+                                          className="bg-content" onChange={updateFormData}
+                                          required label="confirm password" variant="outlined"/>}
+                        error={errors.password_confirmation}
                         icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
                     />
-                    <Button type={'submit'}
-                            sx={{
-                                mr: 1,
-                                backgroundColor: 'rgba(75, 0, 130, 0.3)',
-                                color: 'black'
-                            }}
+                    <Button
+                        type={'submit'}
+                        sx={{
+                            mr: 1,
+                            backgroundColor: 'rgba(75, 0, 130, 0.3)',
+                            color: 'black'
+                        }}
                     >
                         edit {resource}
                     </Button>
                     {
-                        props.auth.user.user_type_id === 3 ? <Button
+                        props.auth.user.user_type_id === 3 && props.auth.user.id !== user.id ? <Button
                             sx={{
                                 mr: 1,
                                 backgroundColor: 'rgba(75, 0, 130, 0.3)',

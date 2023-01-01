@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 include_once base_path() . '/services/auth.php';
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreEmployeeRequest extends FormRequest
 {

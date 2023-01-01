@@ -21,6 +21,7 @@ export default function create(props) {
         email: '',
         password: '',
         password_confirmation: '',
+        userType: 2,
     });
 
     function handleSubmit(e) {
@@ -80,7 +81,7 @@ export default function create(props) {
                         />
                         <InputWithIcon
                             input={<SelectIndex name={'userType'} label={'user type'} onChange={updateFormData} data={user_type}/>}
-                            error={errors.password_confirmation}
+                            error={errors.userType}
                             icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
                         />
                         <Button type={"submit"} style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}}>

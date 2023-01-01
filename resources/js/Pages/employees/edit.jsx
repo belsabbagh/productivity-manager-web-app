@@ -3,8 +3,7 @@ import './../../../css/App.css';
 import {useForm} from '@inertiajs/inertia-react';
 import MultipleSelectCheckmarks from '@/Components/Inputs/Select/MultipleSelectCheckmarks';
 import {
-    Button,
-    TextField, Typography
+    Button, Typography
 } from "@mui/material";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import {Inertia} from "@inertiajs/inertia";
@@ -24,14 +23,17 @@ export default function edit(props) {
         firstName: employee.first_name,
         lastName: employee.last_name,
         email: employee.email,
-        skills: employee.skills.map(i=>i.id)
+        skills: employee.skills.map(i => i.id)
     });
     const updateFormData = (e) => {
         setData((currentData) => ({...currentData, [e.target.name]: e.target.value}));
     }
+
     function handleSubmit(e) {
         e.preventDefault();
-        put(route(`${resourcePlural}.update`, employee.id));
+        put(route(`${resourcePlural}.update`, employee.id), {
+            onSuccess: () => alert('success')
+        });
     }
 
     function destroy() {

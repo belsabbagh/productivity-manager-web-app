@@ -31,18 +31,19 @@ class SelectIndex extends React.Component {
 
     render() {
         return (
-            <Select
-                fullWidth
-                labelId={'simple-select'}
-                label={this.props.label}
-                name={this.props.name}
-                value={this.state.choices}
-                onChange={this.updateChoices.bind(this)}
-                input={<OutlinedInput label="Tag"/>}
-                MenuProps={MenuProps}
-            >
-                {this.props.data.map((i) => this.props.getItem(i))}
-            </Select>
+            <FormControl fullWidth>
+                <InputLabel id={'simple-select'}>{this.props.label}</InputLabel>
+                <Select
+                    labelId={'simple-select'}
+                    name={this.props.name}
+                    value={this.state.choices}
+                    onChange={this.updateChoices.bind(this)}
+                    input={<OutlinedInput label="Tag"/>}
+                    MenuProps={MenuProps}
+                >
+                    {this.props.data.map((i) => this.props.getItem(i))}
+                </Select>
+            </FormControl>
         );
     }
 }

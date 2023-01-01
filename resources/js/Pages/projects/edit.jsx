@@ -13,7 +13,6 @@ export default function edit(props) {
     const resource = 'project'
     const resourcePlural = `${resource}s`
     const project = props.project.data
-    const {leaders} = props
     const {data, setData, errors, put} = useForm({
         name:project.name,
         leader:project.leader.id,
@@ -91,7 +90,6 @@ export default function edit(props) {
                                 value={data.leader}
                                 onChange={updateFormData}
                                 defaultValue={data.leader}
-
                             >
                                 {props.leaders.map((i) => {
 

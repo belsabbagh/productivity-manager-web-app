@@ -92,7 +92,7 @@ export default function Login({status, canResetPassword}) {
                             </Link>
                         )}
 
-                        <Button style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}} className="ml-8" onClick={submit}>
+                        <Button type={'submit'} style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}} className="ml-8">
                             Log in
                         </Button>
                     </div>

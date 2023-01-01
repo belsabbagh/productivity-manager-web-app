@@ -4,6 +4,7 @@ import ItemHeader from "@/Components/ItemHeader";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import ProjectDisplay from "@/Components/Outputs/ProjectDisplay";
 import {Edit} from "@mui/icons-material";
+import {isAdmin} from "@/lib";
 
 export default function show(props) {
     let {user} = props
@@ -17,10 +18,10 @@ export default function show(props) {
             title={"User Details"}
             backHref={'/users'}
         >
-            <div className="bg-white p-6 flex flex-col">
+            <div className="bg-white p-6 flex flex-col" style={{minWidth: '150%'}}>
                 <ItemHeader
                     title={user.name + " Details"}
-                    href={userId === user.id ? `/users/${user.id}/edit` : null}
+                    href={isAdmin(props.auth.user.user_type_id) || userId === user.id ? `/users/${user.id}/edit` : null}
                     linkIcon={<Edit className={'w-6 h-6'}/>}
                 />
                 <div className="flex-col justify-center bg-content rounded-lg px-8 py-4">

@@ -32,6 +32,7 @@ class SelectIndex extends React.Component {
     render() {
         return (
             <Select
+                fullWidth
                 labelId={'simple-select'}
                 label={this.props.label}
                 name={this.props.name}

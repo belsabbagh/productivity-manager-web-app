@@ -10,13 +10,14 @@ import UtilizationInput from "@/Components/Inputs/UtilizationInput";
 
 export default function edit(props) {
     const team = props.team.data
+    const projectId = props.project.id;
     const {data, setData, errors, put} = useForm({
         utilization: team.utilization
     });
 
     function handleSubmit(e) {
         e.preventDefault();
-        put(route(`projects.team.update`,  {project: props.project.id, team: team.id}), {
+        put(route(`projects.team.update`, {project: projectId, team: team.id}), {
             onSuccess: () => {
                 alert('success')
             }
@@ -29,7 +30,7 @@ export default function edit(props) {
 
     function destroy() {
         if (confirm(`Are you sure you want to remove this employee from the team?`)) {
-            Inertia.delete(route(`projects.team.destroy`, {project: props.project.id, team: team.id}));
+            Inertia.delete(route(`projects.team.destroy`, {project: projectId, team: team.id}));
         }
     }
 
@@ -38,6 +39,7 @@ export default function edit(props) {
             auth={props.auth}
             errors={props.errors}
             title={"Edit team members"}
+            backHref={`/projects/${projectId}`}
         >
             <div id="white container" className=" rounded-lg  bg-white flex flex-row justify-center">
                 <div id="form container" className="py-16 px-24">

@@ -21,6 +21,7 @@ import UserIcon from "@/Components/Icons/UserIcon";
 
 export default function edit(props) {
     const resource = 'team'
+    const projectId = props.project.id;
     const {data, setData, errors, post} = useForm({
         employee: null,
         utilization: null
@@ -32,7 +33,7 @@ export default function edit(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        post(route(`projects.team.store`, props.project.id));
+        post(route(`projects.team.store`, projectId));
     }
 
     return (
@@ -40,6 +41,7 @@ export default function edit(props) {
             auth={props.auth}
             errors={props.errors}
             title={"Add team member"}
+            backHref={`/projects/${projectId}`}
         >
             <div id="white container" className=" rounded-lg  bg-white flex flex-row justify-center">
                 <div id="form container" className="py-16 px-24">

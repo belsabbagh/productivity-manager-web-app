@@ -56,6 +56,7 @@ class MultipleSelectCheckmarks extends React.Component {
     getRenderValue = (selected) => {
         const names = selected.map((i) => {
             const found = this.props.data.filter((item) => item.id === i)
+            console.log(found)
             return found[0].name
         })
         return names.join(', ')

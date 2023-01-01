@@ -103,7 +103,7 @@ class EmployeeController extends Controller
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
         $request->validate([
-            'email' => Rule::unique('users')->ignore($employee->email, 'email'),
+            'email' => Rule::unique('employees')->ignore($employee->email, 'email'),
         ]);
         $employee->update([
             'first_name' => $request->input('firstName'),

@@ -10,7 +10,6 @@ export default function show(props) {
     let {user} = props
     user = user.data
     const userId = props.auth.user.id
-    console.log(userId)
     return (
         <AuthenticatedLayout
             auth={props.auth}

@@ -39,7 +39,7 @@ export default function edit(props) {
 
     function destroy() {
         if (confirm(`Are you sure you want to delete this ${resource}?`)) {
-            Inertia.delete(route(`${resourcePlural}.destroy`, employee.id));
+            Inertia.delete(route(`${resourcePlural}.destroy`, user.id));
         }
     }
 

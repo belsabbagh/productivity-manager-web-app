@@ -51,7 +51,7 @@ export default function edit(props) {
         >
             <div id="white container" className=" rounded-lg  bg-white">
                 <div id="form container" className="px-48 py-16">
-                    <Typography sx={{mb: 2}} variant='h5'> edit an employee </Typography>
+                    <Typography sx={{mb: 2}} variant='h5'> Edit {employee.first_name} </Typography>
 
                     <form onSubmit={handleSubmit}>
                         <TextFieldWithIcon

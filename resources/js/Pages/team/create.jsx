@@ -44,16 +44,16 @@ export default function edit(props) {
             backHref={`/projects/${projectId}`}
         >
             <div id="white container" className=" rounded-lg  bg-white flex flex-row justify-center">
-                <div id="form container" className="py-16 px-24">
+                <div id="form container" className="py-16 flex flex-col items-center justify-center px-24">
                     <Typography sx={{mb: 2}} variant='h5'> Add a new team member </Typography>
-                    <div id="purple container"
-                         className=" rounded-lg  bg-content h-[350px]  w-[550px] flex flex-row justify-center pr-8">
+                    <div className=" rounded-lg bg-content p-16 pr-24 flex flex-row justify-center items-center">
 
-                        <div id="form" className=" pt-16">
+                        <div id="form">
                             <InputWithIcon
-                                input={<FormControl fullWidth> <InputLabel
+                                input={<FormControl sx={{minWidth: 1}}> <InputLabel
                                     id="demo-simple-select-label">Employee</InputLabel>
                                     <Select
+                                        fullWidth
                                         className="bg-content" sx={{minWidth: 1}}
                                         name={'employee'}
                                         labelId="demo-simple-select-label"

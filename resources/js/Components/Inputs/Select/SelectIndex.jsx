@@ -1,5 +1,5 @@
 import React from 'react';
-import {Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select} from "@mui/material";
+import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select } from "@mui/material";
 import * as PropTypes from "prop-types";
 
 const ITEM_HEIGHT = 48;
@@ -22,7 +22,7 @@ class SelectIndex extends React.Component {
     }
 
     updateChoices = (event) => {
-        const {target: {value}} = event;
+        const { target: { value } } = event;
         this.setState({
             choices: typeof value === 'string' ? value.split(',') : value
         });
@@ -31,14 +31,16 @@ class SelectIndex extends React.Component {
 
     render() {
         return (
-            <FormControl fullWidth>
+            <FormControl sx={{ minWidth: 1 }}>
                 <InputLabel id={'simple-select'}>{this.props.label}</InputLabel>
                 <Select
+                    sx={{ minWidth: 1 }}
+                    className="bg-content"
                     labelId={'simple-select'}
                     name={this.props.name}
                     value={this.state.choices}
                     onChange={this.updateChoices.bind(this)}
-                    input={<OutlinedInput label="Tag"/>}
+                    input={<OutlinedInput label="Tag" />}
                     MenuProps={MenuProps}
                 >
                     {this.props.data.map((i) => this.props.getItem(i))}

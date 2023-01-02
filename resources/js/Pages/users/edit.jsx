@@ -5,7 +5,7 @@ import {
     Button,
     TextField, Typography
 } from "@mui/material";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import {Inertia} from "@inertiajs/inertia";
 import UserIcon from "@/Components/Icons/UserIcon";
 import MailIcon from "@/Components/Icons/MailIcon";
@@ -51,7 +51,7 @@ export default function edit(props) {
             backHref={`/${resourcePlural}/${user.id}`}
         >
             <div id="white container" className="rounded-lg px-48 py-16 bg-white">
-                <Typography sx={{mb: 2}} variant='h5'> edit a user </Typography>
+                <Typography sx={{mb: 2}} variant='h5'> Edit a user </Typography>
 
                 <form onSubmit={handleSubmit}>
                     <TextFieldWithIcon
@@ -73,7 +73,7 @@ export default function edit(props) {
 
                     <InputWithIcon
                         input={<TextField name={'password'} type="password" sx={{minWidth: 1}} className="bg-content"
-                                          required label="user's password" variant="outlined"
+                                          required label="User's password" variant="outlined"
                                           onChange={updateFormData}/>}
                         icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
                         error={errors.password}
@@ -81,7 +81,7 @@ export default function edit(props) {
                     <InputWithIcon
                         input={<TextField name={"password_confirmation"} type="password" sx={{minWidth: 1}}
                                           className="bg-content" onChange={updateFormData}
-                                          required label="confirm password" variant="outlined"/>}
+                                          required label="Confirm password" variant="outlined"/>}
                         error={errors.password_confirmation}
                         icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
                     />

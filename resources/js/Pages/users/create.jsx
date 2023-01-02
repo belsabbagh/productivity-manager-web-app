@@ -12,6 +12,7 @@ import UserIcon from "@/Components/Icons/UserIcon";
 import MailIcon from "@/Components/Icons/MailIcon";
 import InputWithIcon from "@/Components/Inputs/InputWithIcon";
 import {VpnKeyOutlined} from "@mui/icons-material";
+import UserTypeIcon from "@/Components/Icons/UserTypeIcon";
 import SelectIndex from "@/Components/Inputs/Select/SelectIndex";
 
 export default function create(props) {
@@ -82,7 +83,7 @@ export default function create(props) {
                         <InputWithIcon
                             input={<SelectIndex name={'userType'} label={'user type'} onChange={updateFormData} data={user_type}/>}
                             error={errors.userType}
-                            icon={<VpnKeyOutlined className={"w-6 h-6"}/>}
+                            icon={<UserTypeIcon svgClassName={"w-6 h-6"}/>}
                         />
                         <Button type={"submit"} style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}}>
                             Add user

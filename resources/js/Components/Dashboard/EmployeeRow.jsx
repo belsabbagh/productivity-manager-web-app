@@ -1,34 +1,29 @@
 import {TableCell, TableRow} from '@mui/material';
-import {ArrowForwardIos} from '@mui/icons-material';
 import React from 'react';
-import {Link} from '@inertiajs/inertia-react';
+import SeeMoreButton from '@/Components/Dashboard/SeeMoreButton';
 import {formatColor, getUtilizationColor} from '@/lib';
 const MAX_COL = 255;
-export default function EmployeeRow({data}) {
+export default function EmployeeRow({data: employee}) {
   const resource = 'employees';
-  const textColor =
-    data.total_utilization > 1
-      ? formatColor(MAX_COL, MAX_COL, MAX_COL)
-      : formatColor(0, 0, 0);
-
   return (
     <TableRow
       className="rounded-lg p-4"
       style={{
-        backgroundColor: getUtilizationColor(data.total_utilization),
-        color: textColor,
+        backgroundColor: getUtilizationColor(employee.total_utilization),
+        color:
+          employee.total_utilization > 1
+            ? formatColor(MAX_COL, MAX_COL, MAX_COL)
+            : formatColor(0, 0, 0),
       }}
-      key={data.id}
+      key={employee.id}
     >
       <TableCell
         component="th"
         scope="row"
-      >{`${data.first_name} ${data.last_name}`}</TableCell>
-      <TableCell align="right">{data.total_utilization}</TableCell>
+      >{`${employee.first_name} ${employee.last_name}`}</TableCell>
+      <TableCell align="right">{employee.total_utilization}</TableCell>
       <TableCell align="right">
-        <Link href={`/${resource}/${data.id}`}>
-          <ArrowForwardIos color="action" className="shadow-md rounded-full" />
-        </Link>
+        <SeeMoreButton href={`/${resource}/${employee.id}`} />
       </TableCell>
     </TableRow>
   );

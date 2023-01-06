@@ -1,6 +1,5 @@
 import {TableCell, TableRow} from '@mui/material';
-import {Link} from '@inertiajs/inertia-react';
-import {ArrowForwardIos} from '@mui/icons-material';
+import SeeMoreButton from '@/Components/Dashboard/SeeMoreButton';
 import React from 'react';
 
 export default function ProjectRow({data}) {
@@ -16,9 +15,7 @@ export default function ProjectRow({data}) {
       </TableCell>
       <TableCell align="right">{data.utilization}</TableCell>
       <TableCell align="right">
-        <Link href={`/${resource}/${data.id}`}>
-          <ArrowForwardIos color="action" className="shadow-md rounded-full" />
-        </Link>
+        <SeeMoreButton href={`/${resource}/${data.id}`} />
       </TableCell>
     </TableRow>
   );

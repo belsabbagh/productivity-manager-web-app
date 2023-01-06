@@ -1,6 +1,6 @@
+import React from 'react';
 import {TableCell, TableRow} from '@mui/material';
 import SeeMoreButton from '@/Components/Dashboard/SeeMoreButton';
-import React from 'react';
 
 export default function ProjectRow({data}) {
   const resource = 'projects';

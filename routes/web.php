@@ -32,9 +32,7 @@ Route::get('/', function () {
 });
 
 Route::get('/charts', function () {
-    return Inertia::render('charts', [
-        'charts' => getStatistics()
-    ]);
+    return Inertia::render('charts', ['charts' => getStatistics()]);
 });
 
 Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
@@ -46,8 +44,7 @@ Route::resource('skills', SkillController::class)->middleware(['auth', 'verified
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [
         'employees' => EmployeeResource::collection(
-            Employee::all()->sortBy('total_utilization', SORT_NATURAL, true)
-                ->take(4)
+            Employee::all()->sortBy('total_utilization', SORT_NATURAL, true)->take(4)
         ),
         'projects' => Project::all()->take(4),
         'charts' => getStatistics()

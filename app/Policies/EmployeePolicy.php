@@ -20,7 +20,7 @@ class EmployeePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isLeader();
     }
 
     /**
@@ -32,7 +32,7 @@ class EmployeePolicy
      */
     public function view(User $user, Employee $employee)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isLeader();
     }
 
     /**

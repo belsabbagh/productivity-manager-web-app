@@ -4,8 +4,8 @@ namespace App\Policies;
 
 use App\Models\Team;
 use App\Models\User;
+use App\Models\Project;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use function Services\Auth\isAdmin;
 
 class TeamPolicy
 {
@@ -19,7 +19,7 @@ class TeamPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isLeader();
     }
 
     /**
@@ -31,7 +31,7 @@ class TeamPolicy
      */
     public function view(User $user, Team $team)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isLeader();
     }
 
     /**
@@ -42,7 +42,7 @@ class TeamPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin();
+        return true;
     }
 
     /**

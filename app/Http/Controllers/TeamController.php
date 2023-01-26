@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Team;
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -37,6 +38,9 @@ class TeamController extends Controller
      */
     public function create(Project $project): Response
     {
+        if ($project->leader->id !== request()->user()->id && !request()->user()->isAdmin()) {
+            throw new AuthorizationException('This action is unauthorized.');
+        }
         return Inertia::render('team/create', ['project' => $project, 'employees' => Employee::all()]);
     }
 

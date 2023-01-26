@@ -30,7 +30,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return $user->isAdmin() || $user->id === $model->id;
+        return $user->isAdmin() || $user->isLeader();
     }
 
     /**

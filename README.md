@@ -1,5 +1,7 @@
 # Productivity Manager
 
+A productivity management tool built to keep track of employee utilization on department projects.
+
 ## How to clone
 
 1. Clone from GitHub

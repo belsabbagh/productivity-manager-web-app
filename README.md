@@ -2,14 +2,13 @@
 
 A productivity management tool built to keep track of employee utilization on department projects.
 
-## How to clone
+## Getting Started
 
-1. Clone from GitHub
-2. copy .env.example into a new file named .env
-3. run `composer install`
-4. run `npm install`
-5. run `php artisan key:generate`
-6. run MySQL on XAMPP to host the database.
-7. run `php artisan migrate`
-8. run `php artisan db:seed` if you want test records
-9. run `npm run dev` and `php artisan serve`
+1. copy .env.example into a new file named .env
+2. run `composer install`
+3. run `npm install`
+4. run `php artisan key:generate`
+5. run MySQL on XAMPP to host the database.
+6. run `php artisan migrate`
+7. run `php artisan db:seed` if you want test records
+8. run `npm run dev` and `php artisan serve`

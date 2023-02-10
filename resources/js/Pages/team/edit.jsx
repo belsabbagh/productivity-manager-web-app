@@ -1,7 +1,7 @@
 import React from 'react';
 import {useForm} from '@inertiajs/inertia-react';
 import {Inertia} from '@inertiajs/inertia';
-import {Button, Input, TextField, Typography} from '@mui/material';
+import {Button, Typography} from '@mui/material';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import UserIcon from '@/Components/Icons/UserIcon';
 import InputWithIcon from '@/Components/Inputs/InputWithIcon';
@@ -11,7 +11,7 @@ import UtilizationInput from '@/Components/Inputs/UtilizationInput';
 export default function Edit(props) {
   const team = props.team.data;
   const projectId = props.project.id;
-  const {data, setData, errors, put} = useForm({
+  const {setData, errors, put} = useForm({
     utilization: team.utilization,
   });
 

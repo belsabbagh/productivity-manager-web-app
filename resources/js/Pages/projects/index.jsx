@@ -5,13 +5,24 @@ import ProjectIndexFilter from '@/Components/IndexContent/IndexFilters/ProjectIn
 import IndexContent from '@/Components/IndexContent';
 import Table from '@/Components/Outputs/Table';
 import {ProjectIndexTableRowCells} from '@/lib/factories/TableFactories';
-import {v4} from 'uuid';
+import useProjectsFilter from '@/hooks/useProjectsFilter';
 
 export default function Index(props) {
-  const projects = props.projects.data;
-  const regions = projects.map((i) => {
-    return {id: v4(), name: i.region};
+  let count = 0;
+  const projects = props.projects.data.map((i) => {
+    const ref = count;
+    count++;
+    return {
+      ...i,
+      region: {id: ref, name: i.region},
+    };
   });
+  const regions = projects.map((i) => i.region);
+  const [filteredData, filterValue, filterData] = useProjectsFilter(
+    projects,
+    {search: '', region: '', skill: ''},
+    'name'
+  );
   const userType = props.auth.user.user_type_id;
   return (
     <AuthenticatedLayout
@@ -22,13 +33,18 @@ export default function Index(props) {
     >
       <IndexContent
         indexQuery={
-          <ProjectIndexFilter regions={regions} skills={props.skills} />
+          <ProjectIndexFilter
+            regions={regions}
+            skills={props.skills}
+            filter={filterValue}
+            updateFilter={filterData}
+          />
         }
         resource={'project'}
         canCreate={isAdmin(userType)}
       >
         <Table
-          data={projects}
+          data={filteredData}
           getRowCells={ProjectIndexTableRowCells}
           headers={['Name', 'Leader', 'Show']}
         />

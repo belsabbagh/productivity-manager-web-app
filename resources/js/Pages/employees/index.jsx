@@ -6,7 +6,7 @@ import IndexContent from '@/Components/IndexContent';
 import EmployeeIndexFilter from '@/Components/IndexContent/IndexFilters/EmployeeIndexFilter';
 import Table from '@/Components/Outputs/Table';
 import {EmployeeIndexTableRowCells} from '@/lib/factories/TableFactories';
-import useEmployeesFilter from '@/hooks/useEmployeesFilter';
+import useEmployeesFilter from '@/hooks/useFilter/useEmployeesFilter';
 const MAX_UTILIZATION = 3;
 export default function Index(props) {
   const employees = props.employees.data;

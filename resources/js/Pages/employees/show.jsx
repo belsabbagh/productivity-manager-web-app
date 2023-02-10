@@ -35,7 +35,7 @@ export default function Show(props) {
           </div>
           <TextDisplay
             label={'Name'}
-            value={employee.first_name + ' ' + employee.last_name}
+            value={`${employee.first_name} ${employee.last_name}`}
             className="mb-5"
           />
           <TextDisplay

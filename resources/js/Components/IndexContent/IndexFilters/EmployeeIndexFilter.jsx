@@ -9,7 +9,7 @@ export default function EmployeeIndexFilter(props) {
     return `${value}`;
   }
 
-  const [sliderValue, setSliderValue] = React.useState([0, MAX_UTILIZATION])
+  const [sliderValue, setSliderValue] = React.useState([0, MAX_UTILIZATION]);
   function updateFilter(e) {
     if (e.target.name === 'utilization') {
       setSliderValue(e.target.value);

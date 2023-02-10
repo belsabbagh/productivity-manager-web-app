@@ -1,7 +1,7 @@
-const MAX = 255
-const GREEN = 100
-const ADMIN = 3
-const EMPLOYEE = 2
+const MAX = 255;
+const GREEN = 100;
+const ADMIN = 3;
+const EMPLOYEE = 2;
 
 export function formatColor(r, g, b) {
     return `rgb(${r},${g},${b})`;

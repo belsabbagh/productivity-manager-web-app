@@ -6,13 +6,12 @@ import IndexContent from '@/Components/IndexContent';
 import IndexFilter from '@/Components/IndexContent/IndexFilters/IndexFilter';
 import Table from '@/Components/Outputs/Table';
 import {UserIndexTableRow} from '@/lib/factories/TableFactories';
-import useFilter from '@/hooks/useFilter';
+import useUsersFilter from '@/hooks/useFilter/useUsersFilter';
 
 export default function Index(props) {
-  const [filteredData, filterValue, filterData] = useFilter(
+  const [filteredData, filterValue, filterData] = useUsersFilter(
     props.users.data,
-    {search: ''},
-    'name'
+    {search: ''}
   );
   const userType = props.auth.user.user_type_id;
   return (

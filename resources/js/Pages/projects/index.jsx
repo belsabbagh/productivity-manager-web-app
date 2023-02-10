@@ -5,7 +5,7 @@ import ProjectIndexFilter from '@/Components/IndexContent/IndexFilters/ProjectIn
 import IndexContent from '@/Components/IndexContent';
 import Table from '@/Components/Outputs/Table';
 import {ProjectIndexTableRowCells} from '@/lib/factories/TableFactories';
-import useProjectsFilter from '@/hooks/useProjectsFilter';
+import useProjectsFilter from '@/hooks/useFilter/useProjectsFilter';
 
 export default function Index(props) {
   let count = 0;

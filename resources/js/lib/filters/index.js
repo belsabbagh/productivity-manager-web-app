@@ -1,5 +1,7 @@
 export function isFoundString(item, search) {
-    return item.toLowerCase().includes(search.toLowerCase()) || search.length === 0;
+    return (
+        item.toLowerCase().includes(search.toLowerCase()) || search.length === 0
+    );
 }
 
 export function isFoundArray(item, data) {
@@ -7,8 +9,10 @@ export function isFoundArray(item, data) {
 }
 
 export function projectFound(item, filter) {
-    return isFoundString(item.name, filter.search)
-        && isFoundArray(item.region.id, filter.region);
+    return (
+        isFoundString(item.name, filter.search) &&
+        isFoundArray(item.region.id, filter.region)
+    );
 }
 
 function inUtilizationRange(val, range) {
@@ -16,6 +20,8 @@ function inUtilizationRange(val, range) {
 }
 
 export function employeeFound(item, filter) {
-    return isFoundString(item.email, filter.search)
-        && inUtilizationRange(item.total_utilization, filter.utilization)
-    }
+    return (
+        isFoundString(item.email, filter.search) &&
+        inUtilizationRange(item.total_utilization, filter.utilization)
+    );
+}

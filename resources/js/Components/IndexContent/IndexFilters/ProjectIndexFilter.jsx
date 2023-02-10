@@ -27,8 +27,18 @@ export default function ProjectIndexFilter(props) {
         </form>
       </div>
       <div className={'flex flex-row mt-2'}>
-        <MultipleSelectCheckmarks name="skill" label={'Skills'} data={props.skills} onChange={updateFilter}/>
-        <MultipleSelectCheckmarks name="region" label={'Regions'} data={props.regions} onChange={updateFilter}/>
+        <MultipleSelectCheckmarks
+          name="skill"
+          label={'Skills'}
+          data={props.skills}
+          onChange={updateFilter}
+        />
+        <MultipleSelectCheckmarks
+          name="region"
+          label={'Regions'}
+          data={props.regions}
+          onChange={updateFilter}
+        />
       </div>
     </div>
   );

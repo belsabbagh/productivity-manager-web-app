@@ -3,7 +3,7 @@ import SearchIcon from '@/Components/Icons/SearchIcon';
 
 export default function IndexFilter(props) {
   function updateFilter(e) {
-    props.updateFilter(e.target.value);
+    props.updateFilter(e.target.name, e.target.value);
   }
   return (
     <div className={'flex flex-col'}>

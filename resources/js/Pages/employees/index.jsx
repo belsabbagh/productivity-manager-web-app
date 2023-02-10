@@ -6,9 +6,18 @@ import IndexContent from '@/Components/IndexContent';
 import EmployeeIndexFilter from '@/Components/IndexContent/IndexFilters/EmployeeIndexFilter';
 import Table from '@/Components/Outputs/Table';
 import {EmployeeIndexTableRowCells} from '@/lib/factories/TableFactories';
-
+import useEmployeesFilter from '@/hooks/useEmployeesFilter';
+const MAX_UTILIZATION = 3;
 export default function Index(props) {
   const employees = props.employees.data;
+  const [filteredData, filterValue, filterData] = useEmployeesFilter(
+    employees,
+    {
+      search: '',
+      skill: '',
+      utilization: [0, MAX_UTILIZATION],
+    }
+  );
   const skills = props.skills;
   return (
     <AuthenticatedLayout
@@ -19,12 +28,18 @@ export default function Index(props) {
     >
       <PersonnelNav active={'employees'} />
       <IndexContent
-        indexQuery={<EmployeeIndexFilter skills={skills} />}
+        indexQuery={
+          <EmployeeIndexFilter
+            skills={skills}
+            filter={filterValue}
+            updateFilter={filterData}
+          />
+        }
         resource={'employee'}
         canCreate={isAdmin(props.auth.user.user_type_id)}
       >
         <Table
-          data={employees}
+          data={filteredData}
           getRowCells={EmployeeIndexTableRowCells}
           headers={['Email', 'Utilization', 'Show']}
         />

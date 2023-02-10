@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { projectFound } from '@/lib/filters';
-export default function useProjectsFilter(data, filter) {
+import { employeeFound } from '@/lib/filters';
+export default function useEmployeesFilter(data, filter) {
     const [filteredData, setFilteredData] = useState(data);
     const [filterValue, setFilterValue] = useState(filter);
     function filterData(key, value) {
         const newFilter = { ...filterValue, [key]: value }
         setFilterValue(newFilter);
         const filtered = data.filter(function (item) {
-            return projectFound(item, newFilter)
+            return employeeFound(item, newFilter)
         });
         setFilteredData(filtered);
     }

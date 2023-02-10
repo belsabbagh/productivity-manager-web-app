@@ -8,10 +8,18 @@ export function isFoundArray(item, data) {
     return data.includes(item) || data.length === 0;
 }
 
+function getProjectSkills(team) {
+    let skills = [];
+    team.forEach((emp) => emp.skills.forEach((skill) => skills.push(skill.id)));
+    return skills;
+}
+
 export function projectFound(item, filter) {
+    const skills = getProjectSkills(item.team);
     return (
         isFoundString(item.name, filter.search) &&
-        isFoundArray(item.region.id, filter.region)
+        isFoundArray(item.region.id, filter.region) &&
+        skills.some((skill) => isFoundArray(skill, filter.skill))
     );
 }
 

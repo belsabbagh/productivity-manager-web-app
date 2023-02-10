@@ -1,6 +1,6 @@
 import useFilter from '@/hooks/useFilter';
-import {isFoundString} from '@/lib/filters';
+import matchUser from '@/lib/filters/matchUser';
 
 export default function useUsersFilter(data, filter) {
-    return useFilter(data, filter, (i, f) => isFoundString(i.name, f.search));
+    return useFilter(data, filter, matchUser);
 }

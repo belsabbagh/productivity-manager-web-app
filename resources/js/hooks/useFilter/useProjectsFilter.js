@@ -1,5 +1,5 @@
 import useFilter from '@/hooks/useFilter';
-import {projectFound} from '@/lib/filters';
+import matchProject from '@/lib/filters/matchProject';
 export default function useProjectsFilter(data, filter) {
-    return useFilter(data, filter, projectFound);
+    return useFilter(data, filter, matchProject);
 }

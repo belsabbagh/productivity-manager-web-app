@@ -1,5 +1,5 @@
-import {employeeFound} from '@/lib/filters';
+import matchEmployee from '@/lib/filters/matchEmployee';
 import useFilter from '@/hooks/useFilter';
 export default function useEmployeesFilter(data, filter) {
-    return useFilter(data, filter, employeeFound);
+    return useFilter(data, filter, matchEmployee);
 }

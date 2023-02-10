@@ -3,13 +3,13 @@ import AttributeDisplay from '@/Components/Outputs/AttributeDisplay';
 import TextDisplay from '@/Components/Outputs/TextDisplay';
 import ListDisplay from '@/Components/Outputs/ListDisplay';
 import EmployeeUtilization from '@/Components/Outputs/EmployeeUtilization';
-import {Edit, KeyboardOptionKey, Person} from '@mui/icons-material';
+import {Edit, Person} from '@mui/icons-material';
 import ItemHeader from '@/Components/ItemHeader';
 import ProjectDisplay from '@/Components/Outputs/ProjectDisplay';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import {isAdmin} from '@/lib';
 
-export default function show(props) {
+export default function Show(props) {
   let {employee} = props;
   employee = employee.data;
   return (

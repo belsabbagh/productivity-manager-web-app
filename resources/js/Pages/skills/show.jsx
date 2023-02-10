@@ -1,11 +1,11 @@
 import React from 'react';
 import TextDisplay from '@/Components/Outputs/TextDisplay';
-import {Edit, Person} from '@mui/icons-material';
+import {Edit} from '@mui/icons-material';
 import ItemHeader from '@/Components/ItemHeader';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import {isAdmin} from '@/lib';
 
-export default function show(props) {
+export default function Show(props) {
   let {skill} = props;
   skill = skill.data;
   return (

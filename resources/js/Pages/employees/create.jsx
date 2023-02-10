@@ -9,9 +9,9 @@ import MailIcon from '@/Components/Icons/MailIcon';
 import InputWithIcon from '@/Components/Inputs/InputWithIcon';
 import SkillsIcon from '@/Components/Icons/SkillsIcon';
 
-export default function create(props) {
+export default function Create(props) {
   const resource = 'employee';
-  const {data, setData, errors, post} = useForm({
+  const {setData, errors, post} = useForm({
     firstName: '',
     lastName: '',
     email: '',

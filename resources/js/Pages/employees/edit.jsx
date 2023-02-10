@@ -10,7 +10,7 @@ import MailIcon from '@/Components/Icons/MailIcon';
 import InputWithIcon from '@/Components/Inputs/InputWithIcon';
 import SkillsIcon from '@/Components/Icons/SkillsIcon';
 
-export default function edit(props) {
+export default function Edit(props) {
   const resource = 'employee';
   const resourcePlural = `${resource}s`;
   const employee = props.employee.data;

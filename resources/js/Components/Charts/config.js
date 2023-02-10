@@ -32,7 +32,7 @@ const bgColors = [
     'rgba(2,46,24,0.2)',
     'rgba(0,34,9,0.2)',
     'rgba(25,27,31,0.2)',
-]
+];
 
 const borderColors = [
     'rgba(255, 99, 132, 1)',
@@ -68,20 +68,20 @@ const borderColors = [
     'rgba(2,46,24,255)',
     'rgba(0,34,9,255)',
     'rgba(25,27,31,255)',
-]
+];
 
 export default function makeChart(data, label, labelKey, countKey) {
     return {
-        labels: data.map(i => i[labelKey]),
+        labels: data.map((i) => i[labelKey]),
         datasets: [
             {
                 id: 1,
                 label: label,
-                data: data.map(i => i[countKey]),
+                data: data.map((i) => i[countKey]),
                 backgroundColor: bgColors,
                 borderColor: borderColors,
                 borderWidth: 1,
-            }
+            },
         ],
     };
 }

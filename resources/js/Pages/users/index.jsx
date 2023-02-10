@@ -3,12 +3,17 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import {isAdmin} from '@/lib';
 import PersonnelNav from '@/Components/PersonnelNav';
 import IndexContent from '@/Components/IndexContent';
-import UserIndexFilter from '@/Components/IndexContent/IndexFilters/UserIndexFilter';
+import IndexFilter from '@/Components/IndexContent/IndexFilters/IndexFilter';
 import Table from '@/Components/Outputs/Table';
 import {UserIndexTableRow} from '@/lib/factories/TableFactories';
+import useFilter from '@/hooks/useFilter';
 
-export default function index(props) {
-  const users = props.users.data;
+export default function Index(props) {
+  const [filteredData, filterValue, filterData] = useFilter(
+    props.users.data,
+    {search: ''},
+    'name'
+  );
   const userType = props.auth.user.user_type_id;
   return (
     <AuthenticatedLayout
@@ -21,10 +26,12 @@ export default function index(props) {
       <IndexContent
         resource={'user'}
         canCreate={isAdmin(userType)}
-        indexQuery={<UserIndexFilter />}
+        indexQuery={
+          <IndexFilter filter={filterValue} updateFilter={filterData} />
+        }
       >
         <Table
-          data={users}
+          data={filteredData}
           getRowCells={UserIndexTableRow}
           headers={['Name', 'Email', 'Position', 'Show']}
         />

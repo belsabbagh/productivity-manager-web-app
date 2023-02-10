@@ -6,7 +6,7 @@ import {Inertia} from '@inertiajs/inertia';
 import TextFieldWithIcon from '@/Components/Inputs/TextFieldWithIcon';
 import SkillsIcon from '@/Components/Icons/SkillsIcon';
 
-export default function edit(props) {
+export default function Edit(props) {
   const resource = 'skill';
   const resourcePlural = `${resource}s`;
   const skill = props.skill.data;

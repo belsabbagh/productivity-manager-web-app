@@ -20,8 +20,10 @@ function inUtilizationRange(val, range) {
 }
 
 export function employeeFound(item, filter) {
+    const skills = item.skills.map((skill) => skill.id);
     return (
         isFoundString(item.email, filter.search) &&
-        inUtilizationRange(item.total_utilization, filter.utilization)
+        inUtilizationRange(item.total_utilization, filter.utilization) &&
+        skills.some((skill) => isFoundArray(skill, filter.skill))
     );
 }

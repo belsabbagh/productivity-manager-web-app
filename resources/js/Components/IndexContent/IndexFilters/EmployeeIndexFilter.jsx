@@ -41,6 +41,7 @@ export default function EmployeeIndexFilter(props) {
           name={'skill'}
           label={'Skills'}
           data={props.skills}
+          onChange={updateFilter}
         />
         <div className={'ml-4 min-w-full'}>
           Utilization Range

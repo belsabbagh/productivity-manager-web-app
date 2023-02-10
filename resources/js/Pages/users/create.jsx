@@ -10,7 +10,7 @@ import {VpnKeyOutlined} from '@mui/icons-material';
 import UserTypeIcon from '@/Components/Icons/UserTypeIcon';
 import SelectIndex from '@/Components/Inputs/Select/SelectIndex';
 
-export default function create(props) {
+export default function Create(props) {
   const resource = 'user';
   const {data, setData, errors, processing, post} = useForm({
     name: '',

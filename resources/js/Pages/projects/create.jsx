@@ -17,7 +17,7 @@ import ProjectsIcon from '@/Components/Icons/ProjectsIcon';
 import InputWithIcon from '@/Components/Inputs/InputWithIcon';
 import RegionIcon from '@/Components/Icons/RegionIcon';
 
-export default function create(props) {
+export default function Create(props) {
   const resource = 'project';
   const {data, setData, errors, post} = useForm({
     name: '',

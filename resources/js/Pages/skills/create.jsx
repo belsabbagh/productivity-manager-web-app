@@ -5,7 +5,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import TextFieldWithIcon from '@/Components/Inputs/TextFieldWithIcon';
 import SkillsIcon from '@/Components/Icons/SkillsIcon';
 
-export default function create(props) {
+export default function Create(props) {
   const resource = 'skill';
   const {data, setData, errors, post} = useForm({
     name: '',

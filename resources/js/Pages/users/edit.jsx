@@ -9,7 +9,7 @@ import TextFieldWithIcon from '@/Components/Inputs/TextFieldWithIcon';
 import InputWithIcon from '@/Components/Inputs/InputWithIcon';
 import {VpnKeyOutlined} from '@mui/icons-material';
 
-export default function edit(props) {
+export default function Edit(props) {
   const resource = 'user';
   const resourcePlural = `${resource}s`;
   const {user} = props;

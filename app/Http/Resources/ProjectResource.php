@@ -23,7 +23,7 @@ class ProjectResource extends JsonResource
             'name' => $this->name,
             'region' => $this->region,
             'leader' => $this->leader,
-            'team' => $this->employees,
+            'team' => EmployeeResource::collection($this->employees),
         ];
     }
 }

@@ -1,13 +1,12 @@
 import React from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import {isAdmin} from '@/lib';
-import PersonnelNav from '@/Components/PersonnelNav';
 import IndexContent from '@/Components/IndexContent';
-import UserIndexFilter from '@/Components/IndexContent/IndexFilters/UserIndexFilter';
+import IndexFilter from '@/Components/IndexContent/IndexFilters/IndexFilter';
 import Table from '@/Components/Outputs/Table';
 import {SkillIndexTableRowCells} from '@/lib/factories/TableFactories';
 
-export default function index(props) {
+export default function Index(props) {
   const skills = props.skills;
   return (
     <AuthenticatedLayout
@@ -17,7 +16,7 @@ export default function index(props) {
       backHref={'/dashboard'}
     >
       <IndexContent
-        indexQuery={<UserIndexFilter skills={skills} />}
+        indexQuery={<IndexFilter skills={skills} />}
         resource={'skill'}
         canCreate={isAdmin(props.auth.user.user_type_id)}
       >

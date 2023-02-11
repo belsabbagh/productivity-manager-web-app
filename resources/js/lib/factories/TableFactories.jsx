@@ -33,7 +33,7 @@ export function EmployeeIndexTableRowCells(employee) {
         ? formatColor(255, 255, 255)
         : formatColor(0, 0, 0),
   };
-  const formattedUtilization = Number(employee.total_utilization);
+  const formattedUtilization = Number(employee.total_utilization).toFixed(1);
   return [
     <TableCell key={'email'} component="th" scope="row">
       {employee.email}

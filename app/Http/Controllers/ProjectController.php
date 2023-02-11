@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\ProjectResource;
 use App\Models\Employee;
 use App\Models\Project;
@@ -32,6 +33,7 @@ class ProjectController extends Controller
         $projects = Project::all();
         return Inertia::render("$this->resource_route/index", [
             'projects' => ProjectResource::collection($projects),
+            'employees' => EmployeeResource::collection(Employee::all()),
             'skills' => Skill::all()
         ]);
     }

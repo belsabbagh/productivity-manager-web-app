@@ -42,7 +42,8 @@ class Employee extends Model
         return $total;
     }
 
-    public function getProjectsCountAttribute(){
+    public function getProjectsCountAttribute()
+    {
         return count($this->projects);
     }
 }

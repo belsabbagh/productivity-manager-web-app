@@ -9,20 +9,26 @@ import useProjectsFilter from '@/hooks/useFilter/useProjectsFilter';
 
 export default function Index(props) {
   let count = 0;
-  const projects = props.projects.data.map((i) => {
+  let projects = props.projects.data.map((i) => {
     const ref = count;
     count++;
     return {
       ...i,
       region: {id: ref, name: i.region},
+      team: i.team.map((j) => {
+        return {
+          ...j,
+          skills: props.employees.data.filter((k) => k.id === j.id)[0].skills,
+        };
+      }),
     };
   });
   const regions = projects.map((i) => i.region);
-  const [filteredData, filterValue, filterData] = useProjectsFilter(
-    projects,
-    {search: '', region: '', skill: ''},
-    'name'
-  );
+  const [filteredData, filterValue, filterData] = useProjectsFilter(projects, {
+    search: '',
+    region: '',
+    skill: '',
+  });
   const userType = props.auth.user.user_type_id;
   return (
     <AuthenticatedLayout

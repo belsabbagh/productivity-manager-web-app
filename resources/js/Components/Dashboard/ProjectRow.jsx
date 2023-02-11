@@ -13,7 +13,6 @@ export default function ProjectRow({data}) {
       <TableCell component="th" scope="row">
         {data.name}
       </TableCell>
-      <TableCell align="right">{data.utilization}</TableCell>
       <TableCell align="right">
         <SeeMoreButton href={`/${resource}/${data.id}`} />
       </TableCell>

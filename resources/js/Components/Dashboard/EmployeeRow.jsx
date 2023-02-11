@@ -21,7 +21,7 @@ export default function EmployeeRow({data: employee}) {
         component="th"
         scope="row"
       >{`${employee.first_name} ${employee.last_name}`}</TableCell>
-      <TableCell align="right">{employee.total_utilization}</TableCell>
+      <TableCell align="right">{Number(employee.total_utilization).toFixed(1)}</TableCell>
       <TableCell align="right">
         <SeeMoreButton href={`/${resource}/${employee.id}`} />
       </TableCell>

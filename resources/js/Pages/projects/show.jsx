@@ -9,6 +9,8 @@ import { Edit } from '@mui/icons-material';
 import Table from '@/Components/Outputs/Table';
 import { TeamIndexTableRowCells } from '@/lib/factories/TableFactories';
 import EmployeeUtilization from '@/Components/Outputs/EmployeeUtilization';
+import { Link } from '@inertiajs/inertia-react';
+import { ArrowForwardIos } from '@mui/icons-material';
 
 export default function Show(props) {
   let { project } = props;
@@ -34,11 +36,21 @@ export default function Show(props) {
             value={project.region}
             className=" mb-5"
           />
-          <TextDisplay
-            label={'Leader'}
-            value={project.leader.name}
-            className=" mb-5"
-          />
+
+          <AttributeDisplay label={'Leader'} className="mb-5">
+            <Link
+              href={`/users/${project.leader.id}`}
+              style={{backgroundColor: '#4b00820d'}}
+              className={
+                'flex flex-row justify-between w-full rounded-lg hover:bg-gray p-2 bg-content'
+              }
+            >
+              <div className="">{project.leader.name}</div>
+              <div>
+                <ArrowForwardIos sx={{ color: 'black' }} />
+              </div>
+            </Link>
+          </AttributeDisplay>
           <AttributeDisplay label={'Utilization'} className="mb-5">
             <EmployeeUtilization
               value={project.leader_utilization}

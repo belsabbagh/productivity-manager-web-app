@@ -1,6 +1,6 @@
 import React from 'react';
-import {Head, useForm} from '@inertiajs/inertia-react';
-import {Inertia} from '@inertiajs/inertia';
+import { Head, useForm } from '@inertiajs/inertia-react';
+import { Inertia } from '@inertiajs/inertia';
 import {
   Autocomplete,
   Button,
@@ -17,14 +17,17 @@ import ProjectsIcon from '@/Components/Icons/ProjectsIcon';
 import InputWithIcon from '@/Components/Inputs/InputWithIcon';
 import UserIcon from '@/Components/Icons/UserIcon';
 import RegionIcon from '@/Components/Icons/RegionIcon';
+import UtilizationInput from '@/Components/Inputs/UtilizationInput';
+import UtilizationIcon from '@/Components/Icons/UtilizationIcon';
 
 export default function Edit(props) {
   const resource = 'project';
   const resourcePlural = `${resource}s`;
   const project = props.project.data;
-  const {data, setData, errors, put} = useForm({
+  const { data, setData, errors, put } = useForm({
     name: project.name,
     leader: project.leader.id,
+    leader_utilization: project.leader_utilization,
     region: project.region,
   });
   function handleSubmit(e) {
@@ -49,6 +52,7 @@ export default function Edit(props) {
       Inertia.delete(route(`${resourcePlural}.destroy`, project.id));
     }
   }
+  console.log(data)
 
   const regions = [
     {
@@ -80,7 +84,7 @@ export default function Edit(props) {
         <title>create a project</title>
       </Head>
       <div id="white container" className="rounded-lg px-48 py-16 bg-white">
-        <Typography sx={{mb: 2}} variant="h5">
+        <Typography sx={{ mb: 2 }} variant="h5">
           {' '}
           Edit the project{' '}
         </Typography>
@@ -101,7 +105,7 @@ export default function Edit(props) {
                 <InputLabel id="demo-simple-select-label">Leader</InputLabel>
                 <Select
                   className="bg-content"
-                  sx={{minWidth: 1}}
+                  sx={{ minWidth: 1 }}
                   name={'leader'}
                   label={'leader'}
                   labelId="demo-simple-select-label"
@@ -119,6 +123,17 @@ export default function Edit(props) {
             icon={<UserIcon svgClassName={'w-6 h-6'} />}
             error={errors.leader}
           />
+          <InputWithIcon
+            input={
+              <UtilizationInput
+                defaultValue={project.leader_utilization}
+                onChange={updateFormData}
+                name={'leader_utilization'}
+              />
+            }
+            icon={<UtilizationIcon svgClassName={'w-6 h-6'} />}
+            error={errors.leader_utilization}
+          />
 
           <InputWithIcon
             input={
@@ -126,7 +141,7 @@ export default function Edit(props) {
                 defaultValue={{
                   name: data.region,
                 }}
-                sx={{minWidth: 1}}
+                sx={{ minWidth: 1 }}
                 className="bg-content "
                 disablePortal
                 id="combo-box-regions"

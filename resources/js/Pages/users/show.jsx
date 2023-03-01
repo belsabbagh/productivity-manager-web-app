@@ -3,11 +3,12 @@ import TextDisplay from '@/Components/Outputs/TextDisplay';
 import ItemHeader from '@/Components/ItemHeader';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import ProjectDisplay from '@/Components/Outputs/ProjectDisplay';
-import {Edit} from '@mui/icons-material';
-import {isAdmin} from '@/lib';
-
+import { Edit } from '@mui/icons-material';
+import { isAdmin, isLeader } from '@/lib';
+import AttributeDisplay from '@/Components/Outputs/AttributeDisplay';
+import EmployeeUtilization from '@/Components/Outputs/EmployeeUtilization';
 export default function Show(props) {
-  let {user} = props;
+  let { user } = props;
   user = user.data;
   const userId = props.auth.user.id;
   return (
@@ -17,7 +18,7 @@ export default function Show(props) {
       title={'User Details'}
       backHref={'/users'}
     >
-      <div className="bg-white p-6 flex flex-col" style={{minWidth: '150%'}}>
+      <div className="bg-white p-6 flex flex-col" style={{ minWidth: '150%' }}>
         <ItemHeader
           title={user.name + ' Details'}
           href={
@@ -35,7 +36,7 @@ export default function Show(props) {
             value={user.user_type.name}
             className=" mb-5"
           />
-          {user.projects.length > 0 ? (
+          {isLeader(user.user_type.id) && user.projects.length > 0 ? (
             <ProjectDisplay
               label={'Projects'}
               resource={'projects'}
@@ -46,6 +47,16 @@ export default function Show(props) {
           ) : (
             <TextDisplay label={'Projects'} value={'None'} className=" mb-5" />
           )}
+          {
+            isLeader(user.user_type.id) ? (
+              <AttributeDisplay label={'Utilization'} className="mb-5">
+                <EmployeeUtilization
+                  value={user.total_utilization}
+                  projectCount={user.projects.length}
+                />
+              </AttributeDisplay>
+            ) : null
+          }
         </div>
       </div>
     </AuthenticatedLayout>

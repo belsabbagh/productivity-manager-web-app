@@ -4,13 +4,14 @@ import AttributeDisplay from '@/Components/Outputs/AttributeDisplay';
 import ItemHeader from '@/Components/ItemHeader';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import CreateResource from '@/Components/Inputs/CreateResource';
-import {isAdmin} from '@/lib';
-import {Edit} from '@mui/icons-material';
+import { isAdmin } from '@/lib';
+import { Edit } from '@mui/icons-material';
 import Table from '@/Components/Outputs/Table';
-import {TeamIndexTableRowCells} from '@/lib/factories/TableFactories';
+import { TeamIndexTableRowCells } from '@/lib/factories/TableFactories';
+import EmployeeUtilization from '@/Components/Outputs/EmployeeUtilization';
 
 export default function Show(props) {
-  let {project} = props;
+  let { project } = props;
   project = project.data;
   let userType = props.auth.user.user_type_id;
   return (
@@ -38,6 +39,12 @@ export default function Show(props) {
             value={project.leader.name}
             className=" mb-5"
           />
+          <AttributeDisplay label={'Utilization'} className="mb-5">
+            <EmployeeUtilization
+              value={project.leader_utilization}
+              projectCount={project.leader.projects.length}
+            />
+          </AttributeDisplay>
           {project.team.length > 0 ? (
             <AttributeDisplay label={'Team'}>
               <Table

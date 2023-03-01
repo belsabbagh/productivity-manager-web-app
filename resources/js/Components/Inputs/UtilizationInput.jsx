@@ -1,10 +1,10 @@
 import React from 'react';
 import NumberInput from '@/Components/Inputs/NumberInput';
 
-export default function UtilizationInput({defaultValue = null, onChange}) {
+export default function UtilizationInput({defaultValue = null, onChange, name = 'utilization'}) {
   return (
     <NumberInput
-      name={'utilization'}
+      name={name}
       defaultValue={defaultValue}
       min={0}
       max={3}

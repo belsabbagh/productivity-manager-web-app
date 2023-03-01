@@ -27,6 +27,7 @@ class StoreProjectRequest extends FormRequest
             'name' => 'required|string',
             'leader' => 'required|int|exists:users,id',
             'region' => 'required|string',
+            'leader_utilization' => 'required|numeric',
         ];
     }
 }

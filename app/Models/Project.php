@@ -10,7 +10,7 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'leader_id', 'region'
+        'name', 'leader_id', 'leader_utilization', 'region'
     ];
 
     public function employees()

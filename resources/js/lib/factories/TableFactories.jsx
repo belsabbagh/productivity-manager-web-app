@@ -4,6 +4,7 @@ import {Link} from '@inertiajs/inertia-react';
 import React from 'react';
 
 export function UserIndexTableRow(user) {
+  const color = (user.user_type.id === 2) ? getUtilizationColor(user.total_utilization) : formatColor(255, 255, 255);
   return [
     <TableCell key={'name'} component="th" scope="row" style={{backgroundColor: color}}>
       {user.name}

@@ -18,14 +18,18 @@ class UserResource extends JsonResource
      */
     public function toArray($request): array|JsonSerializable|Arrayable
     {
-        return [
+        $data = [
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
             'user_type' => new UserTypeResource($this->user_type),
-            'projects' => ProjectResource::collection($this->projects),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
+        if ($this->user_type->id === 2) {
+            $data['projects'] = ProjectResource::collection($this->projects);
+            $data['total_utilization'] = $this->total_utilization;
+        }
+        return $data;
     }
 }

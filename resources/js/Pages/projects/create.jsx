@@ -1,5 +1,5 @@
 import React from 'react';
-import {Head, useForm} from '@inertiajs/inertia-react';
+import { Head, useForm } from '@inertiajs/inertia-react';
 import {
   Autocomplete,
   Button,
@@ -16,13 +16,15 @@ import UserIcon from '@/Components/Icons/UserIcon';
 import ProjectsIcon from '@/Components/Icons/ProjectsIcon';
 import InputWithIcon from '@/Components/Inputs/InputWithIcon';
 import RegionIcon from '@/Components/Icons/RegionIcon';
-
+import UtilizationInput from '@/Components/Inputs/UtilizationInput';
+import UtilizationIcon from '@/Components/Icons/UtilizationIcon';
 export default function Create(props) {
   const resource = 'project';
-  const {data, setData, errors, post} = useForm({
+  const { data, setData, errors, post } = useForm({
     name: '',
     leader: null,
     region: '',
+    leader_utilization: 0,
   });
 
   function handleSubmit(e) {
@@ -68,7 +70,7 @@ export default function Create(props) {
         <title>create a project</title>
       </Head>
       <div id="white container" className="rounded-lg px-32 py-12 bg-white">
-        <Typography sx={{mb: 2}} variant="h5">
+        <Typography sx={{ mb: 2 }} variant="h5">
           {' '}
           Create a project
         </Typography>
@@ -88,7 +90,7 @@ export default function Create(props) {
                 <InputLabel id="demo-simple-select-label">Leader</InputLabel>
                 <Select
                   className="bg-content"
-                  sx={{minWidth: 1}}
+                  sx={{ minWidth: 1 }}
                   name={'leader'}
                   label={'leader'}
                   labelId="demo-simple-select-label"
@@ -110,11 +112,21 @@ export default function Create(props) {
             icon={<UserIcon svgClassName={'w-6 h-6'} />}
             error={errors.leader}
           />
+          <InputWithIcon
+            input={
+              <UtilizationInput
+                onChange={updateFormData}
+                name={'leader_utilization'}
+              />
+            }
+            icon={<UtilizationIcon svgClassName={'w-6 h-6'} />}
+            error={errors.leader_utilization}
+          />
 
           <InputWithIcon
             input={
               <Autocomplete
-                sx={{minWidth: 1}}
+                sx={{ minWidth: 1 }}
                 className="bg-content "
                 disablePortal
                 id="combo-box-regions"
@@ -136,7 +148,7 @@ export default function Create(props) {
             error={errors.region}
           />
           <Button
-            style={{backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black'}}
+            style={{ backgroundColor: 'rgba(75, 0, 130, 0.3)', color: 'black' }}
             onClick={handleSubmit}
           >
             Add project

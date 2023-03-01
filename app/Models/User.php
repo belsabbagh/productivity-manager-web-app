@@ -27,6 +27,8 @@ class User extends Authenticatable
         'user_type_id',
     ];
 
+    protected $appends = ['total_utilization'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -66,5 +68,14 @@ class User extends Authenticatable
     public function isLeader(): bool
     {
         return $this->user_type->id == 2;
+    }
+
+    public function getTotalUtilizationAttribute(): float
+    {
+        $total = 0;
+        foreach ($this->projects as $project) {
+            $total += $project->leader_utilization;
+        }
+        return $total;
     }
 }

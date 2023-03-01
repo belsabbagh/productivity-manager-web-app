@@ -109,6 +109,7 @@ class ProjectController extends Controller
             'name' => $request->input('name'),
             'leader_id' => $request->input('leader'),
             'region' => $request->input('region'),
+            'leader_utilization' => $request->input('leader_utilization')
         ]);
         return Redirect::route("$this->resource_route.show", [$project]);
     }

@@ -1,7 +1,7 @@
 const MAX = 255;
 const GREEN = 100;
 const ADMIN = 3;
-const EMPLOYEE = 2;
+const LEADER = 2;
 
 export function formatColor(r, g, b) {
     return `rgb(${r},${g},${b})`;
@@ -18,6 +18,6 @@ export function isAdmin(userType) {
     return userType === ADMIN;
 }
 
-export function isEmployee(userType) {
-    return userType === EMPLOYEE;
+export function isLeader(userType) {
+    return userType === LEADER;
 }

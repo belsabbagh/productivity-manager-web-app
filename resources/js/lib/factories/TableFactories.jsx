@@ -5,7 +5,7 @@ import React from 'react';
 
 export function UserIndexTableRow(user) {
   return [
-    <TableCell key={'name'} component="th" scope="row">
+    <TableCell key={'name'} component="th" scope="row" style={{backgroundColor: color}}>
       {user.name}
     </TableCell>,
     <TableCell key={'email'} align="center">

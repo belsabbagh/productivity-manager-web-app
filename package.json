@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --output ./public/build",
     "serve": "vite preview",
     "format": "prettier ./resources/js/**/*"
   },
